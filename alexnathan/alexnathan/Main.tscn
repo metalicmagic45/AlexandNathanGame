@@ -1,0 +1,63 @@
+[gd_scene load_steps=3 format=3 uid="uid://ijfemwe5025u"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_83nsd"]
+[ext_resource type="Texture2D" uid="uid://xsn6ycwya5" path="res://MenuScreenImg.png" id="2_vj68o"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_83nsd")
+
+[node name="MenuScreenImg" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(577.5, 326)
+scale = Vector2(0.746745, 0.630859)
+texture = ExtResource("2_vj68o")
+metadata/_edit_lock_ = true
+
+[node name="NameText" type="Label" parent="."]
+offset_left = 543.0
+offset_top = 47.0
+offset_right = 688.0
+offset_bottom = 116.0
+theme_override_font_sizes/font_size = 50
+text = "Name"
+
+[node name="NameButton" type="TextureButton" parent="NameText"]
+offset_left = -14.0
+offset_top = -7.0
+offset_right = 163.0
+offset_bottom = 92.0
+
+[node name="PlayText" type="Label" parent="."]
+offset_left = 556.0
+offset_top = 270.0
+offset_right = 657.0
+offset_bottom = 339.0
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 50
+text = "Play"
+
+[node name="PlayButton" type="TextureButton" parent="PlayText"]
+offset_left = -21.0
+offset_top = -6.0
+offset_right = 128.0
+offset_bottom = 89.0
+
+[node name="ExitText" type="Label" parent="."]
+offset_left = 561.0
+offset_top = 505.0
+offset_right = 973.0
+offset_bottom = 808.0
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 50
+text = "Exit"
+
+[node name="ExitButton" type="TextureButton" parent="ExitText"]
+offset_left = -42.0
+offset_top = -13.0
+offset_right = 149.0
+offset_bottom = 88.0
+
+[connection signal="button_down" from="NameText/NameButton" to="." method="_on_name_button_button_down"]
+[connection signal="button_down" from="PlayText/PlayButton" to="." method="_on_play_button_button_down"]
+[connection signal="button_down" from="ExitText/ExitButton" to="." method="_on_exit_button_button_down"]

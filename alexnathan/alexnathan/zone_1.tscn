@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhnggr2sdkomb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iji1e"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_kbrvy"]
+
+[sub_resource type="Gradient" id="Gradient_n8fwp"]
+offsets = PackedFloat32Array(0, 0.36747, 0.487952, 0.861446, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.13253, 0.13253, 0.13253, 1, 0.487952, 0.487952, 0.487952, 1, 0.0722892, 0.0722892, 0.0722892, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_04hnl"]
+gradient = SubResource("Gradient_n8fwp")
+
+[node name="Zone1" type="Node2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(797, 304)
+shape = SubResource("CircleShape2D_iji1e")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="RigidBody2D/CollisionShape2D"]
+scale = Vector2(200, 200)
+mesh = SubResource("SphereMesh_kbrvy")
+texture = SubResource("GradientTexture1D_04hnl")
+metadata/_edit_lock_ = true
