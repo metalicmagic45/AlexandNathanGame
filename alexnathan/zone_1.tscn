@@ -1,4 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bhnggr2sdkomb"]
+[gd_scene load_steps=6 format=3 uid="uid://bhnggr2sdkomb"]
+
+[ext_resource type="Script" path="res://zone_1.gd" id="1_dd0yq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iji1e"]
 
@@ -12,6 +14,7 @@ colors = PackedColorArray(0, 0, 0, 1, 0.13253, 0.13253, 0.13253, 1, 0.487952, 0.
 gradient = SubResource("Gradient_n8fwp")
 
 [node name="Zone1" type="Node2D"]
+script = ExtResource("1_dd0yq")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 gravity_scale = 0.0
@@ -25,3 +28,44 @@ scale = Vector2(200, 200)
 mesh = SubResource("SphereMesh_kbrvy")
 texture = SubResource("GradientTexture1D_04hnl")
 metadata/_edit_lock_ = true
+
+[node name="PauseLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="PauseLayer"]
+visible = false
+offset_right = 1152.0
+offset_bottom = 651.0
+
+[node name="Menu" type="Button" parent="PauseLayer/Panel"]
+layout_mode = 1
+offset_left = 1.0
+offset_top = 100.0
+offset_right = 102.0
+offset_bottom = 165.0
+text = "Main Menu"
+
+[node name="Save" type="Button" parent="PauseLayer/Panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 3.0
+offset_top = -95.5
+offset_right = 104.0
+offset_bottom = -32.5
+grow_vertical = 2
+text = "Save"
+
+[node name="Load" type="Button" parent="PauseLayer/Panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -3.5
+offset_right = 104.0
+offset_bottom = 45.5
+grow_vertical = 2
+text = "Load
+"
+
+[connection signal="button_down" from="PauseLayer/Panel/Menu" to="." method="_on_menu_button_down"]
