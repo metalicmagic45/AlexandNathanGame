@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xsn6ycwya5"
-path="res://.godot/imported/MenuScreenImg.png-da90b659e0c37e94c1d2b522c1b89668.ctex"
+uid="uid://c1yh175k6k6iy"
+path="res://.godot/imported/TylerPortrait.png-7f9d1e8617bd69628d3227418a7cf344.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://MenuScreenImg.png"
-dest_files=["res://.godot/imported/MenuScreenImg.png-da90b659e0c37e94c1d2b522c1b89668.ctex"]
+source_file="res://Pirctures/TylerPortrait.png"
+dest_files=["res://.godot/imported/TylerPortrait.png-7f9d1e8617bd69628d3227418a7cf344.ctex"]
 
 [params]
 
