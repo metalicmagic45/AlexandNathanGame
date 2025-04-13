@@ -22,6 +22,7 @@ theme_override_font_sizes/font_size = 50
 text = "Name"
 
 [node name="NameButton" type="TextureButton" parent="NameText"]
+layout_mode = 0
 offset_left = -14.0
 offset_top = -7.0
 offset_right = 163.0
@@ -37,6 +38,7 @@ theme_override_font_sizes/font_size = 50
 text = "Play"
 
 [node name="PlayButton" type="TextureButton" parent="PlayText"]
+layout_mode = 0
 offset_left = -21.0
 offset_top = -6.0
 offset_right = 128.0
@@ -53,6 +55,7 @@ theme_override_font_sizes/font_size = 50
 text = "Exit"
 
 [node name="ExitButton" type="TextureButton" parent="ExitText"]
+layout_mode = 0
 offset_left = -42.0
 offset_top = -13.0
 offset_right = 149.0
