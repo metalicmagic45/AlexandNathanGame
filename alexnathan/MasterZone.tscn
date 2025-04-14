@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://baadmwnt50klc"]
 
-[ext_resource type="Script" path="res://zone_1.gd" id="1_bvy2v"]
+[ext_resource type="Script" path="res://MasterZone.gd" id="1_bvy2v"]
 [ext_resource type="Texture2D" uid="uid://bjy7pey031kq0" path="res://Pirctures/CharacterUI.png" id="2_48lkj"]
 [ext_resource type="Texture2D" uid="uid://bpx6qvxbcuuhb" path="res://Pirctures/KatePortrait.png" id="3_ivyb7"]
 [ext_resource type="Texture2D" uid="uid://c1yh175k6k6iy" path="res://Pirctures/TylerPortrait.png" id="4_fsy5w"]
@@ -53,28 +53,28 @@ text = "Load
 
 [node name="CharacterPortraitTextLayer" type="CanvasLayer" parent="."]
 
-[node name="KateCharacterPortrait" type="Sprite2D" parent="CharacterPortraitTextLayer"]
+[node name="TextBoxKateCharacterPortrait" type="Sprite2D" parent="CharacterPortraitTextLayer"]
 visible = false
 position = Vector2(152, 225)
 scale = Vector2(0.856544, 0.802623)
 texture = ExtResource("3_ivyb7")
 metadata/_edit_lock_ = true
 
-[node name="TylerCharacterPortrait" type="Sprite2D" parent="CharacterPortraitTextLayer"]
+[node name="TextBoxTylerCharacterPortrait" type="Sprite2D" parent="CharacterPortraitTextLayer"]
 visible = false
 position = Vector2(151, 220)
 scale = Vector2(0.933394, 0.759921)
 texture = ExtResource("4_fsy5w")
 metadata/_edit_lock_ = true
 
-[node name="AnnaCharacterPortrait" type="Sprite2D" parent="CharacterPortraitTextLayer"]
+[node name="TextBoxAnnaCharacterPortrait" type="Sprite2D" parent="CharacterPortraitTextLayer"]
 visible = false
 position = Vector2(154, 221)
 scale = Vector2(0.665698, 0.884005)
 texture = ExtResource("5_d0ijk")
 metadata/_edit_lock_ = true
 
-[node name="JhonsonCharacterPortrait" type="Sprite2D" parent="CharacterPortraitTextLayer"]
+[node name="TextBoxJhonsonCharacterPortrait" type="Sprite2D" parent="CharacterPortraitTextLayer"]
 visible = false
 position = Vector2(153, 220)
 scale = Vector2(0.718336, 0.755542)
@@ -84,7 +84,7 @@ metadata/_edit_lock_ = true
 [node name="ZoneBackgroundLayer" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="Zone1" type="Sprite2D" parent="ZoneBackgroundLayer"]
+[node name="Zone1bACKGROUND" type="Sprite2D" parent="ZoneBackgroundLayer"]
 position = Vector2(575, 212)
 scale = Vector2(0.74707, 0.418457)
 texture = ExtResource("7_gqlp8")
