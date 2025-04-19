@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwopnifwk3vgw"
-path="res://.godot/imported/AnnaPortrait.png-2d046db669bae55bafc560836fc547a5.ctex"
+uid="uid://c2wqfom5vip54"
+path="res://.godot/imported/remmington870.png-6c5e45cd526c7a18e163f8153dc4935d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Pirctures/AnnaPortrait.png"
-dest_files=["res://.godot/imported/AnnaPortrait.png-2d046db669bae55bafc560836fc547a5.ctex"]
+source_file="res://Pictures/remmington870.png"
+dest_files=["res://.godot/imported/remmington870.png-6c5e45cd526c7a18e163f8153dc4935d.ctex"]
 
 [params]
 

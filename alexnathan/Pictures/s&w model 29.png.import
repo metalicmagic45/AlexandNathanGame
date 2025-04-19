@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpx6qvxbcuuhb"
-path="res://.godot/imported/KatePortrait.png-db820a07fe62f1d5eb1be8dd50d06f79.ctex"
+uid="uid://buoqo7oikwx01"
+path="res://.godot/imported/s&w model 29.png-650a6359eb524b0d7fb13468d99606e0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Pirctures/KatePortrait.png"
-dest_files=["res://.godot/imported/KatePortrait.png-db820a07fe62f1d5eb1be8dd50d06f79.ctex"]
+source_file="res://Pictures/s&w model 29.png"
+dest_files=["res://.godot/imported/s&w model 29.png-650a6359eb524b0d7fb13468d99606e0.ctex"]
 
 [params]
 

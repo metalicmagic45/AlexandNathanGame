@@ -1,0 +1,55 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsn35qwhyqva1"]
+
+[ext_resource type="Script" path="res://inventory_ui.gd" id="1_1y5gh"]
+
+[node name="InventoryUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_1y5gh")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Anna" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Anna"
+
+[node name="Johnson" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Johnson
+"
+
+[node name="Tyler" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Tyler"
+
+[node name="Kate" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Kate
+"
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 3
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Anna" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Johnson" to="." method="_on_johnson_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Tyler" to="." method="_on_tyler_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Kate" to="." method="_on_kate_pressed"]
