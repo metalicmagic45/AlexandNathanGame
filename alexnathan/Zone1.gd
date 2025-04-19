@@ -26,12 +26,5 @@ extends Node2D
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	Kate.visible = true 
-<<<<<<< HEAD
-	print("hi")
-=======
-<<<<<<< HEAD
 	TylerUi.visible = true
 	CarBackground.visible = true
-=======
->>>>>>> 47466b3d70b822d435c7c056a86858d8d44e1741
->>>>>>> 594c23f4a14820d678f2acee58577660bad6a704
