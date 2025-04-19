@@ -1,7 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ijfemwe5025u"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_83nsd"]
-[ext_resource type="Texture2D" uid="uid://xsn6ycwya5" path="res://Pirctures/MenuScreenImg.png" id="2_vj68o"]
 [ext_resource type="Texture2D" uid="uid://xsn6ycwya5" path="res://Pictures/MenuScreenImg.png" id="2_vj68o"]
 
 [node name="Node2D" type="Node2D"]
