@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bmbybi2a4c8lc"]
 
-[ext_resource type="Script" path="res://MasterScene.gd" id="1_6rfq3"]
+[ext_resource type="Script" path="res://MasterZone.gd" id="1_6rfq3"]
 [ext_resource type="Texture2D" uid="uid://bpx6qvxbcuuhb" path="res://Pirctures/KatePortrait.png" id="2_gjv8h"]
 [ext_resource type="Texture2D" uid="uid://c1yh175k6k6iy" path="res://Pirctures/TylerPortrait.png" id="3_o1jbh"]
 [ext_resource type="Texture2D" uid="uid://bwopnifwk3vgw" path="res://Pirctures/AnnaPortrait.png" id="4_xmr54"]
@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bo3l02owb8slj" path="res://Pirctures/raw.png" id="6_w1q7v"]
 [ext_resource type="Texture2D" uid="uid://bjy7pey031kq0" path="res://Pirctures/CharacterUI.png" id="7_i7np8"]
 
-[node name="MasterScene" type="Node2D"]
+[node name="MasterZone" type="Node2D"]
 script = ExtResource("1_6rfq3")
 
 [node name="PauseLayer" type="CanvasLayer" parent="."]
