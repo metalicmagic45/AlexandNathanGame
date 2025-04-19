@@ -1,10 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dnjp45k55f3s6"]
 
 [ext_resource type="Script" path="res://inventory_slot.gd" id="1_5sgks"]
-<<<<<<< HEAD
-[ext_resource type="Texture2D" uid="uid://j3wq4g7g3tnw" path="res://Pictures/1911colt.png" id="2_gw6tl"]
-=======
->>>>>>> 5a7bad110f1605233b00ae05c8eed20751d1be47
 
 [node name="InventorySlot" type="Control"]
 custom_minimum_size = Vector2(350, 300)
