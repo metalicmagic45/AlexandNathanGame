@@ -1,4 +1,3 @@
-[gd_scene load_steps=3 format=3 uid="uid://bgrg3jqa6idyv"]
 [gd_scene load_steps=3 format=3 uid="uid://dnjp45k55f3s6"]
 
 [ext_resource type="Script" path="res://inventory_slot.gd" id="1_5sgks"]
