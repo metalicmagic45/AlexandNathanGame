@@ -100,6 +100,7 @@ offset_top = 16.0
 offset_right = 1136.0
 offset_bottom = 405.0
 text = "Hello"
+editable = false
 metadata/_edit_lock_ = true
 
 [node name="BottomUiLayer" type="CanvasLayer" parent="."]
