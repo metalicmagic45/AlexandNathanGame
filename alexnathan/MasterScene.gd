@@ -23,4 +23,5 @@ func _on_menu_button_down() -> void:
 # Replace with function body.
 #func _process(delta: float) -> void:
 	#Kate.visible = true
+	print("Meow")
 	
