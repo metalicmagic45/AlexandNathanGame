@@ -5,6 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://c1yh175k6k6iy" path="res://Pictures/TylerPortrait.png" id="3_o1jbh"]
 [ext_resource type="Texture2D" uid="uid://bwopnifwk3vgw" path="res://Pictures/AnnaPortrait.png" id="4_xmr54"]
 [ext_resource type="Texture2D" uid="uid://cnrr7sbxe4e7k" path="res://Pictures/JhonsonPortrait.png" id="5_ge1y4"]
+[ext_resource type="Texture2D" uid="uid://bt3k68m4s5pkx" path="res://Pictures/KatePortrait.png" id="2_gjv8h"]
+[ext_resource type="Texture2D" uid="uid://c31jnwyaxfd4i" path="res://Pictures/TylerPortrait.png" id="3_o1jbh"]
+[ext_resource type="Texture2D" uid="uid://ygrl2iyqlj5r" path="res://Pictures/AnnaPortrait.png" id="4_xmr54"]
+[ext_resource type="Texture2D" uid="uid://by3oht3nlx1aj" path="res://Pictures/JhonsonPortrait.png" id="5_ge1y4"]
 [ext_resource type="Texture2D" uid="uid://bo3l02owb8slj" path="res://Pictures/CarBackground.png" id="6_w1q7v"]
 [ext_resource type="Texture2D" uid="uid://bjy7pey031kq0" path="res://Pictures/CharacterUI.png" id="7_i7np8"]
 
