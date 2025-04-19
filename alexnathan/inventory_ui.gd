@@ -5,6 +5,7 @@ extends Control
 func _input(event):
 	if event.is_action_pressed("ToggleInvetory"):
 		get_tree().change_scene_to_file("res://MasterZone.tscn")
+		get_tree().change_scene_to_file("res://MasterScene.tscn")
 
 func reset():
 	for child in grid_container.get_children():
