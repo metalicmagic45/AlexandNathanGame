@@ -1,15 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://baadmwnt50klc"]
+[gd_scene load_steps=8 format=3 uid="uid://bmbybi2a4c8lc"]
 
-[ext_resource type="Script" path="res://MasterZone.gd" id="1_bvy2v"]
-[ext_resource type="Texture2D" uid="uid://bjy7pey031kq0" path="res://Pirctures/CharacterUI.png" id="2_48lkj"]
-[ext_resource type="Texture2D" uid="uid://bpx6qvxbcuuhb" path="res://Pirctures/KatePortrait.png" id="3_ivyb7"]
-[ext_resource type="Texture2D" uid="uid://c1yh175k6k6iy" path="res://Pirctures/TylerPortrait.png" id="4_fsy5w"]
-[ext_resource type="Texture2D" uid="uid://bwopnifwk3vgw" path="res://Pirctures/AnnaPortrait.png" id="5_d0ijk"]
-[ext_resource type="Texture2D" uid="uid://cnrr7sbxe4e7k" path="res://Pirctures/JhonsonPortrait.png" id="6_2y61p"]
-[ext_resource type="Texture2D" uid="uid://bo3l02owb8slj" path="res://Pirctures/raw.png" id="7_gqlp8"]
+[ext_resource type="Script" path="res://MasterScene.gd" id="1_6rfq3"]
+[ext_resource type="Texture2D" uid="uid://bpx6qvxbcuuhb" path="res://Pirctures/KatePortrait.png" id="2_gjv8h"]
+[ext_resource type="Texture2D" uid="uid://c1yh175k6k6iy" path="res://Pirctures/TylerPortrait.png" id="3_o1jbh"]
+[ext_resource type="Texture2D" uid="uid://bwopnifwk3vgw" path="res://Pirctures/AnnaPortrait.png" id="4_xmr54"]
+[ext_resource type="Texture2D" uid="uid://cnrr7sbxe4e7k" path="res://Pirctures/JhonsonPortrait.png" id="5_ge1y4"]
+[ext_resource type="Texture2D" uid="uid://bo3l02owb8slj" path="res://Pirctures/raw.png" id="6_w1q7v"]
+[ext_resource type="Texture2D" uid="uid://bjy7pey031kq0" path="res://Pirctures/CharacterUI.png" id="7_i7np8"]
 
-[node name="MasterZone" type="Node2D"]
-script = ExtResource("1_bvy2v")
+[node name="MasterScene" type="Node2D"]
+script = ExtResource("1_6rfq3")
 
 [node name="PauseLayer" type="CanvasLayer" parent="."]
 layer = 5
@@ -57,28 +57,28 @@ text = "Load
 visible = false
 position = Vector2(152, 225)
 scale = Vector2(0.856544, 0.802623)
-texture = ExtResource("3_ivyb7")
+texture = ExtResource("2_gjv8h")
 metadata/_edit_lock_ = true
 
 [node name="TextBoxTylerCharacterPortrait" type="Sprite2D" parent="CharacterPortraitTextLayer"]
 visible = false
 position = Vector2(151, 220)
 scale = Vector2(0.933394, 0.759921)
-texture = ExtResource("4_fsy5w")
+texture = ExtResource("3_o1jbh")
 metadata/_edit_lock_ = true
 
 [node name="TextBoxAnnaCharacterPortrait" type="Sprite2D" parent="CharacterPortraitTextLayer"]
 visible = false
 position = Vector2(154, 221)
 scale = Vector2(0.665698, 0.884005)
-texture = ExtResource("5_d0ijk")
+texture = ExtResource("4_xmr54")
 metadata/_edit_lock_ = true
 
 [node name="TextBoxJhonsonCharacterPortrait" type="Sprite2D" parent="CharacterPortraitTextLayer"]
 visible = false
 position = Vector2(153, 220)
 scale = Vector2(0.718336, 0.755542)
-texture = ExtResource("6_2y61p")
+texture = ExtResource("5_ge1y4")
 metadata/_edit_lock_ = true
 
 [node name="ZoneBackgroundLayer" type="CanvasLayer" parent="."]
@@ -87,7 +87,7 @@ layer = -1
 [node name="Zone1bACKGROUND" type="Sprite2D" parent="ZoneBackgroundLayer"]
 position = Vector2(575, 212)
 scale = Vector2(0.74707, 0.418457)
-texture = ExtResource("7_gqlp8")
+texture = ExtResource("6_w1q7v")
 metadata/_edit_lock_ = true
 
 [node name="TextBoxLayer" type="CanvasLayer" parent="."]
@@ -107,7 +107,7 @@ layer = 0
 [node name="BottomUi" type="Sprite2D" parent="BottomUiLayer"]
 position = Vector2(573, 533)
 scale = Vector2(0.96, 0.826111)
-texture = ExtResource("2_48lkj")
+texture = ExtResource("7_i7np8")
 metadata/_edit_lock_ = true
 
 [node name="CharacterPortraitBottomUiLayerLayer" type="CanvasLayer" parent="BottomUiLayer/BottomUi"]
@@ -116,28 +116,28 @@ metadata/_edit_lock_ = true
 visible = false
 position = Vector2(132.48, 533.889)
 scale = Vector2(0.822282, 0.663056)
-texture = ExtResource("3_ivyb7")
+texture = ExtResource("2_gjv8h")
 metadata/_edit_lock_ = true
 
 [node name="TylerCharacterPortrait" type="Sprite2D" parent="BottomUiLayer/BottomUi/CharacterPortraitBottomUiLayerLayer"]
 visible = false
 position = Vector2(132.24, 535.672)
 scale = Vector2(0.896058, 0.627779)
-texture = ExtResource("4_fsy5w")
+texture = ExtResource("3_o1jbh")
 metadata/_edit_lock_ = true
 
 [node name="AnnaCharacterPortrait" type="Sprite2D" parent="BottomUiLayer/BottomUi/CharacterPortraitBottomUiLayerLayer"]
 visible = false
 position = Vector2(132.34, 538.664)
 scale = Vector2(0.63907, 0.730286)
-texture = ExtResource("5_d0ijk")
+texture = ExtResource("4_xmr54")
 metadata/_edit_lock_ = true
 
 [node name="JhonsonCharacterPortrait" type="Sprite2D" parent="BottomUiLayer/BottomUi/CharacterPortraitBottomUiLayerLayer"]
 visible = false
 position = Vector2(131.63, 534.198)
 scale = Vector2(0.689602, 0.624162)
-texture = ExtResource("6_2y61p")
+texture = ExtResource("5_ge1y4")
 metadata/_edit_lock_ = true
 
 [connection signal="button_down" from="PauseLayer/Panel/Menu" to="." method="_on_menu_button_down"]

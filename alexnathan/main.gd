@@ -10,7 +10,7 @@ func _on_name_button_button_down() -> void:
 	print(1)
 
 func _on_play_button_button_down() -> void:
-	get_tree().change_scene_to_file("res://MasterZone.tscn")
+	get_tree().change_scene_to_file("res://Zone1.tscn")
 
 func _on_exit_button_button_down() -> void:
 	get_tree().quit()
