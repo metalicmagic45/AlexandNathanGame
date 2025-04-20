@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://xsn6ycwya5" path="res://Pictures/MenuScreenImg.png" id="2_vj68o"]
 
 [node name="Node2D" type="Node2D"]
+[node name="Main" type="Node2D"]
 script = ExtResource("1_83nsd")
 
 [node name="MenuScreenImg" type="Sprite2D" parent="."]

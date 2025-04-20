@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 ItemDatabase="*res://item_database.tscn"
 Playerinventory="*res://playerinventory.gd"
+Playerdata="*res://playerdata.gd"
 
 [dotnet]
 
