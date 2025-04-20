@@ -4,6 +4,10 @@ extends Control
 
 var party = {}
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ToggleParty"):
+		get_tree().change_scene_to_file("res://MasterScene.tscn")
+
 func add_party_member(character_name: String) -> void:
 	var character = Playerdata.players.get(character_name)
 	if character and not party.has(character_name):
@@ -25,6 +29,7 @@ func initialize_party_slots() -> void:
 	for character_name in party.keys():
 		var slot = partyslotscene.instantiate()
 		party_container.add_child(slot)
+		slot.set_member_data(character_name)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass

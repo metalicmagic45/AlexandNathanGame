@@ -4,12 +4,16 @@
 script/source = "extends Control
 
 @onready var name_label = $Name
+@onready var CharSprite = $CharSprite
 
 func set_member_data(character_name: String) -> void:
 	var data = Playerdata.players.get(character_name)
 
 	if data:
 		name_label.text = character_name
+		var texture = data[\"sprite\"]
+		CharSprite.texture = texture
+		
 		# Populate stats here like HP, STR, etc. (see next section)
 	else:
 		name_label.text = \"Unknown\"
@@ -34,13 +38,13 @@ anchor_bottom = 1.0
 offset_bottom = -400.0
 grow_horizontal = 2
 grow_vertical = 2
+expand_mode = 3
 
 [node name="Name" type="Label" parent="."]
 layout_mode = 0
 offset_top = 250.0
 offset_right = 288.0
 offset_bottom = 300.0
-text = "Monkey"
 horizontal_alignment = 1
 
 [node name="StatContainer" type="GridContainer" parent="."]

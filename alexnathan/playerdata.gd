@@ -1,21 +1,20 @@
 extends Node
 
-var players = {}
-
-func _ready() -> void:
-	players["Johnson"] = {
+var players = {
+	"Johnson": {
 		"name": "Johnson",
 		"sprite": preload("res://Pictures/JhonsonPortrait.png")
-	}
-	players["Anna"] = {
+	},
+	"Anna": {
 		"name": "Anna",
-		"spite": preload("res://Pictures/AnnaPortrait.png")
-	}
-	players["Tyler"] = {
+		"sprite": preload("res://Pictures/AnnaPortrait.png")
+	},
+	"Tyler": {
 		"name": "Tyler",
 		"sprite": preload("res://Pictures/TylerPortrait.png")
-	}
-	players["Kate"] = {
+	},
+	"Kate": {
 		"name": "Kate",
 		"sprite": preload("res://Pictures/KatePortrait.png")
 	}
+}

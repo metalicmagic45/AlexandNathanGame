@@ -13,6 +13,8 @@ func _input(event):
 		toggle_pause_menu()
 	if event.is_action_pressed("ToggleInvetory"):
 		get_tree().change_scene_to_file("res://inventory_ui.tscn")
+	if event.is_action_pressed("ToggleParty"):
+		get_tree().change_scene_to_file("res://party_ui.tscn")
 func toggle_pause_menu():
 	PausePanel.visible = !PausePanel.visible
 func reset_portrait():
