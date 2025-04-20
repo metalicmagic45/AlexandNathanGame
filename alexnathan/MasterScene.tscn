@@ -1,4 +1,3 @@
-[gd_scene load_steps=8 format=3 uid="uid://bmbybi2a4c8lc"]
 [gd_scene load_steps=7 format=3 uid="uid://bmbybi2a4c8lc"]
 
 [ext_resource type="Script" path="res://MasterScene.gd" id="1_6rfq3"]
@@ -104,7 +103,7 @@ offset_right = 1151.0
 grow_vertical = 0
 size_flags_vertical = 4
 
-[node name="ContainerMain" type="PanelContainer" parent="BottomUiLayer/BottomUI"]
+[node name="Panel" type="Panel" parent="BottomUiLayer/BottomUI"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -112,72 +111,75 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="BottomUiLayer/BottomUI/ContainerMain"]
+[node name="HBoxContainer" type="HBoxContainer" parent="BottomUiLayer/BottomUI/Panel"]
 layout_mode = 2
+offset_right = 250.0
 
-[node name="Potrait" type="VBoxContainer" parent="BottomUiLayer/BottomUI/ContainerMain/HBoxContainer"]
+[node name="Potrait" type="VBoxContainer" parent="BottomUiLayer/BottomUI/Panel/HBoxContainer"]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 
-[node name="CharacterSprite" type="TextureRect" parent="BottomUiLayer/BottomUI/ContainerMain/HBoxContainer/Potrait"]
+[node name="CharacterSprite" type="TextureRect" parent="BottomUiLayer/BottomUI/Panel/HBoxContainer/Potrait"]
 layout_mode = 2
 size_flags_vertical = 3
 expand_mode = 5
 
-[node name="Buttons" type="GridContainer" parent="BottomUiLayer/BottomUI/ContainerMain"]
-custom_minimum_size = Vector2(600, 0)
+[node name="Control" type="Control" parent="BottomUiLayer/BottomUI/Panel"]
+layout_mode = 2
+anchors_preset = 0
+offset_right = 250.0
+
+[node name="Buttons" type="GridContainer" parent="BottomUiLayer/BottomUI/Panel/Control"]
 layout_direction = 1
 layout_mode = 2
-size_flags_horizontal = 8
+offset_left = 540.0
+offset_right = 1148.0
+offset_bottom = 234.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
 columns = 3
 
-[node name="Party" type="Button" parent="BottomUiLayer/BottomUI/ContainerMain/Buttons"]
+[node name="Party" type="Button" parent="BottomUiLayer/BottomUI/Panel/Control/Buttons"]
+custom_minimum_size = Vector2(200, 115)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 text = "Party"
 
-[node name="Character" type="Button" parent="BottomUiLayer/BottomUI/ContainerMain/Buttons"]
+[node name="Character" type="Button" parent="BottomUiLayer/BottomUI/Panel/Control/Buttons"]
+custom_minimum_size = Vector2(200, 115)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 text = "Character"
 
-[node name="Inventory" type="Button" parent="BottomUiLayer/BottomUI/ContainerMain/Buttons"]
+[node name="Inventory" type="Button" parent="BottomUiLayer/BottomUI/Panel/Control/Buttons"]
+custom_minimum_size = Vector2(200, 115)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 text = "Inventory"
 
-[node name="HP" type="Button" parent="BottomUiLayer/BottomUI/ContainerMain/Buttons"]
+[node name="HP" type="Button" parent="BottomUiLayer/BottomUI/Panel/Control/Buttons"]
+custom_minimum_size = Vector2(200, 115)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 text = "HP"
 
-[node name="Magic" type="Button" parent="BottomUiLayer/BottomUI/ContainerMain/Buttons"]
+[node name="Magic" type="Button" parent="BottomUiLayer/BottomUI/Panel/Control/Buttons"]
+custom_minimum_size = Vector2(200, 115)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 text = "Magic"
 
-[node name="Status" type="Button" parent="BottomUiLayer/BottomUI/ContainerMain/Buttons"]
+[node name="Status" type="Button" parent="BottomUiLayer/BottomUI/Panel/Control/Buttons"]
+custom_minimum_size = Vector2(200, 115)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 text = "Status Effects"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="BottomUiLayer/BottomUI"]
+[node name="VBoxContainer" type="VBoxContainer" parent="BottomUiLayer/BottomUI/Panel"]
 layout_mode = 0
 offset_left = 260.0
 offset_right = 545.0
 offset_bottom = 230.0
 
-[node name="PrimarySprite" type="TextureRect" parent="BottomUiLayer/BottomUI/VBoxContainer"]
+[node name="PrimarySprite" type="TextureRect" parent="BottomUiLayer/BottomUI/Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="PrimaryLabel" type="Label" parent="BottomUiLayer/BottomUI/VBoxContainer"]
+[node name="PrimaryLabel" type="Label" parent="BottomUiLayer/BottomUI/Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_vertical = 1

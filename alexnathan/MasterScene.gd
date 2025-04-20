@@ -3,7 +3,7 @@ extends Node2D
 @onready var PauseLayer = $PauseLayer
 @onready var PausePanel = $PauseLayer/Panel
 @onready var Kate = get_node("CharacterPortraitTextLayer/TextBoxKateCharacterPortrait")
-@onready var Portrait: VBoxContainer = $BottomUiLayer/BottomUI/ContainerMain/HBoxContainer/Potrait
+@onready var Portrait: VBoxContainer = $BottomUiLayer/BottomUI/Panel/HBoxContainer/Potrait
 
 
 
