@@ -1,0 +1,79 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwv3aoco87wvt"]
+
+[sub_resource type="GDScript" id="GDScript_uig1t"]
+script/source = "extends Control
+
+@onready var name_label = $Name
+
+func set_member_data(character_name: String) -> void:
+	var data = Playerdata.players.get(character_name)
+
+	if data:
+		name_label.text = character_name
+		# Populate stats here like HP, STR, etc. (see next section)
+	else:
+		name_label.text = \"Unknown\"
+		print(\"No player data for:\", character_name)
+"
+
+[node name="PartyMemberSlot" type="Panel"]
+custom_minimum_size = Vector2(288, 648)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -864.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_uig1t")
+
+[node name="CharSprite" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -400.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 0
+offset_top = 250.0
+offset_right = 288.0
+offset_bottom = 300.0
+text = "Monkey"
+horizontal_alignment = 1
+
+[node name="StatContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 300.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+
+[node name="HP" type="Label" parent="StatContainer"]
+layout_mode = 2
+
+[node name="MP" type="Label" parent="StatContainer"]
+layout_mode = 2
+
+[node name="STR" type="Label" parent="StatContainer"]
+layout_mode = 2
+
+[node name="CON" type="Label" parent="StatContainer"]
+layout_mode = 2
+
+[node name="DEX" type="Label" parent="StatContainer"]
+layout_mode = 2
+
+[node name="POW" type="Label" parent="StatContainer"]
+layout_mode = 2
+
+[node name="LUCK" type="Label" parent="StatContainer"]
+layout_mode = 2
+
+[node name="INT" type="Label" parent="StatContainer"]
+layout_mode = 2

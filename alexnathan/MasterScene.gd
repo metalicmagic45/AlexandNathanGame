@@ -31,19 +31,12 @@ func set_portrait(character_name: String):
 		
 func _ready():
 	set_portrait("Johnson")
-
-
-
-
-
-			
-		
-
-
 func _on_menu_button_down() -> void:
 	get_tree().change_scene_to_file("res://Main.tscn")
 # Replace with function body.
 #func _process(delta: float) -> void:
 	#Kate.visible = true
-	print("Meow")
-	
+func _on_inventory_pressed() -> void:
+	get_tree().change_scene_to_file("res://inventory_ui.tscn")
+func _on_party_pressed() -> void:
+	get_tree().change_scene_to_file("res://party_ui.tscn")
