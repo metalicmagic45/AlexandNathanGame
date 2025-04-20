@@ -4,7 +4,7 @@
 script/source = "extends Control
 
 @onready var name_label = $Name
-@onready var CharSprite = $CharSprite
+@onready var CharSprite = $CenterContainer/Control/CharSprite
 
 func set_member_data(character_name: String) -> void:
 	var data = Playerdata.players.get(character_name)
@@ -29,16 +29,6 @@ offset_right = -864.0
 grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_uig1t")
-
-[node name="CharSprite" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = -400.0
-grow_horizontal = 2
-grow_vertical = 2
-expand_mode = 3
 
 [node name="Name" type="Label" parent="."]
 layout_mode = 0
@@ -81,3 +71,22 @@ layout_mode = 2
 
 [node name="INT" type="Label" parent="StatContainer"]
 layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_right = 288.0
+offset_bottom = 250.0
+
+[node name="Control" type="Control" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="CharSprite" type="TextureRect" parent="CenterContainer/Control"]
+layout_mode = 2
+offset_left = -114.0
+offset_top = -125.0
+offset_right = 174.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+expand_mode = 3
