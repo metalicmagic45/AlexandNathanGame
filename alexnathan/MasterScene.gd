@@ -15,6 +15,8 @@ func _input(event):
 		get_tree().change_scene_to_file("res://inventory_ui.tscn")
 	if event.is_action_pressed("ToggleParty"):
 		get_tree().change_scene_to_file("res://party_ui.tscn")
+	if event.is_action_pressed("ToggleChar"):
+		get_tree().change_scene_to_file("res://character_ui.tscn")
 func toggle_pause_menu():
 	PausePanel.visible = !PausePanel.visible
 func reset_portrait():
@@ -42,3 +44,5 @@ func _on_inventory_pressed() -> void:
 	get_tree().change_scene_to_file("res://inventory_ui.tscn")
 func _on_party_pressed() -> void:
 	get_tree().change_scene_to_file("res://party_ui.tscn")
+func _on_character_pressed() -> void:
+	get_tree().change_scene_to_file("res://character_ui.tscn")

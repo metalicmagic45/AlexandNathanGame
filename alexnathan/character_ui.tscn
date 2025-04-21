@@ -1,0 +1,85 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfivdraysx186"]
+
+[ext_resource type="Script" path="res://character_ui.gd" id="1_uvp0u"]
+
+[node name="CharacterUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uvp0u")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="Panel"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel/Control"]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 320.0
+
+[node name="CharacterSprite" type="TextureRect" parent="Panel/Control/CenterContainer"]
+custom_minimum_size = Vector2(240, 280)
+layout_mode = 2
+expand_mode = 5
+stretch_mode = 5
+
+[node name="NameTag" type="Label" parent="Panel/Control"]
+layout_mode = 0
+offset_top = 320.0
+offset_right = 280.0
+offset_bottom = 360.0
+horizontal_alignment = 1
+
+[node name="SkillGrid" type="GridContainer" parent="Panel/Control"]
+layout_mode = 0
+offset_left = 280.0
+offset_right = 1150.0
+offset_bottom = 650.0
+columns = 2
+
+[node name="Control" type="Control" parent="Panel/Control/SkillGrid"]
+custom_minimum_size = Vector2(870, 650)
+layout_mode = 2
+
+[node name="SkillContainer" type="GridContainer" parent="Panel/Control/SkillGrid/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[node name="StatGrid" type="GridContainer" parent="Panel/Control"]
+layout_mode = 0
+offset_top = 360.0
+offset_right = 280.0
+offset_bottom = 650.0
+columns = 2
+
+[node name="Control" type="Control" parent="Panel/Control/StatGrid"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="StatBox" type="GridContainer" parent="Panel/Control/StatGrid/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2

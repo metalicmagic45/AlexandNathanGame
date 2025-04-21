@@ -188,4 +188,5 @@ horizontal_alignment = 1
 
 [connection signal="button_down" from="PauseLayer/Panel/Menu" to="." method="_on_menu_button_down"]
 [connection signal="pressed" from="BottomUiLayer/BottomUI/Panel/Control/Buttons/Party" to="." method="_on_party_pressed"]
+[connection signal="pressed" from="BottomUiLayer/BottomUI/Panel/Control/Buttons/Character" to="." method="_on_character_pressed"]
 [connection signal="pressed" from="BottomUiLayer/BottomUI/Panel/Control/Buttons/Inventory" to="." method="_on_inventory_pressed"]
