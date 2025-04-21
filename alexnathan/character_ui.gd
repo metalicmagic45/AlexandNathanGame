@@ -2,8 +2,8 @@ extends Control
 
 @onready var char_sprite : TextureRect = $Panel/Control/CenterContainer/CharacterSprite
 @onready var char_name : Label = $Panel/Control/NameTag
-@onready var stat_box = $Panel/Control/StatGrid/Control/StatBox
-@onready var skill_container = $Panel/Control/SkillGrid/Control/SkillContainer
+@onready var stat_box = $Panel/Control/CenterStatContainer/StatBox
+@onready var skill_container = $Panel/Control/CenterSkillContainer/SkillContainer
 
 
 func _input(event: InputEvent) -> void:

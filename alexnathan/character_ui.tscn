@@ -42,44 +42,37 @@ offset_right = 280.0
 offset_bottom = 360.0
 horizontal_alignment = 1
 
-[node name="SkillGrid" type="GridContainer" parent="Panel/Control"]
-layout_mode = 0
-offset_left = 280.0
-offset_right = 1150.0
-offset_bottom = 650.0
-columns = 2
-
-[node name="Control" type="Control" parent="Panel/Control/SkillGrid"]
-custom_minimum_size = Vector2(870, 650)
-layout_mode = 2
-
-[node name="SkillContainer" type="GridContainer" parent="Panel/Control/SkillGrid/Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-columns = 3
-
-[node name="StatGrid" type="GridContainer" parent="Panel/Control"]
+[node name="CenterStatContainer" type="CenterContainer" parent="Panel/Control"]
 layout_mode = 0
 offset_top = 360.0
 offset_right = 280.0
 offset_bottom = 650.0
-columns = 2
 
-[node name="Control" type="Control" parent="Panel/Control/StatGrid"]
-custom_minimum_size = Vector2(280, 0)
+[node name="StatBox" type="GridContainer" parent="Panel/Control/CenterStatContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="StatBox" type="GridContainer" parent="Panel/Control/StatGrid/Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+theme_override_constants/h_separation = 30
+theme_override_constants/v_separation = 30
 columns = 2
+
+[node name="CenterSkillContainer" type="CenterContainer" parent="Panel/Control"]
+layout_mode = 0
+offset_left = 280.0
+offset_right = 1150.0
+offset_bottom = 450.0
+
+[node name="SkillContainer" type="GridContainer" parent="Panel/Control/CenterSkillContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 4
+
+[node name="CenterStatusContainer" type="CenterContainer" parent="Panel/Control"]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 450.0
+offset_right = 1150.0
+offset_bottom = 650.0
+
+[node name="StatusContainer" type="GridContainer" parent="Panel/Control/CenterStatusContainer"]
+layout_mode = 2
+columns = 4
