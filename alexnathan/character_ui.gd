@@ -5,6 +5,8 @@ extends Control
 @onready var stat_box = $Panel/Control/CenterStatContainer/StatBox
 @onready var skill_container = $Panel/Control/CenterSkillContainer/SkillContainer
 
+#Updates character sheet according to the currently selected character
+var character_name = Playerdata.CurrentCharacter
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ToggleChar"):
@@ -17,7 +19,7 @@ func set_portrait(character_name: String):
 		char_sprite.texture = texture
 	else:
 		print("No player found")
-func set_charname(character_name: String):
+func set_charname(character_name):
 	var player = Playerdata.players.get(character_name)
 	var name = player["name"]
 	char_name.text = name
@@ -38,6 +40,6 @@ func set_character(character_name: String) -> void:
 		label.text = "%s: %d" % [skill, character_data["skills"][skill]]
 		skill_container.add_child(label)	
 func _ready():
-	set_portrait("Johnson")
-	set_charname("Johnson")
-	set_character("Johnson")
+	set_portrait(character_name)
+	set_charname(character_name)
+	set_character(character_name)

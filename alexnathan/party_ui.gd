@@ -2,6 +2,7 @@ extends Control
 @onready var partyslotscene = preload("res://party_member_slot.tscn")
 @onready var party_container = $GridContainer
 
+
 var party = {}
 
 func _input(event: InputEvent) -> void:

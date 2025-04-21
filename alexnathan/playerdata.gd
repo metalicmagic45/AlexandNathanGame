@@ -1,4 +1,7 @@
 extends Node
+#Global varriable that BottemUi and CharacterSheet refrence, default is Johnson or who ever you would start the game playing as
+#Use Local varriables to either change the global varriable or to update information bassed on the currently selected character
+var CurrentCharacter: String = "Johnson"
 
 var players = {
 	"Johnson": {

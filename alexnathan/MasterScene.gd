@@ -5,6 +5,8 @@ extends Node2D
 @onready var Kate = get_node("CharacterPortraitTextLayer/TextBoxKateCharacterPortrait")
 @onready var Portrait: VBoxContainer = $BottomUiLayer/BottomUI/Panel/HBoxContainer/Potrait
 
+#Stores currently selected character for set_portrait(), ran in _ready()
+var character_name = Playerdata.CurrentCharacter
 
 
 
@@ -34,7 +36,7 @@ func set_portrait(character_name: String):
 		print("No player found")
 		
 func _ready():
-	set_portrait("Johnson")
+	set_portrait(character_name)
 func _on_menu_button_down() -> void:
 	get_tree().change_scene_to_file("res://Main.tscn")
 # Replace with function body.

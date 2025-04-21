@@ -5,9 +5,12 @@ script/source = "extends Control
 
 @onready var name_label = $Name
 @onready var CharSprite = $CenterContainer/Control/CharSprite
-
-func set_member_data(character_name: String) -> void:
+#Local Varriable to put slecected character inside, used to update the global currentcharacter
+var CurrentCharacter: String = \"\"
+func set_member_data(character_name) -> void:
 	var data = Playerdata.players.get(character_name)
+	#Puts in selected character
+	CurrentCharacter = character_name
 
 	if data:
 		name_label.text = character_name
@@ -18,6 +21,13 @@ func set_member_data(character_name: String) -> void:
 	else:
 		name_label.text = \"Unknown\"
 		print(\"No player data for:\", character_name)
+	
+func _on_button_button_down() -> void:
+	#On press, updates the gobal currently selected character
+	Playerdata.CurrentCharacter = CurrentCharacter
+	#print(Playerdata.CurrentCharacter)
+
+	
 "
 
 [node name="PartyMemberSlot" type="Panel"]
@@ -32,9 +42,9 @@ script = SubResource("GDScript_uig1t")
 
 [node name="Name" type="Label" parent="."]
 layout_mode = 0
-offset_top = 250.0
+offset_top = 216.0
 offset_right = 288.0
-offset_bottom = 300.0
+offset_bottom = 266.0
 horizontal_alignment = 1
 
 [node name="StatContainer" type="GridContainer" parent="."]
@@ -90,3 +100,18 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.8, 0.8)
 expand_mode = 3
+
+[node name="CharacterSelectButton" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="CharacterSelectButton"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 256.0
+offset_right = 272.0
+offset_bottom = 293.0
+text = "Select"
+
+[connection signal="button_down" from="CharacterSelectButton/Button" to="." method="_on_button_button_down"]
