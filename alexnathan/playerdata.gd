@@ -52,7 +52,7 @@ var players = {
 		"STR": 10,
 		"CON": 11,
 		"DEX": 10,
-		"POW": 18,
+		"POW": 17,
 		"INT": 15,
 		"LUCK": 80,
 		"skills": {
@@ -93,7 +93,7 @@ var players = {
 		"CON": 12,
 		"DEX": 10,
 		"POW": 10,
-		"INT": 18,
+		"INT": 17,
 		"LUCK": 50,
 		"skills": {
 			"Alertness": 60,
