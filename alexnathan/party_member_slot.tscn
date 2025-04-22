@@ -25,6 +25,7 @@ func set_member_data(character_name) -> void:
 func _on_button_button_down() -> void:
 	#On press, updates the gobal currently selected character
 	Playerdata.CurrentCharacter = CurrentCharacter
+	get_tree().change_scene_to_file(\"res://MasterScene.tscn\")
 	#print(Playerdata.CurrentCharacter)
 
 	
