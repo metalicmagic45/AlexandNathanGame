@@ -4,6 +4,8 @@ extends Node2D
 @onready var PausePanel = $PauseLayer/Panel
 @onready var Kate = get_node("CharacterPortraitTextLayer/TextBoxKateCharacterPortrait")
 @onready var Portrait: VBoxContainer = $BottomUiLayer/BottomUI/Panel/HBoxContainer/Potrait
+@onready var HPLabel = get_node("BottomUiLayer/BottomUI/Panel/Control/Buttons/HP")
+@onready var MPLabel = get_node("BottomUiLayer/BottomUI/Panel/Control/Buttons/Mana")
 
 #Stores currently selected character for set_portrait(), ran in _ready()
 var character_name = Playerdata.CurrentCharacter
@@ -32,6 +34,11 @@ func set_portrait(character_name: String):
 		var texture_rect = TextureRect.new()
 		texture_rect.texture = texture
 		Portrait.add_child(texture_rect)
+		#Displays health and mana for selected character
+		var HP = player["HP"]
+		var MP = player["MP"]
+		HPLabel.text = str(HP)
+		MPLabel.text = str(MP)
 	else:
 		print("No player found")
 		

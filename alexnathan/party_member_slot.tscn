@@ -5,6 +5,8 @@ script/source = "extends Control
 
 @onready var name_label = $Name
 @onready var CharSprite = $CenterContainer/Control/CharSprite
+@onready var stat_box = get_node(\"StatContainer\")
+
 #Local Varriable to put slecected character inside, used to update the global currentcharacter
 var CurrentCharacter: String = \"\"
 func set_member_data(character_name) -> void:
@@ -16,6 +18,14 @@ func set_member_data(character_name) -> void:
 		name_label.text = character_name
 		var texture = data[\"sprite\"]
 		CharSprite.texture = texture
+		#Stats for character
+		#For every entry in dictonary creates a new label
+		for key in [\"HP\", \"MP\", \"STR\", \"CON\", \"DEX\", \"POW\", \"INT\", \"LUCK\"]:
+			var label = Label.new()
+			#Getting Key's name and its data
+			#Character name stores name as string, data is the dictonary
+			label.text = \"%s: %s\" % [key, data[key]]
+			stat_box.add_child(label)
 		
 		# Populate stats here like HP, STR, etc. (see next section)
 	else:
@@ -58,30 +68,6 @@ offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 columns = 2
-
-[node name="HP" type="Label" parent="StatContainer"]
-layout_mode = 2
-
-[node name="MP" type="Label" parent="StatContainer"]
-layout_mode = 2
-
-[node name="STR" type="Label" parent="StatContainer"]
-layout_mode = 2
-
-[node name="CON" type="Label" parent="StatContainer"]
-layout_mode = 2
-
-[node name="DEX" type="Label" parent="StatContainer"]
-layout_mode = 2
-
-[node name="POW" type="Label" parent="StatContainer"]
-layout_mode = 2
-
-[node name="LUCK" type="Label" parent="StatContainer"]
-layout_mode = 2
-
-[node name="INT" type="Label" parent="StatContainer"]
-layout_mode = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 0
