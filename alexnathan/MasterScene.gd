@@ -10,8 +10,6 @@ extends Node2D
 #Stores currently selected character for set_portrait(), ran in _ready()
 var character_name = Playerdata.CurrentCharacter
 
-
-
 func _input(event): 
 	if event.is_action_pressed("uicancel"):
 		toggle_pause_menu()
@@ -37,8 +35,8 @@ func set_portrait(character_name: String):
 		#Displays health and mana for selected character
 		var HP = player["HP"]
 		var MP = player["MP"]
-		HPLabel.text = str(HP)
-		MPLabel.text = str(MP)
+		HPLabel.text = "HP: %s" % str(HP)
+		MPLabel.text = "MP: %s" % str(MP)
 	else:
 		print("No player found")
 		
