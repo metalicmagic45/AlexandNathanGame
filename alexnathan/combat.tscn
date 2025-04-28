@@ -1,6 +1,38 @@
-[gd_scene load_steps=2 format=3 uid="uid://ckht1w7mbhg3y"]
+[gd_scene load_steps=3 format=3 uid="uid://ckht1w7mbhg3y"]
 
 [ext_resource type="Script" path="res://Combat.gd" id="1_i4qpr"]
+[ext_resource type="Texture2D" uid="uid://ballnhx84i6p" path="res://Pictures/CombatBackground.png" id="2_lobrd"]
 
 [node name="Combat" type="Node"]
 script = ExtResource("1_i4qpr")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="Background" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Background"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_lobrd")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="Control" type="Control" parent="CanvasLayer2"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DiceOutput" type="Label" parent="CanvasLayer2/Control"]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 176.0
+offset_right = 768.0
+offset_bottom = 408.0
