@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmt8eq8ddcga8"
-path="res://.godot/imported/m9.png-8d3a6c9d22cd45bf744dceebc79fa0c4.ctex"
+uid="uid://c4bro3kllf3c0"
+path="res://.godot/imported/marlin 444s.png-9ddfe67f1a0af602a6625846d3ca849d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Pictures/m9.png"
-dest_files=["res://.godot/imported/m9.png-8d3a6c9d22cd45bf744dceebc79fa0c4.ctex"]
+source_file="res://Pictures/Weapons/marlin 444s.png"
+dest_files=["res://.godot/imported/marlin 444s.png-9ddfe67f1a0af602a6625846d3ca849d.ctex"]
 
 [params]
 

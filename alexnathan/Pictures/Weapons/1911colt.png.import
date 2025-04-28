@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qv5tcs5bkf42"
-path="res://.godot/imported/m14.png-8b5bee38e3cfc0e2c80e76d13b3b27d5.ctex"
+uid="uid://j3wq4g7g3tnw"
+path="res://.godot/imported/1911colt.png-5de466e7a382a10a61d5c81a063a32e9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Pictures/m14.png"
-dest_files=["res://.godot/imported/m14.png-8b5bee38e3cfc0e2c80e76d13b3b27d5.ctex"]
+source_file="res://Pictures/Weapons/1911colt.png"
+dest_files=["res://.godot/imported/1911colt.png-5de466e7a382a10a61d5c81a063a32e9.ctex"]
 
 [params]
 

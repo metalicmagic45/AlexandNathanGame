@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4bro3kllf3c0"
-path="res://.godot/imported/marlin 444s.png-1b5ec4e22371076dbf0238693c89838c.ctex"
+uid="uid://cpwlo5pswnsax"
+path="res://.godot/imported/SP10.png-0f04eef51085137a71109cb2b420b18d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Pictures/marlin 444s.png"
-dest_files=["res://.godot/imported/marlin 444s.png-1b5ec4e22371076dbf0238693c89838c.ctex"]
+source_file="res://Pictures/Weapons/SP10.png"
+dest_files=["res://.godot/imported/SP10.png-0f04eef51085137a71109cb2b420b18d.ctex"]
 
 [params]
 

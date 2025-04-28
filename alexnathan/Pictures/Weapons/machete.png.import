@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bww62rcy83do7"
-path="res://.godot/imported/coltpython.png-188202477f75d1c0aef44cade5f40712.ctex"
+uid="uid://deffwcswc6l3v"
+path="res://.godot/imported/machete.png-1b2976265eb7d580886a8ee00d427a53.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Pictures/coltpython.png"
-dest_files=["res://.godot/imported/coltpython.png-188202477f75d1c0aef44cade5f40712.ctex"]
+source_file="res://Pictures/Weapons/machete.png"
+dest_files=["res://.godot/imported/machete.png-1b2976265eb7d580886a8ee00d427a53.ctex"]
 
 [params]
 

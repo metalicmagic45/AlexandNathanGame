@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://deffwcswc6l3v"
-path="res://.godot/imported/machete.png-0eed269802b4854ccec016884140a8c9.ctex"
+uid="uid://qv5tcs5bkf42"
+path="res://.godot/imported/m14.png-febbe5791696f7d68f8e0948127994e8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Pictures/machete.png"
-dest_files=["res://.godot/imported/machete.png-0eed269802b4854ccec016884140a8c9.ctex"]
+source_file="res://Pictures/Weapons/m14.png"
+dest_files=["res://.godot/imported/m14.png-febbe5791696f7d68f8e0948127994e8.ctex"]
 
 [params]
 

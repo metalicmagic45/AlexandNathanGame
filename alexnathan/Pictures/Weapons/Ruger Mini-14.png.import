@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bs16jq25d8vs0"
-path="res://.godot/imported/axe.png-048d6ba8ecec8abb03934464b83696e6.ctex"
+uid="uid://ckyw57sjr217"
+path="res://.godot/imported/Ruger Mini-14.png-34c6c4eb0cbbf56ddbb888e89bbee61b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Pictures/axe.png"
-dest_files=["res://.godot/imported/axe.png-048d6ba8ecec8abb03934464b83696e6.ctex"]
+source_file="res://Pictures/Weapons/Ruger Mini-14.png"
+dest_files=["res://.godot/imported/Ruger Mini-14.png-34c6c4eb0cbbf56ddbb888e89bbee61b.ctex"]
 
 [params]
 

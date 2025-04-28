@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cxib8x502hr0l"
-path="res://.godot/imported/remington 700.png-904579fd7cd70dd69b267992b0b676f0.ctex"
+path="res://.godot/imported/remington 700.png-3e92523682bc2facbe6b780b5ff946d4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Pictures/remington 700.png"
-dest_files=["res://.godot/imported/remington 700.png-904579fd7cd70dd69b267992b0b676f0.ctex"]
+source_file="res://Pictures/Weapons/remington 700.png"
+dest_files=["res://.godot/imported/remington 700.png-3e92523682bc2facbe6b780b5ff946d4.ctex"]
 
 [params]
 

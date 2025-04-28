@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://j3wq4g7g3tnw"
-path="res://.godot/imported/1911colt.png-73220934a444fb4dd0033c9295a74f80.ctex"
+uid="uid://d3q8t5vm3kbgm"
+path="res://.godot/imported/HiPower.png-9cffd710ab461a66b38d3f247942cd57.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Pictures/1911colt.png"
-dest_files=["res://.godot/imported/1911colt.png-73220934a444fb4dd0033c9295a74f80.ctex"]
+source_file="res://Pictures/Weapons/HiPower.png"
+dest_files=["res://.godot/imported/HiPower.png-9cffd710ab461a66b38d3f247942cd57.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3a6ysyq0et4p"
-path="res://.godot/imported/s&w model 29.png-650a6359eb524b0d7fb13468d99606e0.ctex"
+uid="uid://besmk6dtbt5t0"
+path="res://.godot/imported/remmington870.png-540afe760a994b0970422e0fa55a35ea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Pictures/s&w model 29.png"
-dest_files=["res://.godot/imported/s&w model 29.png-650a6359eb524b0d7fb13468d99606e0.ctex"]
+source_file="res://Pictures/Weapons/remmington870.png"
+dest_files=["res://.godot/imported/remmington870.png-540afe760a994b0970422e0fa55a35ea.ctex"]
 
 [params]
 

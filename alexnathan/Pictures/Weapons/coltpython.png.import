@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qh4qka482xu7"
-path="res://.godot/imported/g17.png-22dd54fb213a8404b4ab44daa723f0cc.ctex"
+uid="uid://bww62rcy83do7"
+path="res://.godot/imported/coltpython.png-0b9c5b48cee4ebb3d691288016d1b030.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Pictures/g17.png"
-dest_files=["res://.godot/imported/g17.png-22dd54fb213a8404b4ab44daa723f0cc.ctex"]
+source_file="res://Pictures/Weapons/coltpython.png"
+dest_files=["res://.godot/imported/coltpython.png-0b9c5b48cee4ebb3d691288016d1b030.ctex"]
 
 [params]
 

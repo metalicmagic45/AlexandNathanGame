@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3q8t5vm3kbgm"
-path="res://.godot/imported/HiPower.png-391095d9325b5a477ae62a41e0faaf1f.ctex"
+uid="uid://b3a6ysyq0et4p"
+path="res://.godot/imported/s&w model 29.png-ba12be7609741296fdf73e9d946c660a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Pictures/HiPower.png"
-dest_files=["res://.godot/imported/HiPower.png-391095d9325b5a477ae62a41e0faaf1f.ctex"]
+source_file="res://Pictures/Weapons/s&w model 29.png"
+dest_files=["res://.godot/imported/s&w model 29.png-ba12be7609741296fdf73e9d946c660a.ctex"]
 
 [params]
 

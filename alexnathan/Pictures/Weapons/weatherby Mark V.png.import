@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ci5vbifpipseq"
-path="res://.godot/imported/weatherby Mark V.png-69647d616406b245c57c9428415213f2.ctex"
+path="res://.godot/imported/weatherby Mark V.png-ad7d0d281af54410cc66772dc54b88cb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Pictures/weatherby Mark V.png"
-dest_files=["res://.godot/imported/weatherby Mark V.png-69647d616406b245c57c9428415213f2.ctex"]
+source_file="res://Pictures/Weapons/weatherby Mark V.png"
+dest_files=["res://.godot/imported/weatherby Mark V.png-ad7d0d281af54410cc66772dc54b88cb.ctex"]
 
 [params]
 
