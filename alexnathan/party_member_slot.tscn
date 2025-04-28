@@ -5,7 +5,7 @@ script/source = "extends Control
 
 @onready var name_label = $Name
 @onready var CharSprite = $CenterContainer/Control/CharSprite
-@onready var stat_box = get_node(\"StatContainer\")
+@onready var stat_box = get_node(\"StatsCenterContainer/StatContainer\")
 
 #Local Varriable to put slecected character inside, used to update the global currentcharacter
 var CurrentCharacter: String = \"\"
@@ -58,17 +58,6 @@ offset_right = 288.0
 offset_bottom = 266.0
 horizontal_alignment = 1
 
-[node name="StatContainer" type="GridContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 300.0
-offset_bottom = 2.0
-grow_horizontal = 2
-grow_vertical = 2
-columns = 2
-
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 0
 offset_right = 288.0
@@ -100,5 +89,16 @@ offset_top = 256.0
 offset_right = 272.0
 offset_bottom = 293.0
 text = "Select"
+
+[node name="StatsCenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 312.0
+offset_right = 272.0
+offset_bottom = 624.0
+
+[node name="StatContainer" type="GridContainer" parent="StatsCenterContainer"]
+layout_mode = 2
+columns = 2
 
 [connection signal="button_down" from="CharacterSelectButton/Button" to="." method="_on_button_button_down"]
