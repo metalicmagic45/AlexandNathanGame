@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://kx4vkunrhuwa"]
+
+[ext_resource type="PackedScene" uid="uid://bu4yt23k4jfuu" path="res://GameArea.tscn" id="1_i6lgv"]
+[ext_resource type="Script" path="res://wilderness.gd" id="2_nt6ta"]
+
+[node name="Wilderness" instance=ExtResource("1_i6lgv")]
+script = ExtResource("2_nt6ta")

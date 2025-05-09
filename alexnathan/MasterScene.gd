@@ -3,9 +3,10 @@ extends Node2D
 @onready var PauseLayer = $PauseLayer
 @onready var PausePanel = $PauseLayer/Panel
 @onready var Kate = get_node("CharacterPortraitTextLayer/TextBoxKateCharacterPortrait")
-@onready var Portrait: VBoxContainer = $BottomUiLayer/BottomUI/Panel/HBoxContainer/Potrait
-@onready var HPLabel = get_node("BottomUiLayer/BottomUI/Panel/Control/Buttons/HP")
-@onready var MPLabel = get_node("BottomUiLayer/BottomUI/Panel/Control/Buttons/Mana")
+@onready var Portrait: TextureRect = $BottomUiLayer/MainUI/VBoxContainer/CenterContainer/CharacterSprite
+@onready var HPLabel = $BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/HP
+@onready var MPLabel = $BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Mana
+@onready var start_scene = preload("res://GameArea.tscn")
 
 #Stores currently selected character for set_portrait(), ran in _ready()
 var character_name = Playerdata.CurrentCharacter
@@ -29,9 +30,7 @@ func set_portrait(character_name: String):
 	if player:
 		print("Player found")
 		var texture = player["sprite"]
-		var texture_rect = TextureRect.new()
-		texture_rect.texture = texture
-		Portrait.add_child(texture_rect)
+		Portrait.texture = texture
 		#Displays health and mana for selected character
 		var HP = player["HP"]
 		var MP = player["MP"]
@@ -41,6 +40,7 @@ func set_portrait(character_name: String):
 		print("No player found")
 		
 func _ready():
+	add_game_scene(start_scene)
 	set_portrait(character_name)
 func _on_menu_button_down() -> void:
 	get_tree().change_scene_to_file("res://Main.tscn")
@@ -53,3 +53,17 @@ func _on_party_pressed() -> void:
 	get_tree().change_scene_to_file("res://party_ui.tscn")
 func _on_character_pressed() -> void:
 	get_tree().change_scene_to_file("res://character_ui.tscn")
+	
+	
+func add_game_scene(scene):
+	var window = $BottomUiLayer/MainUI/VBoxContainer/Window
+	var s = scene.instantiate()
+	window.add_child(s)
+	s.change_scene.connect(switch_game_scene)
+	pass
+	
+func switch_game_scene(scene):
+	var window = $BottomUiLayer/MainUI/VBoxContainer/Window
+	for child in window:
+		child.queue_free()
+	add_game_scene(scene)

@@ -21,6 +21,11 @@ ItemDatabase="*res://item_database.tscn"
 Playerinventory="*res://playerinventory.gd"
 Playerdata="*res://playerdata.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
 [dotnet]
 
 project/assembly_name="AlexNathan"
