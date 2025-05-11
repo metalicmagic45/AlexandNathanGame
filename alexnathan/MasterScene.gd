@@ -3,7 +3,7 @@ extends Node2D
 @onready var PauseLayer = $PauseLayer
 @onready var PausePanel = $PauseLayer/Panel
 @onready var Kate = get_node("CharacterPortraitTextLayer/TextBoxKateCharacterPortrait")
-@onready var Portrait: TextureRect = $BottomUiLayer/MainUI/VBoxContainer/CenterContainer/CharacterSprite
+@onready var Portrait: TextureRect = $BottomUiLayer/MainUI/ActionUI/VBoxContainer/background/Panel/CharacterSprite
 @onready var HPLabel = $BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/HP
 @onready var MPLabel = $BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Mana
 @onready var start_scene = preload("res://GameArea.tscn")
