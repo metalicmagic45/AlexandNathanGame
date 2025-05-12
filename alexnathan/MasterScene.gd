@@ -59,11 +59,13 @@ func add_game_scene(scene):
 	var window = $BottomUiLayer/MainUI/VBoxContainer/Window
 	var s = scene.instantiate()
 	window.add_child(s)
-	s.change_scene.connect(switch_game_scene)
+	s.connect("change_scene", Callable(self, "switch_game_scene"))
 	pass
 	
-func switch_game_scene(scene):
+func switch_game_scene(scene: PackedScene) -> void:
 	var window = $BottomUiLayer/MainUI/VBoxContainer/Window
-	for child in window:
+
+	for child in window.get_children():
 		child.queue_free()
+		
 	add_game_scene(scene)

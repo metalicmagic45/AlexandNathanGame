@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bu4yt23k4jfuu"]
+[gd_scene load_steps=4 format=3 uid="uid://bu4yt23k4jfuu"]
 
 [ext_resource type="Script" path="res://node_2d.gd" id="1_8lycw"]
 [ext_resource type="Texture2D" uid="uid://bo3l02owb8slj" path="res://Pictures/CarBackground.png" id="2_upibu"]
+[ext_resource type="PackedScene" uid="uid://c3257muq215js" path="res://Main.tscn" id="2_whb4x"]
 
 [node name="GameArea" type="Control"]
 layout_mode = 3
@@ -11,6 +12,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8lycw")
+destination_options = Array[PackedScene]([ExtResource("2_whb4x")])
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
