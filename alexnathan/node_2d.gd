@@ -2,6 +2,10 @@ class_name GameArea
 extends Control
 
 @export var destination_options : Array[PackedScene]
+
+#Create an array with text entries, use index number so generate it
+var Text = []
+
 var text = {
 	"case_1" : "blah blah blah",
 	"case_2" : "asdd"
@@ -22,7 +26,6 @@ func _process(delta: float) -> void:
 
 func _on_top_pressed() -> void:
 	emit_signal("change_scene", destination_options[TOP])
-
 
 func _on_bottom_pressed() -> void:
 	emit_signal("change_scene", destination_options[BOTTOM])
