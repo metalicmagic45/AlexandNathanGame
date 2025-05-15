@@ -2,14 +2,20 @@ extends Node2D
 
 @onready var PauseLayer = $PauseLayer
 @onready var PausePanel = $PauseLayer/Panel
-@onready var Kate = get_node("CharacterPortraitTextLayer/TextBoxKateCharacterPortrait")
 @onready var Portrait: TextureRect = $BottomUiLayer/MainUI/ActionUI/VBoxContainer/background/Panel/CharacterSprite
 @onready var HPLabel = $BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/HP
 @onready var MPLabel = $BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Mana
 @onready var start_scene = preload("res://GameArea.tscn")
+@onready var Diolouge_Text_Area = get_node("BottomUiLayer/MainUI/ActionUI/VBoxContainer/Panel/DiolougeTextArea")
 
 #Stores currently selected character for set_portrait(), ran in _ready()
 var character_name = Playerdata.CurrentCharacter
+#An array that contains arrays of text data for each game area
+var Area_Diolouge_Holder = TextStorage.Gameplay_Area_Selecter
+#Current game area corisponding to its "Gameplay_Area_Selecter" index number
+var Current_Area = 0
+
+
 
 func _input(event): 
 	if event.is_action_pressed("uicancel"):
@@ -20,6 +26,11 @@ func _input(event):
 		get_tree().change_scene_to_file("res://party_ui.tscn")
 	if event.is_action_pressed("ToggleChar"):
 		get_tree().change_scene_to_file("res://character_ui.tscn")
+	#Advances Diolouge when space is pressed
+	if event.is_action_pressed("DiolougeAdvance"):
+		print(1)
+		Diolouge_Text_Outputter()
+	
 func toggle_pause_menu():
 	PausePanel.visible = !PausePanel.visible
 func reset_portrait():
@@ -42,6 +53,7 @@ func set_portrait(character_name: String):
 func _ready():
 	add_game_scene(start_scene)
 	set_portrait(character_name)
+
 func _on_menu_button_down() -> void:
 	get_tree().change_scene_to_file("res://Main.tscn")
 # Replace with function body.
@@ -53,6 +65,9 @@ func _on_party_pressed() -> void:
 	get_tree().change_scene_to_file("res://party_ui.tscn")
 func _on_character_pressed() -> void:
 	get_tree().change_scene_to_file("res://character_ui.tscn")
+#Advances diolouge on button press
+func _on_diolouge_advance_button_button_down() -> void:
+	Diolouge_Text_Outputter()
 	
 	
 func add_game_scene(scene):
@@ -69,3 +84,14 @@ func switch_game_scene(scene: PackedScene) -> void:
 		child.queue_free()
 		
 	add_game_scene(scene)
+	
+#Variable to store the current index inside an area's diolouge array
+var Diolouge_Count = 0
+func Diolouge_Text_Outputter():
+	var Currently_Selected_Area = Area_Diolouge_Holder[Current_Area] #getting the list of diolouge assinged to the currently selected area
+	#Indexing the current area's list of diolouge to output a string to the text box
+	Diolouge_Text_Area.text = str(Currently_Selected_Area[Diolouge_Count]) #The index repersents the next piece of diolouge to be displayed
+	Diolouge_Count =+ 1
+	#print(Diolouge_Count)
+	
+	return
