@@ -11,9 +11,8 @@ extends Node2D
 #Stores currently selected character for set_portrait(), ran in _ready()
 var character_name = Playerdata.CurrentCharacter
 #An array that contains arrays of text data for each game area
+#Text is is Text_Storage.gd
 var Area_Diolouge_Holder = TextStorage.Gameplay_Area_Selecter
-#Current game area corisponding to its "Gameplay_Area_Selecter" index number
-var Current_Area = 0
 
 
 
@@ -28,7 +27,7 @@ func _input(event):
 		get_tree().change_scene_to_file("res://character_ui.tscn")
 	#Advances Diolouge when space is pressed
 	if event.is_action_pressed("DiolougeAdvance"):
-		print(1)
+		#print(1)
 		Diolouge_Text_Outputter()
 	
 func toggle_pause_menu():
@@ -87,11 +86,15 @@ func switch_game_scene(scene: PackedScene) -> void:
 	
 #Variable to store the current index inside an area's diolouge array
 var Diolouge_Count = 0
+#Current game area corisponding to its "Gameplay_Area_Selecter" index number
+var Current_Area = 0
+var
 func Diolouge_Text_Outputter():
 	var Currently_Selected_Area = Area_Diolouge_Holder[Current_Area] #getting the list of diolouge assinged to the currently selected area
 	#Indexing the current area's list of diolouge to output a string to the text box
-	Diolouge_Text_Area.text = str(Currently_Selected_Area[Diolouge_Count]) #The index repersents the next piece of diolouge to be displayed
-	Diolouge_Count =+ 1
-	#print(Diolouge_Count)
+	Diolouge_Text_Area.add_text(str(Currently_Selected_Area[Diolouge_Count])) #The index repersents the next piece of diolouge to be displayed
+	Diolouge_Text_Area.newline()
+	Diolouge_Count += 1
+	print(Diolouge_Count)
 	
 	return
