@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://bmbybi2a4c8lc"]
+[gd_scene load_steps=7 format=3 uid="uid://bmbybi2a4c8lc"]
 
 [ext_resource type="Script" path="res://MasterScene.gd" id="1_en6xd"]
 [ext_resource type="Texture2D" uid="uid://bo3l02owb8slj" path="res://Pictures/CarBackground.png" id="6_w1q7v"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_snouo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iytyv"]
+bg_color = Color(1, 0.4, 0.4, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_skkny"]
+bg_color = Color(0.4, 0.8, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ajdv4"]
 
@@ -164,6 +170,19 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "HP"
 
+[node name="ProgressBar" type="ProgressBar" parent="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 60.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 7
+theme_override_styles/fill = SubResource("StyleBoxFlat_iytyv")
+fill_mode = 1
+
 [node name="Panel2" type="Panel" parent="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons"]
 layout_mode = 2
 
@@ -180,6 +199,19 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Magic Points"
 autowrap_mode = 0
+
+[node name="TextureProgressBar" type="ProgressBar" parent="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 60.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 7
+theme_override_styles/fill = SubResource("StyleBoxFlat_skkny")
+fill_mode = 1
 
 [node name="ActionUI" type="Control" parent="BottomUiLayer/MainUI"]
 layout_mode = 2

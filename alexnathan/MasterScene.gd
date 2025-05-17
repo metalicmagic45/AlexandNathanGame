@@ -10,6 +10,8 @@ extends Node2D
 @onready var Choice1 = $BottomUiLayer/MainUI/ActionUI/VBoxContainer/DiolougeChoices/VBoxContainer/Button
 @onready var Choice2 = $BottomUiLayer/MainUI/ActionUI/VBoxContainer/DiolougeChoices/VBoxContainer/Button2
 @onready var Choice3 = $BottomUiLayer/MainUI/ActionUI/VBoxContainer/DiolougeChoices/VBoxContainer/Button3
+@onready var HPbar = $BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Panel/ProgressBar
+@onready var MPbar = $BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Panel2/TextureProgressBar
 
 
 
@@ -46,12 +48,17 @@ func set_portrait(character_name: String):
 		# Displays health and mana for selected character
 		var HP = player["HP"]
 		var MP = player["MP"]
-
+		var current_HP = player["Current_HP"]
+		var current_MP = player["Current_MP"]
 		HPLabel.bbcode_enabled = true
 		MPLabel.bbcode_enabled = true
 
 		HPLabel.bbcode_text = "[center]HP: [color=#FF6666]%s[/color][/center]" % str(HP)
 		MPLabel.bbcode_text = "[center]MP: [color=#66CCFF]%s[/color][/center]" % str(MP)
+		HPbar.max_value = HP
+		HPbar.value = current_HP
+		MPbar.max_value = MP
+		MPbar.value = current_MP
 
 
 	else:
@@ -143,4 +150,5 @@ func handle_choice(next_index: int):
 	Diolouge_Count = next_index
 	Diolouge_Choice_Toggle = false
 	Diolouge_Text_Outputter()
+
 ########################################################################################
