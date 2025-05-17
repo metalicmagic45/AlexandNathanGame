@@ -121,9 +121,6 @@ func Diolouge_Text_Outputter():
 		show_choices(current["options"])
 		Diolouge_Choice_Toggle = true
 func show_choices(options: Array):
-	if Choice1 == null or Choice2 == null or Choice3 == null:
-			push_error("One or more choice buttons are null! Check node paths.")
-			return
 
 	Choice1.text = options[0]["text"]
 	Choice2.text = options[1]["text"]
