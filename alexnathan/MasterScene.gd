@@ -10,9 +10,6 @@ extends Node2D
 
 #Stores currently selected character for set_portrait(), ran in _ready()
 var character_name = Playerdata.CurrentCharacter
-#An array that contains arrays of text data for each game area
-#Text is is Text_Storage.gd
-var Area_Diolouge_Holder = TextStorage.Gameplay_Area_Selecter
 
 
 
@@ -84,17 +81,36 @@ func switch_game_scene(scene: PackedScene) -> void:
 		
 	add_game_scene(scene)
 	
+########################################################################################
+################################Diolouge Function#######################################
+#An array that contains arrays of text data for each game area
+#Text is is Text_Storage.gd
+var Area_Diolouge_Holder = TextStorage.Gameplay_Area_Selecter
+#Variable to toggle diolouge choice options
+var Diolouge_Choice_Toggle = TextStorage.Diolouge_Choice_Toggle
 #Variable to store the current index inside an area's diolouge array
 var Diolouge_Count = 0
 #Current game area corisponding to its "Gameplay_Area_Selecter" index number
 var Current_Area = 0
-var
+#getting the list of diolouge assinged to the currently selected area
+var Currently_Selected_Area = Area_Diolouge_Holder[Current_Area] 
+
 func Diolouge_Text_Outputter():
-	var Currently_Selected_Area = Area_Diolouge_Holder[Current_Area] #getting the list of diolouge assinged to the currently selected area
-	#Indexing the current area's list of diolouge to output a string to the text box
-	Diolouge_Text_Area.add_text(str(Currently_Selected_Area[Diolouge_Count])) #The index repersents the next piece of diolouge to be displayed
-	Diolouge_Text_Area.newline()
-	Diolouge_Count += 1
-	print(Diolouge_Count)
+	#Indexing the current area's list of diolouge to output a string to the text box if the index is a string
+	if typeof(Currently_Selected_Area[Diolouge_Count]) == TYPE_STRING and Diolouge_Choice_Toggle == false:
+		Diolouge_Text_Area.add_text(Currently_Selected_Area[Diolouge_Count]) #The index repersents the next piece of diolouge to be displayed
+		Diolouge_Text_Area.newline()
+		Diolouge_Count += 1
+	else:
+		Diolouge_Choice_Toggle = true
+		#Advace Diolouge_Count based on option selected
+		Diolouge_Count += 1
+		#Diolouge_Choice_Toggle = false
 	
 	return
+	
+func Diolouge_Choice_Text_Outputter():
+	#Advace Diolouge_Count based on option selected
+	#Present 4 choices, each is an array with a string and intiger, Store the int of the selected choice and have it direct you to the proper diolouge response
+	return
+########################################################################################

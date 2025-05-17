@@ -231,10 +231,15 @@ layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
 
-[node name="ItemList" type="ItemList" parent="BottomUiLayer/MainUI/ActionUI/VBoxContainer"]
+[node name="DiolougeChoices" type="ItemList" parent="BottomUiLayer/MainUI/ActionUI/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.3
+
+[node name="Button" type="Button" parent="BottomUiLayer/MainUI/ActionUI/VBoxContainer/DiolougeChoices"]
+layout_mode = 0
+offset_right = 71.0
+offset_bottom = 51.0
 
 [connection signal="button_down" from="PauseLayer/Panel/Menu" to="." method="_on_menu_button_down"]
 [connection signal="pressed" from="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Party" to="." method="_on_party_pressed"]
