@@ -144,23 +144,42 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Inventory"
 
-[node name="HP" type="Button" parent="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "HP"
-
-[node name="Mana" type="Button" parent="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "Magic Points"
-
 [node name="Magic" type="Button" parent="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Magic"
+
+[node name="Panel" type="Panel" parent="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons"]
+layout_mode = 2
+
+[node name="HP" type="RichTextLabel" parent="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 28.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "HP"
+
+[node name="Panel2" type="Panel" parent="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons"]
+layout_mode = 2
+
+[node name="Mana" type="RichTextLabel" parent="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 28.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Magic Points"
+autowrap_mode = 0
 
 [node name="ActionUI" type="Control" parent="BottomUiLayer/MainUI"]
 layout_mode = 2
@@ -227,19 +246,41 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="DiolougeAdvanceButton" type="Button" parent="BottomUiLayer/MainUI/ActionUI/VBoxContainer/Panel/DiolougeTextArea"]
-layout_mode = 0
-offset_right = 8.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -8.0
 offset_bottom = 8.0
+grow_horizontal = 0
 
-[node name="DiolougeChoices" type="ItemList" parent="BottomUiLayer/MainUI/ActionUI/VBoxContainer"]
+[node name="DiolougeChoices" type="Panel" parent="BottomUiLayer/MainUI/ActionUI/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.3
 
-[node name="Button" type="Button" parent="BottomUiLayer/MainUI/ActionUI/VBoxContainer/DiolougeChoices"]
-layout_mode = 0
-offset_right = 71.0
-offset_bottom = 51.0
+[node name="VBoxContainer" type="VBoxContainer" parent="BottomUiLayer/MainUI/ActionUI/VBoxContainer/DiolougeChoices"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="BottomUiLayer/MainUI/ActionUI/VBoxContainer/DiolougeChoices/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.33
+
+[node name="Button2" type="Button" parent="BottomUiLayer/MainUI/ActionUI/VBoxContainer/DiolougeChoices/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.33
+
+[node name="Button3" type="Button" parent="BottomUiLayer/MainUI/ActionUI/VBoxContainer/DiolougeChoices/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.33
 
 [connection signal="button_down" from="PauseLayer/Panel/Menu" to="." method="_on_menu_button_down"]
 [connection signal="pressed" from="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Party" to="." method="_on_party_pressed"]

@@ -3,8 +3,8 @@ extends Node2D
 @onready var PauseLayer = $PauseLayer
 @onready var PausePanel = $PauseLayer/Panel
 @onready var Portrait: TextureRect = $BottomUiLayer/MainUI/ActionUI/VBoxContainer/background/Panel/CharacterSprite
-@onready var HPLabel = $BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/HP
-@onready var MPLabel = $BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Mana
+@onready var HPLabel = $BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Panel/HP
+@onready var MPLabel = $BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Panel2/Mana
 @onready var start_scene = preload("res://GameArea.tscn")
 @onready var Diolouge_Text_Area = get_node("BottomUiLayer/MainUI/ActionUI/VBoxContainer/Panel/DiolougeTextArea")
 
@@ -38,11 +38,17 @@ func set_portrait(character_name: String):
 		print("Player found")
 		var texture = player["sprite"]
 		Portrait.texture = texture
-		#Displays health and mana for selected character
+		# Displays health and mana for selected character
 		var HP = player["HP"]
 		var MP = player["MP"]
-		HPLabel.text = "HP: %s" % str(HP)
-		MPLabel.text = "MP: %s" % str(MP)
+
+		HPLabel.bbcode_enabled = true
+		MPLabel.bbcode_enabled = true
+
+		HPLabel.bbcode_text = "[center]HP: [color=red]%s[/color][/center]" % str(HP)
+		MPLabel.bbcode_text = "[center]MP: [color=blue]%s[/color][/center]" % str(MP)
+
+
 	else:
 		print("No player found")
 		
