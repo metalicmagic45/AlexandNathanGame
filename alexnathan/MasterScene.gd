@@ -7,6 +7,11 @@ extends Node2D
 @onready var MPLabel = $BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Panel2/Mana
 @onready var start_scene = preload("res://GameArea.tscn")
 @onready var Diolouge_Text_Area = get_node("BottomUiLayer/MainUI/ActionUI/VBoxContainer/Panel/DiolougeTextArea")
+@onready var Choice1 = $BottomUiLayer/MainUI/ActionUI/VBoxContainer/DiolougeChoices/VBoxContainer/Button
+@onready var Choice2 = $BottomUiLayer/MainUI/ActionUI/VBoxContainer/DiolougeChoices/VBoxContainer/Button2
+@onready var Choice3 = $BottomUiLayer/MainUI/ActionUI/VBoxContainer/DiolougeChoices/VBoxContainer/Button3
+
+
 
 #Stores currently selected character for set_portrait(), ran in _ready()
 var character_name = Playerdata.CurrentCharacter
@@ -102,21 +107,43 @@ var Current_Area = 0
 var Currently_Selected_Area = Area_Diolouge_Holder[Current_Area] 
 
 func Diolouge_Text_Outputter():
-	#Indexing the current area's list of diolouge to output a string to the text box if the index is a string
-	if typeof(Currently_Selected_Area[Diolouge_Count]) == TYPE_STRING and Diolouge_Choice_Toggle == false:
-		Diolouge_Text_Area.add_text(Currently_Selected_Area[Diolouge_Count]) #The index repersents the next piece of diolouge to be displayed
+	if Diolouge_Count >= Currently_Selected_Area.size():
+		return
+	
+	var current = Currently_Selected_Area[Diolouge_Count]
+
+	if typeof(current) == TYPE_STRING:
+		Diolouge_Text_Area.add_text(current)
 		Diolouge_Text_Area.newline()
 		Diolouge_Count += 1
-	else:
+
+	elif typeof(current) == TYPE_DICTIONARY and current.has("type") and current["type"] == "choice":
+		show_choices(current["options"])
 		Diolouge_Choice_Toggle = true
-		#Advace Diolouge_Count based on option selected
-		Diolouge_Count += 1
-		#Diolouge_Choice_Toggle = false
-	
-	return
-	
-func Diolouge_Choice_Text_Outputter():
-	#Advace Diolouge_Count based on option selected
-	#Present 4 choices, each is an array with a string and intiger, Store the int of the selected choice and have it direct you to the proper diolouge response
-	return
+func show_choices(options: Array):
+	if Choice1 == null or Choice2 == null or Choice3 == null:
+			push_error("One or more choice buttons are null! Check node paths.")
+			return
+
+	Choice1.text = options[0]["text"]
+	Choice2.text = options[1]["text"]
+	Choice3.text = options[2]["text"]
+
+	# Enable and assign functionality
+	Choice1.disabled = false
+	Choice2.disabled = false
+	Choice3.disabled = false
+
+	Choice1.pressed.connect(func(): handle_choice(options[0]["next_index"]))
+	Choice2.pressed.connect(func(): handle_choice(options[1]["next_index"]))
+	Choice3.pressed.connect(func(): handle_choice(options[2]["next_index"]))
+
+func handle_choice(next_index: int):
+	Choice1.disabled = true
+	Choice2.disabled = true
+	Choice3.disabled = true
+
+	Diolouge_Count = next_index
+	Diolouge_Choice_Toggle = false
+	Diolouge_Text_Outputter()
 ########################################################################################

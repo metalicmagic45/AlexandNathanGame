@@ -2,8 +2,21 @@ extends Node
 #have a varialbe that acts as an identifier which signls when the player can make a diolouge choice
 var Diolouge_Choice_Toggle = false
 #Array inside of an array, index the first array for the group of diolouge that you want and then index the specific dioloughe that you want
-var Area1 = ["Johnson: Hello, how are you?", "Kate: Doing great, thanks for asking.", Diolouge_Choice_Toggle, "apple.", "orange."]
-var Area1_Choices = []
+var Area1 = [
+	"Johnson: Hello, how are you?",
+	"Kate: Doing great, thanks for asking.",
+	{
+		"type": "choice",
+		"options": [
+			{"text": "I'm good!", "next_index": 3},
+			{"text": "Leave me alone.", "next_index": 4},
+			{"text": "Where am I?", "next_index": 5}
+		]
+	},
+	"Johnson: Glad to hear it.",           # index 3
+	"Johnson: Oh... okay then.",           # index 4
+	"Johnson: You're in the wilderness."   # index 5
+]
 var Area2 = ["It's cloudy out here.", "It sure is."]
 var Area3 = []
 var Area4 = []
