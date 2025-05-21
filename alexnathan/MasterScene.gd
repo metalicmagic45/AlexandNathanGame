@@ -53,8 +53,8 @@ func set_portrait(character_name: String):
 		HPLabel.bbcode_enabled = true
 		MPLabel.bbcode_enabled = true
 
-		HPLabel.bbcode_text = "[center]HP: [color=#FF6666]%s[/color][/center]" % str(HP)
-		MPLabel.bbcode_text = "[center]MP: [color=#66CCFF]%s[/color][/center]" % str(MP)
+		HPLabel.bbcode_text = "[center]HP: [color=#FF6666]%s[/color][/center]" % str(current_HP)
+		MPLabel.bbcode_text = "[center]MP: [color=#66CCFF]%s[/color][/center]" % str(current_MP)
 		HPbar.max_value = HP
 		HPbar.value = current_HP
 		MPbar.max_value = MP
