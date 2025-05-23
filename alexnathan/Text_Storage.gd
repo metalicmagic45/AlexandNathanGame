@@ -8,15 +8,44 @@ var Area1 = [
 	{
 		"type": "choice",
 		"options": [
-			{"text": "I'm good!", "next_index": 3},
-			{"text": "Leave me alone.", "next_index": 4},
-			{"text": "Where am I?", "next_index": 5}
+			{
+				"text": "I'm good!",
+				"next_index": 3,
+				"set_flag": "met_johnson"
+			},
+			{
+				"text": "Leave me alone.",
+				"next_index": 4,
+				"set_flag": "rejected_convo"
+			},
+			{
+				"text": "Where am I?",
+				"next_index": 5,
+				"set_flag": "asked_where_am_i"
+			}
 		]
 	},
-	"Johnson: Glad to hear it.",           # index 3
-	"Johnson: Oh... okay then.",           # index 4
-	"Johnson: You're in the wilderness."   # index 5
+	{
+		"type": "text",
+		"text": "Johnson: Glad to hear it.",
+		"next_index": 6
+	},
+	{
+		"type": "text",
+		"text": "Johnson: Oh... okay then.",
+		"next_index": 6
+	},
+	{
+		"type": "text",
+		"text": "Johnson: You're in the wilderness.",
+		"condition": "asked_where_am_i"
+	},
+	{
+		"type": "text",
+		"text": "Let's just go."
+	}
 ]
+
 var Area2 = ["It's cloudy out here.", "It sure is."]
 var Area3 = []
 var Area4 = []

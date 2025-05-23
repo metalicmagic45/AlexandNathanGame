@@ -21,6 +21,7 @@ ItemDatabase="*res://item_database.tscn"
 Playerinventory="*res://playerinventory.gd"
 Playerdata="*res://playerdata.gd"
 TextStorage="*res://Text_Storage.gd"
+Globals="*res://Globals.gd"
 
 [display]
 

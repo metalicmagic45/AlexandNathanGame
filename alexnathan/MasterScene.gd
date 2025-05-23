@@ -29,10 +29,11 @@ func _input(event):
 		get_tree().change_scene_to_file("res://party_ui.tscn")
 	if event.is_action_pressed("ToggleChar"):
 		get_tree().change_scene_to_file("res://character_ui.tscn")
-	#Advances Diolouge when space is pressed
-	if event.is_action_pressed("DiolougeAdvance"):
-		#print(1)
+
+	# ✅ Prevent advancing if a choice is on screen
+	if event.is_action_pressed("DiolougeAdvance") and !Diolouge_Choice_Toggle:
 		Diolouge_Text_Outputter()
+
 	
 func toggle_pause_menu():
 	PausePanel.visible = !PausePanel.visible
@@ -81,7 +82,9 @@ func _on_character_pressed() -> void:
 	get_tree().change_scene_to_file("res://character_ui.tscn")
 #Advances diolouge on button press
 func _on_diolouge_advance_button_button_down() -> void:
-	Diolouge_Text_Outputter()
+	if !Diolouge_Choice_Toggle:
+		Diolouge_Text_Outputter()
+
 	
 	
 func add_game_scene(scene):
@@ -114,41 +117,81 @@ var Current_Area = 0
 var Currently_Selected_Area = Area_Diolouge_Holder[Current_Area] 
 
 func Diolouge_Text_Outputter():
+	print("DialogueTextOutput called")
 	if Diolouge_Count >= Currently_Selected_Area.size():
 		return
 	
 	var current = Currently_Selected_Area[Diolouge_Count]
 
+	# Handle basic string text
 	if typeof(current) == TYPE_STRING:
 		Diolouge_Text_Area.add_text(current)
 		Diolouge_Text_Area.newline()
 		Diolouge_Count += 1
+		return
+	
+	# Handle dictionary lines
+	if typeof(current) == TYPE_DICTIONARY:
+		# Skip line if condition isn't met
+		if current.has("condition"):
+			var required_flag = current["condition"]
+			if !Globals.choice_flags.has(required_flag) or !Globals.choice_flags[required_flag]:
+				Diolouge_Count += 1
+				Diolouge_Text_Outputter()  # Try next line
+				return
 
-	elif typeof(current) == TYPE_DICTIONARY and current.has("type") and current["type"] == "choice":
-		show_choices(current["options"])
-		Diolouge_Choice_Toggle = true
+		# Set flag if specified
+		if current.has("set_flag"):
+			var flag = current["set_flag"]
+			Globals.choice_flags[flag] = true
+
+		# Handle text lines
+		if current["type"] == "text":
+			Diolouge_Text_Area.add_text(current["text"])
+			Diolouge_Text_Area.newline()
+
+			# Update index, but DO NOT immediately advance again
+			if current.has("next_index"):
+				Diolouge_Count = current["next_index"]
+			else:
+				Diolouge_Count += 1
+			return
+
+		# Handle choices
+		elif current["type"] == "choice":
+			show_choices(current["options"])
+			Diolouge_Choice_Toggle = true
+			return
+
 func show_choices(options: Array):
-
 	Choice1.text = options[0]["text"]
 	Choice2.text = options[1]["text"]
 	Choice3.text = options[2]["text"]
 
-	# Enable and assign functionality
+	# Enable and connect to full options
 	Choice1.disabled = false
 	Choice2.disabled = false
 	Choice3.disabled = false
 
-	Choice1.pressed.connect(func(): handle_choice(options[0]["next_index"]))
-	Choice2.pressed.connect(func(): handle_choice(options[1]["next_index"]))
-	Choice3.pressed.connect(func(): handle_choice(options[2]["next_index"]))
+	Choice1.pressed.connect(func(): handle_choice(options[0]))
+	Choice2.pressed.connect(func(): handle_choice(options[1]))
+	Choice3.pressed.connect(func(): handle_choice(options[2]))
 
-func handle_choice(next_index: int):
+
+func handle_choice(option: Dictionary):
+	# Disable choices
 	Choice1.disabled = true
 	Choice2.disabled = true
 	Choice3.disabled = true
 
-	Diolouge_Count = next_index
+	# Set flag if present
+	if option.has("set_flag"):
+		Globals.choice_flags[option["set_flag"]] = true
+
+	# Move to the next dialogue index
+	Diolouge_Count = option["next_index"]
 	Diolouge_Choice_Toggle = false
 	Diolouge_Text_Outputter()
+
 
 ########################################################################################
