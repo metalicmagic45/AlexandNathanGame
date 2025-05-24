@@ -135,15 +135,15 @@ func Diolouge_Text_Outputter():
 		# Skip line if condition isn't met
 		if current.has("condition"):
 			var required_flag = current["condition"]
-			if !Globals.choice_flags.has(required_flag) or !Globals.choice_flags[required_flag]:
+			if !Globals.get_flag(required_flag):
 				Diolouge_Count += 1
-				Diolouge_Text_Outputter()  # Try next line
+				Diolouge_Text_Outputter()
 				return
 
 		# Set flag if specified
 		if current.has("set_flag"):
 			var flag = current["set_flag"]
-			Globals.choice_flags[flag] = true
+			Globals.set_flag(flag)
 
 		# Handle text lines
 		if current["type"] == "text":
@@ -186,7 +186,8 @@ func handle_choice(option: Dictionary):
 
 	# Set flag if present
 	if option.has("set_flag"):
-		Globals.choice_flags[option["set_flag"]] = true
+		Globals.set_flag(option["set_flag"])
+		print("DEBUG: Flag set ->", option["set_flag"])
 
 	# Move to the next dialogue index
 	Diolouge_Count = option["next_index"]
