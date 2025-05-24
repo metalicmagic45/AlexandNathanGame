@@ -3,21 +3,23 @@ extends Control
 
 @export var destination_options : Array[PackedScene]
 
-#Create an array with text entries, use index number so generate it
-var Text = []
 
-var text = {
-	"case_1" : "blah blah blah",
-	"case_2" : "asdd"
-}
 signal change_scene
 enum {TOP, BOTTOM, LEFT, RIGHT}
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	var buttons = {
+		TOP: $Top,
+		BOTTOM: $Bottom,
+		LEFT: $Left,
+		RIGHT: $Right
+	}
 
+	for dir in buttons.keys():
+		if dir >= destination_options.size() or destination_options[dir] == null:
+			buttons[dir].visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
