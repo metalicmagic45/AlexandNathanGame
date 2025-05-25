@@ -3,9 +3,19 @@
 [ext_resource type="Texture2D" uid="uid://bo3l02owb8slj" path="res://Pictures/CarBackground.png" id="3_u81nm"]
 
 [sub_resource type="GDScript" id="GDScript_j4bmp"]
-script/source = "var Top_Button = \"roadshack\"
-var Right_Button
-var Left_Button
+script/source = "extends Control
+@onready var Top_Button = get_node(\"res://roadshack.tscn\")
+@onready var Right_Button = null
+@onready var Left_Button = null
+@onready var Bottom_Button = null
+func get_top():
+	return Top_Button
+func get_right():
+	return Right_Button
+func get_left():
+	return Left_Button
+func get_bottom():
+	return Bottom_Button
 "
 
 [node name="GameArea" type="Control"]

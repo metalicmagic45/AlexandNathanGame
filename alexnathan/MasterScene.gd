@@ -64,8 +64,7 @@ func set_portrait(character_name: String):
 
 
 	else:
-		print("No player found")
-		
+		print("No player found")		
 func _ready():
 	switch_game_scene(start_scene)
 	set_portrait(character_name)
@@ -89,33 +88,6 @@ func _on_diolouge_advance_button_button_down() -> void:
 	
 	
 
-########################################################################################
-############################Change Scene Function#######################################
-var a = get_node("BottomUiLayer/MainUI/VBoxContainer/Window")
-var Scene_Top = "BottomUiLayer/MainUI/VBoxContainer/Window/GameArea/roadshack"
-var Scene_Right = 1
-var Scene_Left = 1
-
-func _on_top_button_button_down() -> void:
-	switch_game_scene(Scene_Top)
-	print(Current_Area)
-func _on_right_button_button_down() -> void:
-	switch_game_scene(Scene_Right)
-	print(1)
-func _on_left_button_button_down() -> void:
-	switch_game_scene(Scene_Left)
-
-
-
-func switch_game_scene(scene: PackedScene) -> void:
-	var window = $BottomUiLayer/MainUI/VBoxContainer/Window
-	var s = scene.instantiate()
-	
-	for child in window.get_children():
-		child.queue_free()
-		
-	window.add_child(s)	
-		
 ########################################################################################
 ################################Diolouge Function#######################################
 #An array that contains arrays of text data for each game area
@@ -210,3 +182,31 @@ func handle_choice(option: Dictionary):
 
 
 ########################################################################################
+
+########################################################################################
+############################Change Scene Function#######################################
+
+
+func switch_game_scene(scene: PackedScene) -> void:
+	var window = $BottomUiLayer/MainUI/VBoxContainer/Window
+	var s = scene.instantiate()
+	
+	for child in window.get_children():
+		child.queue_free()
+		
+	window.add_child(s)	
+		
+
+func _on_bottom_button_button_down() -> void:
+	switch_game_scene(start_scene.get_bottom())
+
+func _on_top_button_button_down() -> void:
+	switch_game_scene(start_scene.get_top())
+
+
+func _on_right_button_button_down() -> void:
+	switch_game_scene(start_scene.get_right())
+
+
+func _on_left_button_button_down() -> void:
+	switch_game_scene(start_scene.get_left())

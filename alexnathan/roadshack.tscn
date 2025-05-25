@@ -1,10 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://cu3sluc4y1sxi"]
+[gd_scene load_steps=4 format=3 uid="uid://cu3sluc4y1sxi"]
 
 [ext_resource type="PackedScene" uid="uid://bu4yt23k4jfuu" path="res://CarWilderness.tscn" id="1_hn4j8"]
 [ext_resource type="Texture2D" uid="uid://d3t8f8hmp2smq" path="res://Pictures/roadshack.png" id="2_0q60a"]
+[ext_resource type="Script" path="res://roadshack.gd" id="2_vj7ix"]
 
 [node name="GameArea" instance=ExtResource("1_hn4j8")]
-script = null
+script = ExtResource("2_vj7ix")
 
 [node name="TextureRect" parent="." index="0"]
 texture = ExtResource("2_0q60a")

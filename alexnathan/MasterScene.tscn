@@ -368,6 +368,10 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 0.33
 
 [connection signal="button_down" from="PauseLayer/Panel/Menu" to="." method="_on_menu_button_down"]
+[connection signal="button_down" from="BottomUiLayer/MainUI/VBoxContainer/Window/Control/LeftButton" to="." method="_on_left_button_button_down"]
+[connection signal="button_down" from="BottomUiLayer/MainUI/VBoxContainer/Window/Control/RightButton" to="." method="_on_right_button_button_down"]
+[connection signal="button_down" from="BottomUiLayer/MainUI/VBoxContainer/Window/Control/TopButton" to="." method="_on_top_button_button_down"]
+[connection signal="button_down" from="BottomUiLayer/MainUI/VBoxContainer/Window/Control/BottomButton" to="." method="_on_bottom_button_button_down"]
 [connection signal="pressed" from="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Party" to="." method="_on_party_pressed"]
 [connection signal="pressed" from="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Character" to="." method="_on_character_pressed"]
 [connection signal="pressed" from="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Inventory" to="." method="_on_inventory_pressed"]
