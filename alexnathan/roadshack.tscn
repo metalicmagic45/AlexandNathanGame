@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d3t8f8hmp2smq" path="res://Pictures/roadshack.png" id="2_0q60a"]
 
 [node name="GameArea" instance=ExtResource("1_hn4j8")]
+script = null
 
 [node name="TextureRect" parent="." index="0"]
 texture = ExtResource("2_0q60a")

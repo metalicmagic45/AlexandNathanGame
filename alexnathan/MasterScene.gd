@@ -91,13 +91,19 @@ func _on_diolouge_advance_button_button_down() -> void:
 
 ########################################################################################
 ############################Change Scene Function#######################################
+var a = get_node("BottomUiLayer/MainUI/VBoxContainer/Window")
+var Scene_Top = "BottomUiLayer/MainUI/VBoxContainer/Window/GameArea/roadshack"
+var Scene_Right = 1
+var Scene_Left = 1
+
 func _on_top_button_button_down() -> void:
-	#switch_game_scene()
+	switch_game_scene(Scene_Top)
 	print(Current_Area)
 func _on_right_button_button_down() -> void:
+	switch_game_scene(Scene_Right)
 	print(1)
 func _on_left_button_button_down() -> void:
-	switch_game_scene
+	switch_game_scene(Scene_Left)
 
 
 
