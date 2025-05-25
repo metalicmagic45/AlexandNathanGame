@@ -5,7 +5,8 @@ extends Node2D
 @onready var Portrait: TextureRect = $BottomUiLayer/MainUI/ActionUI/VBoxContainer/background/Panel/CharacterSprite
 @onready var HPLabel = $BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Panel/HP
 @onready var MPLabel = $BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Panel2/Mana
-@onready var start_scene = preload("res://GameArea.tscn")
+#Loads the first scene
+@onready var start_scene = preload("res://CarWilderness.tscn")
 @onready var Diolouge_Text_Area = get_node("BottomUiLayer/MainUI/ActionUI/VBoxContainer/Panel/DiolougeTextArea")
 @onready var Choice1 = $BottomUiLayer/MainUI/ActionUI/VBoxContainer/DiolougeChoices/VBoxContainer/Button
 @onready var Choice2 = $BottomUiLayer/MainUI/ActionUI/VBoxContainer/DiolougeChoices/VBoxContainer/Button2
@@ -66,7 +67,7 @@ func set_portrait(character_name: String):
 		print("No player found")
 		
 func _ready():
-	add_game_scene(start_scene)
+	switch_game_scene(start_scene)
 	set_portrait(character_name)
 
 func _on_menu_button_down() -> void:
@@ -87,21 +88,28 @@ func _on_diolouge_advance_button_button_down() -> void:
 
 	
 	
-func add_game_scene(scene):
-	var window = $BottomUiLayer/MainUI/VBoxContainer/Window
-	var s = scene.instantiate()
-	window.add_child(s)
-	s.connect("change_scene", Callable(self, "switch_game_scene"))
-	pass
-	
+
+########################################################################################
+############################Change Scene Function#######################################
+func _on_top_button_button_down() -> void:
+	#switch_game_scene()
+	print(Current_Area)
+func _on_right_button_button_down() -> void:
+	print(1)
+func _on_left_button_button_down() -> void:
+	switch_game_scene
+
+
+
 func switch_game_scene(scene: PackedScene) -> void:
 	var window = $BottomUiLayer/MainUI/VBoxContainer/Window
-
+	var s = scene.instantiate()
+	
 	for child in window.get_children():
 		child.queue_free()
 		
-	add_game_scene(scene)
-	
+	window.add_child(s)	
+		
 ########################################################################################
 ################################Diolouge Function#######################################
 #An array that contains arrays of text data for each game area

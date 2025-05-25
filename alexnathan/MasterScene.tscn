@@ -314,8 +314,38 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.33
 
+[node name="AreaButtons" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="AreaButtons"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TopButton" type="Button" parent="AreaButtons/Control"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 149.0
+offset_right = 62.0
+offset_bottom = 398.0
+
+[node name="RightButton" type="Button" parent="AreaButtons/Control"]
+offset_left = 708.0
+offset_top = 152.0
+offset_right = 751.0
+offset_bottom = 372.0
+
+[node name="LeftButton" type="Button" parent="AreaButtons/Control"]
+offset_left = 245.0
+offset_top = 6.0
+offset_right = 516.0
+offset_bottom = 45.0
+
 [connection signal="button_down" from="PauseLayer/Panel/Menu" to="." method="_on_menu_button_down"]
 [connection signal="pressed" from="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Party" to="." method="_on_party_pressed"]
 [connection signal="pressed" from="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Character" to="." method="_on_character_pressed"]
 [connection signal="pressed" from="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Inventory" to="." method="_on_inventory_pressed"]
 [connection signal="button_down" from="BottomUiLayer/MainUI/ActionUI/VBoxContainer/Panel/DiolougeTextArea/DiolougeAdvanceButton" to="." method="_on_diolouge_advance_button_button_down"]
+[connection signal="button_down" from="AreaButtons/Control/TopButton" to="." method="_on_top_button_button_down"]
+[connection signal="button_down" from="AreaButtons/Control/RightButton" to="." method="_on_right_button_button_down"]
+[connection signal="button_down" from="AreaButtons/Control/LeftButton" to="." method="_on_left_button_button_down"]

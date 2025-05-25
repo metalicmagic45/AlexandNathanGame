@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0tkfwqf4ywrm"]
+[gd_scene load_steps=3 format=3 uid="uid://das3cbmco5bg0"]
 
 [ext_resource type="Script" path="res://node_2d.gd" id="1_x5hq8"]
 [ext_resource type="Texture2D" uid="uid://bo3l02owb8slj" path="res://Pictures/CarBackground.png" id="2_hyx5i"]
