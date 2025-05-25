@@ -13,6 +13,10 @@ extends Node2D
 @onready var Choice3 = $BottomUiLayer/MainUI/ActionUI/VBoxContainer/DiolougeChoices/VBoxContainer/Button3
 @onready var HPbar = $BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Panel/ProgressBar
 @onready var MPbar = $BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Panel2/TextureProgressBar
+@onready var top_button = $BottomUiLayer/Control/TopButton
+@onready var bottom_button = $BottomUiLayer/Control/BottomButton
+@onready var right_button = $BottomUiLayer/Control/RightButton
+@onready var left_button = $BottomUiLayer/Control/LeftButton
 
 
 
@@ -179,13 +183,37 @@ func handle_choice(option: Dictionary):
 	Diolouge_Count = option["next_index"]
 	Diolouge_Choice_Toggle = false
 	Diolouge_Text_Outputter()
+func hide_buttons() -> void:
+	if current_scene_instance == null:
+		return                     # nothing loaded yet
+	# show or hide each nav button depending on whether a destination exists
+	if current_scene_instance.has_method("get_top") and current_scene_instance.get_top() != null:
+		top_button.visible = true
+	else:
+		top_button.visible = false
 
+	if current_scene_instance.has_method("get_bottom") and current_scene_instance.get_bottom() != null:
+		bottom_button.visible = true
+	else:
+		bottom_button.visible = false
 
+	if current_scene_instance.has_method("get_right") and current_scene_instance.get_right() != null:
+		right_button.visible = true
+	else:
+		right_button.visible = false
+
+	if current_scene_instance.has_method("get_left") and current_scene_instance.get_left() != null:
+		left_button.visible = true
+	else:
+		left_button.visible = false
 ########################################################################################
 
 ########################################################################################
 ############################Change Scene Function#######################################
+func _process(delta: float) -> void:
+	hide_buttons()
 
+var current_scene_instance: Node = null  # add this somewhere at the top of your script
 
 func switch_game_scene(scene: PackedScene) -> void:
 	var window = $BottomUiLayer/MainUI/VBoxContainer/Window
@@ -193,20 +221,23 @@ func switch_game_scene(scene: PackedScene) -> void:
 	
 	for child in window.get_children():
 		child.queue_free()
-		
-	window.add_child(s)	
+
+	current_scene_instance = s  # ✅ Save reference to scene instance
+	window.add_child(s)
 		
 
 func _on_bottom_button_button_down() -> void:
-	switch_game_scene(start_scene.get_bottom())
+	if current_scene_instance and current_scene_instance.has_method("get_bottom"):
+		switch_game_scene(current_scene_instance.get_bottom())
 
 func _on_top_button_button_down() -> void:
-	switch_game_scene(start_scene.get_top())
-
+	if current_scene_instance and current_scene_instance.has_method("get_top"):
+		switch_game_scene(current_scene_instance.get_top())
 
 func _on_right_button_button_down() -> void:
-	switch_game_scene(start_scene.get_right())
-
+	if current_scene_instance and current_scene_instance.has_method("get_right"):
+		switch_game_scene(current_scene_instance.get_right())
 
 func _on_left_button_button_down() -> void:
-	switch_game_scene(start_scene.get_left())
+	if current_scene_instance and current_scene_instance.has_method("get_left"):
+		switch_game_scene(current_scene_instance.get_left())

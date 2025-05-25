@@ -4,20 +4,18 @@
 
 [sub_resource type="GDScript" id="GDScript_j4bmp"]
 script/source = "extends Control
-@onready var Top_Button = load(\"res://roadshack.tscn\")
-@onready var Right_Button = null
-@onready var Left_Button = null
-@onready var Bottom_Button = null
+
+@onready var Top_Button: PackedScene = preload(\"res://roadshack.tscn\")
+@onready var Right_Button: PackedScene = null
+@onready var Left_Button: PackedScene = null
+@onready var Bottom_Button: PackedScene = null
 
 func get_top():
 	return Top_Button
-
 func get_right():
 	return Right_Button
-
 func get_left():
 	return Left_Button
-
 func get_bottom():
 	return Bottom_Button
 "
@@ -32,7 +30,6 @@ grow_vertical = 2
 script = SubResource("GDScript_j4bmp")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-z_index = -1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

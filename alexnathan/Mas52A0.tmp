@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bmbybi2a4c8lc"]
+[gd_scene load_steps=7 format=3 uid="uid://bmbybi2a4c8lc"]
 
 [ext_resource type="Script" path="res://MasterScene.gd" id="1_en6xd"]
+[ext_resource type="Texture2D" uid="uid://bo3l02owb8slj" path="res://Pictures/CarBackground.png" id="6_w1q7v"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_snouo"]
 
@@ -55,6 +56,16 @@ grow_vertical = 2
 text = "Load
 "
 
+[node name="ZoneBackgroundLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Zone1CarBackground" type="Sprite2D" parent="ZoneBackgroundLayer"]
+visible = false
+position = Vector2(575, 212)
+scale = Vector2(0.74707, 0.418457)
+texture = ExtResource("6_w1q7v")
+metadata/_edit_lock_ = true
+
 [node name="BottomUiLayer" type="CanvasLayer" parent="."]
 layer = 0
 
@@ -76,6 +87,59 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_snouo")
+
+[node name="Control" type="Control" parent="BottomUiLayer/MainUI/VBoxContainer/Window"]
+layout_mode = 2
+
+[node name="LeftButton" type="Button" parent="BottomUiLayer/MainUI/VBoxContainer/Window/Control"]
+custom_minimum_size = Vector2(30, 100)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -4.0
+offset_right = 8.0
+offset_bottom = 4.0
+grow_vertical = 2
+
+[node name="RightButton" type="Button" parent="BottomUiLayer/MainUI/VBoxContainer/Window/Control"]
+custom_minimum_size = Vector2(30, 100)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -4.0
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="TopButton" type="Button" parent="BottomUiLayer/MainUI/VBoxContainer/Window/Control"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -4.0
+offset_right = 4.0
+offset_bottom = 8.0
+grow_horizontal = 2
+
+[node name="BottomButton" type="Button" parent="BottomUiLayer/MainUI/VBoxContainer/Window/Control"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -8.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 0
 
 [node name="BottomUI" type="Control" parent="BottomUiLayer/MainUI/VBoxContainer"]
 layout_mode = 2
@@ -303,68 +367,12 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.33
 
-[node name="Control" type="Control" parent="BottomUiLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 765.0
-offset_bottom = 483.0
-
-[node name="LeftButton" type="Button" parent="BottomUiLayer/Control"]
-custom_minimum_size = Vector2(30, 100)
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -4.0
-offset_right = 8.0
-offset_bottom = 4.0
-grow_vertical = 2
-
-[node name="RightButton" type="Button" parent="BottomUiLayer/Control"]
-custom_minimum_size = Vector2(30, 100)
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -8.0
-offset_top = -4.0
-offset_bottom = 4.0
-grow_horizontal = 0
-grow_vertical = 2
-
-[node name="TopButton" type="Button" parent="BottomUiLayer/Control"]
-custom_minimum_size = Vector2(100, 30)
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -4.0
-offset_right = 4.0
-offset_bottom = 8.0
-grow_horizontal = 2
-
-[node name="BottomButton" type="Button" parent="BottomUiLayer/Control"]
-custom_minimum_size = Vector2(100, 30)
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -4.0
-offset_top = -8.0
-offset_right = 4.0
-grow_horizontal = 2
-grow_vertical = 0
-
 [connection signal="button_down" from="PauseLayer/Panel/Menu" to="." method="_on_menu_button_down"]
+[connection signal="button_down" from="BottomUiLayer/MainUI/VBoxContainer/Window/Control/LeftButton" to="." method="_on_left_button_button_down"]
+[connection signal="button_down" from="BottomUiLayer/MainUI/VBoxContainer/Window/Control/RightButton" to="." method="_on_right_button_button_down"]
+[connection signal="button_down" from="BottomUiLayer/MainUI/VBoxContainer/Window/Control/TopButton" to="." method="_on_top_button_button_down"]
+[connection signal="button_down" from="BottomUiLayer/MainUI/VBoxContainer/Window/Control/BottomButton" to="." method="_on_bottom_button_button_down"]
 [connection signal="pressed" from="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Party" to="." method="_on_party_pressed"]
 [connection signal="pressed" from="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Character" to="." method="_on_character_pressed"]
 [connection signal="pressed" from="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Inventory" to="." method="_on_inventory_pressed"]
 [connection signal="button_down" from="BottomUiLayer/MainUI/ActionUI/VBoxContainer/Panel/DiolougeTextArea/DiolougeAdvanceButton" to="." method="_on_diolouge_advance_button_button_down"]
-[connection signal="button_down" from="BottomUiLayer/Control/LeftButton" to="." method="_on_left_button_button_down"]
-[connection signal="button_down" from="BottomUiLayer/Control/RightButton" to="." method="_on_right_button_button_down"]
-[connection signal="button_down" from="BottomUiLayer/Control/TopButton" to="." method="_on_top_button_button_down"]
-[connection signal="button_down" from="BottomUiLayer/Control/BottomButton" to="." method="_on_bottom_button_button_down"]
