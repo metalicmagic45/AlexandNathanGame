@@ -61,7 +61,26 @@ var Area1 = [
 		"type": "text",
 		"text": "I found nothing",
 		"condition": "Bush_SearchZ1_fail"
+	},
+	"Let's try to lift this rock.",
+	{
+		"type": "statcheck",
+		"check_pass": "STRCHECKZ1_pass",
+		"check_fail": "STRCHECKZ1_fail",
+		"character": "get_character",
+		"stat": "STR"
+	},
+	{
+		"type": "text",
+		"text": "I lifted it.",
+		"condition": "STRCHECKZ1_pass"
+	},
+	{
+		"type": "text",
+		"text": "I couldn't lift it.",
+		"condition": "STRCHECKZ1_fail"
 	}
+	
 		
 ]
 
