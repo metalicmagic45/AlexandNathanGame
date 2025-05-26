@@ -3,6 +3,17 @@ extends Node
 #Use Local varriables to either change the global varriable or to update information bassed on the currently selected character
 var CurrentCharacter: String = "Johnson"
 
+func get_skill(name: String, skill: String) -> int:
+	if players.has(name):
+		var char_data = players[name]
+		if char_data.has("skills") and char_data["skills"].has(skill):
+			return char_data["skills"][skill]
+		else:
+			print("Skill not found")
+	else:
+		print("Character not found")
+	return -1
+
 var players = {
 	"Johnson": {
 		"name": "Johnson",

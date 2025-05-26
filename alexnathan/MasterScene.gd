@@ -17,6 +17,7 @@ extends Node2D
 @onready var bottom_button = $BottomUiLayer/Control/BottomButton
 @onready var right_button = $BottomUiLayer/Control/RightButton
 @onready var left_button = $BottomUiLayer/Control/LeftButton
+@onready var dicelabel = $BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/VBoxContainer/Dicelabel
 
 
 
@@ -152,6 +153,24 @@ func Diolouge_Text_Outputter():
 			show_choices(current["options"])
 			Diolouge_Choice_Toggle = true
 			return
+		if current["type"] == "skillcheck":
+			dicelabel.text = ""
+			var char_name = Playerdata.CurrentCharacter
+			var skill_name = current.get("skill", "")
+			var roll = Skillcheck.dice_roll()
+			var dc = Playerdata.get_skill(char_name, skill_name)
+			var flag = Skillcheck.skill_check(dc, roll)
+			var check_pass = current.get("check_pass", "")
+			var check_fail = current.get("check_fail", "")
+			if flag == true:
+				Globals.set_flag(check_pass)
+			else:
+				Globals.set_flag(check_fail)
+			dicelabel.text = str(roll)
+			Diolouge_Count += 1
+			Diolouge_Text_Outputter()
+			return
+			
 
 func show_choices(options: Array):
 	Choice1.text = options[0]["text"]

@@ -1,7 +1,7 @@
 extends Node
 #have a varialbe that acts as an identifier which signls when the player can make a diolouge choice
 var Diolouge_Choice_Toggle = false
-#Array inside of an array, index the first array for the group of diolouge that you want and then index the specific dioloughe that you want
+#Array inside of an array, index the first array for the group of diolouge that you want and then index the specific dioloughe that you want	
 var Area1 = [
 	"Johnson: Hello, how are you?",
 	"Kate: Doing great, thanks for asking.",
@@ -43,7 +43,26 @@ var Area1 = [
 	{
 		"type": "text",
 		"text": "Let's just go."
+	},
+	"Let's check the bush",
+	{
+		"type": "skillcheck",
+		"check_pass": "Bush_SearchZ1_pass",
+		"check_fail": "Bush_SearchZ1_fail",
+		"character": "get_character",
+		"skill": "Search"	
+	},
+	{
+		"type": "text",
+		"text": "I found a boot",
+		"condition": "Bush_searchZ1_pass",
+	},
+	{
+		"type": "text",
+		"text": "I found nothing",
+		"condition": "Bush_SearchZ1_fail"
 	}
+		
 ]
 
 var Area2 = ["It's cloudy out here.", "It sure is."]

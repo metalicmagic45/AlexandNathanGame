@@ -102,17 +102,17 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.35
 
-[node name="PrimarySprite" type="TextureRect" parent="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/VBoxContainer"]
+[node name="Dicelabel" type="Label" parent="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-expand_mode = 1
-stretch_mode = 5
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="PrimaryLabel" type="Label" parent="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_vertical = 1
-text = "Primary Item"
+text = "SkillCheck"
 horizontal_alignment = 1
 
 [node name="Buttons" type="GridContainer" parent="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer"]
