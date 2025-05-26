@@ -10,3 +10,9 @@ func skill_check(DC : int, roll : int) -> bool:
 		return true
 	else: 
 		return false
+func stat_check(DC : int, roll : int) -> bool:
+	var DC2 = DC * 5
+	if roll <= DC2:
+		return true
+	else:
+		return false

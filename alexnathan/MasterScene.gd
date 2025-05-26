@@ -126,6 +126,7 @@ func Diolouge_Text_Outputter():
 		# Skip line if condition isn't met
 		if current.has("condition"):
 			var required_flag = current["condition"]
+			print("Condition found")
 			if !Globals.get_flag(required_flag):
 				Diolouge_Count += 1
 				Diolouge_Text_Outputter()
@@ -170,7 +171,23 @@ func Diolouge_Text_Outputter():
 			Diolouge_Count += 1
 			Diolouge_Text_Outputter()
 			return
-			
+		if current["type"] == "statcheck":
+			dicelabel.text = ""
+			var char_name = Playerdata.CurrentCharacter
+			var stat_name = current.get("stat", "")
+			var roll = Skillcheck.dice_roll()
+			var dc = Playerdata.get_stat(char_name, stat_name)
+			var flag = Skillcheck.stat_check(dc, roll)
+			var check_pass = current.get("check_pass", "")
+			var check_fail = current.get("check_fail", "")
+			if flag == true:
+				Globals.set_flag(check_pass)
+			else:
+				Globals.set_flag(check_fail)
+			dicelabel.text = str(roll)
+			Diolouge_Count += 1
+			Diolouge_Text_Outputter()
+			return
 
 func show_choices(options: Array):
 	Choice1.text = options[0]["text"]

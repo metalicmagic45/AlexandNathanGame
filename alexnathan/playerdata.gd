@@ -13,6 +13,16 @@ func get_skill(name: String, skill: String) -> int:
 	else:
 		print("Character not found")
 	return -1
+func get_stat(name: String, stat: String) -> int:
+	if players.has(name):
+		var char_data = players[name]
+		if char_data.has(stat):
+			return char_data[stat]
+		else:
+			print("Stat not found")
+	else:
+		print("Character not found")
+	return -1
 
 var players = {
 	"Johnson": {
@@ -27,7 +37,7 @@ var players = {
 		"DEX": 14,
 		"POW": 10,
 		"INT": 10,
-		"LUCK": 50,
+		"LUCK": 10,
 		"skills": {
 			"Alertness": 40,
 			"Athletics": 40,
@@ -69,7 +79,7 @@ var players = {
 		"DEX": 10,
 		"POW": 17,
 		"INT": 15,
-		"LUCK": 80,
+		"LUCK": 14,
 		"skills": {
 			"Alertness": 30,
 			"Athletics": 30,
@@ -111,7 +121,7 @@ var players = {
 		"DEX": 10,
 		"POW": 10,
 		"INT": 17,
-		"LUCK": 50,
+		"LUCK": 10,
 		"skills": {
 			"Alertness": 60,
 			"Athletics": 20,
@@ -153,7 +163,7 @@ var players = {
 		"DEX": 12,
 		"POW": 15,
 		"INT": 16,
-		"LUCK": 80,
+		"LUCK": 15,
 		"skills": {
 			"Alertness": 60,
 			"Athletics": 20,

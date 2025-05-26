@@ -50,12 +50,12 @@ var Area1 = [
 		"check_pass": "Bush_SearchZ1_pass",
 		"check_fail": "Bush_SearchZ1_fail",
 		"character": "get_character",
-		"skill": "Search"	
+		"skill": "SEARCH"	
 	},
 	{
 		"type": "text",
 		"text": "I found a boot",
-		"condition": "Bush_searchZ1_pass",
+		"condition": "Bush_SearchZ1_pass",
 	},
 	{
 		"type": "text",
