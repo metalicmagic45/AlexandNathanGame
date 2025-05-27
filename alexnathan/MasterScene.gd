@@ -205,10 +205,8 @@ func show_choices(options: Array):
 
 
 func handle_choice(option: Dictionary):
-	# Disable choices
-	Choice1.disabled = true
-	Choice2.disabled = true
-	Choice3.disabled = true
+	# Disable and clear choices
+	clear_choices()
 
 	# Set flag if present
 	if option.has("set_flag"):
@@ -219,6 +217,10 @@ func handle_choice(option: Dictionary):
 	Diolouge_Count = option["next_index"]
 	Diolouge_Choice_Toggle = false
 	Diolouge_Text_Outputter()
+func clear_choices():
+	for button in [Choice1, Choice2, Choice3]:
+		button.text = ""
+		button.release_focus()  # Deselects the button if it had focus
 func hide_buttons() -> void:
 	if current_scene_instance == null:
 		return                     # nothing loaded yet
