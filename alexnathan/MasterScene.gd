@@ -38,6 +38,7 @@ func _input(event):
 
 	# ✅ Prevent advancing if a choice is on screen
 	if event.is_action_pressed("DiolougeAdvance") and !Diolouge_Choice_Toggle:
+		clear_choices()
 		Diolouge_Text_Outputter()
 
 	
@@ -87,6 +88,7 @@ func _on_character_pressed() -> void:
 	get_tree().change_scene_to_file("res://character_ui.tscn")
 #Advances diolouge on button press
 func _on_diolouge_advance_button_button_down() -> void:
+	clear_choices()
 	if !Diolouge_Choice_Toggle:
 		Diolouge_Text_Outputter()
 
@@ -116,6 +118,8 @@ func Diolouge_Text_Outputter():
 
 	# Handle basic string text
 	if typeof(current) == TYPE_STRING:
+		if Diolouge_Choice_Toggle:
+			return
 		Diolouge_Text_Area.add_text(current)
 		Diolouge_Text_Area.newline()
 		Diolouge_Count += 1
@@ -185,10 +189,23 @@ func Diolouge_Text_Outputter():
 				Globals.set_flag(check_pass)
 			else:
 				Globals.set_flag(check_fail)
-			dicelabel.text = str(roll)
-			Diolouge_Count += 1
+			dicelabel.text = str(roll)	
+			if current.has("jump"):
+				var target_flag = current["jump"]
+				var jump_index = flag_jump(Currently_Selected_Area, target_flag)	
+				print(jump_index)	
+				if jump_index != -1:
+					Diolouge_Count = jump_index
+			else:
+				Diolouge_Count += 1
 			Diolouge_Text_Outputter()
 			return
+func flag_jump(dialogue_array: Array, target_flag: String) -> int:
+	for i in range(dialogue_array.size()):
+		var entry = dialogue_array[i]
+		if typeof(entry) == TYPE_DICTIONARY and entry.has("flag") and entry["flag"] == target_flag:
+			return i
+	return -1
 
 func show_choices(options: Array):
 	Choice1.text = options[0]["text"]
@@ -206,9 +223,6 @@ func show_choices(options: Array):
 
 
 func handle_choice(option: Dictionary):
-	# Disable and clear choices
-	clear_choices()
-
 	# Set flag if present
 	if option.has("set_flag"):
 		Globals.set_flag(option["set_flag"])
@@ -217,7 +231,6 @@ func handle_choice(option: Dictionary):
 	# Move to the next dialogue index
 	Diolouge_Count = option["next_index"]
 	Diolouge_Choice_Toggle = false
-	Diolouge_Text_Outputter()
 func clear_choices():
 	for button in [Choice1, Choice2, Choice3]:
 		button.text = ""

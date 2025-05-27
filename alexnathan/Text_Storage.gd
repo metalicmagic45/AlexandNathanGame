@@ -67,26 +67,30 @@ var Area1 = [
 		"check_pass": "Bush_SearchZ1_pass",
 		"check_fail": "Bush_SearchZ1_fail",
 		"character": "get_character",
-		"stat": "INT"
+		"stat": "INT",
+		"jump": "flag1"
 	},
 	{ #index 9	
 		"type": "statcheck",
 		"check_pass": "Bush_SearchZ1_pass",
 		"check_fail": "Bush_SearchZ1_fail",
 		"character": "get_character",
-		"stat": "CON"
+		"stat": "CON",
+		"jump": "flag1"
 	},
 	{ #index 10	
 		"type": "statcheck",
 		"check_pass": "Bush_SearchZ1_pass",
 		"check_fail": "Bush_SearchZ1_fail",
 		"character": "get_character",
-		"stat": "STR"
+		"stat": "STR",
+		"jump": "flag1"
 	},
 	{ #index 11
 		"type": "text",
 		"text": "I found a boot",
 		"condition": "Bush_SearchZ1_pass",
+		"flag": "flag1"
 	},
 	{ #index 12
 		"type": "text",
