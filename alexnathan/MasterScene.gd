@@ -173,7 +173,14 @@ func Diolouge_Text_Outputter():
 			else:
 				Globals.set_flag(check_fail)
 			dicelabel.text = str(roll)
-			Diolouge_Count += 1
+			if current.has("jump"):
+				var target_flag = current["jump"]
+				var jump_index = flag_jump(Currently_Selected_Area, target_flag)	
+				print(jump_index)	
+				if jump_index != -1:
+					Diolouge_Count = jump_index
+			else:
+				Diolouge_Count += 1
 			Diolouge_Text_Outputter()
 			return
 		if current["type"] == "statcheck":
