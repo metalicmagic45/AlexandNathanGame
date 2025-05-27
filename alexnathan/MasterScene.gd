@@ -145,6 +145,7 @@ func Diolouge_Text_Outputter():
 			# Update index, but DO NOT immediately advance again
 			if current.has("next_index"):
 				Diolouge_Count = current["next_index"]
+				#print(current["next_index"])
 			else:
 				Diolouge_Count += 1
 			return

@@ -25,7 +25,7 @@ var Area1 = [
 			}
 		]
 	},
-	{
+	{ #index 3
 		"type": "text",
 		"text": "Johnson: Glad to hear it.",
 		"next_index": 6
@@ -35,29 +35,60 @@ var Area1 = [
 		"text": "Johnson: Oh... okay then.",
 		"next_index": 6
 	},
-	{
+	{ #index 4
 		"type": "text",
 		"text": "Johnson: You're in the wilderness.",
 		"condition": "asked_where_am_i"
 	},
-	{
+	{ #index 5
 		"type": "text",
 		"text": "Let's just go."
 	},
-	"Let's check the bush",
-	{
-		"type": "skillcheck",
+	"Let's check the bush", #index 6
+	{ #index 7
+		"type": "choice",
+		"options": [
+			{
+				"text": "Study the Plant [Int]",
+				"next_index": 9
+			},
+			{
+				"text": "Eat the Plant [Con]",
+				"next_index": 10
+			},
+			{
+				"text": "Attack the Plant [Str]",
+				"next_index": 11
+			}
+		]
+	},	
+	{ #index 8
+		"type": "statcheck",
 		"check_pass": "Bush_SearchZ1_pass",
 		"check_fail": "Bush_SearchZ1_fail",
 		"character": "get_character",
-		"skill": "SEARCH"	
+		"stat": "INT"
 	},
-	{
+	{ #index 9	
+		"type": "statcheck",
+		"check_pass": "Bush_SearchZ1_pass",
+		"check_fail": "Bush_SearchZ1_fail",
+		"character": "get_character",
+		"stat": "CON"
+	},
+	{ #index 10	
+		"type": "statcheck",
+		"check_pass": "Bush_SearchZ1_pass",
+		"check_fail": "Bush_SearchZ1_fail",
+		"character": "get_character",
+		"stat": "STR"
+	},
+	{ #index 11
 		"type": "text",
 		"text": "I found a boot",
 		"condition": "Bush_SearchZ1_pass",
 	},
-	{
+	{ #index 12
 		"type": "text",
 		"text": "I found nothing",
 		"condition": "Bush_SearchZ1_fail"
