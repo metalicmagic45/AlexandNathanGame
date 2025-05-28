@@ -297,7 +297,7 @@ func switch_game_scene(scene: PackedScene) -> void:
 	for child in window.get_children():
 		child.queue_free()
 
-	current_scene_instance = s  # ✅ Save reference to scene instance
+	current_scene_instance = s  
 	window.add_child(s)
 		
 
