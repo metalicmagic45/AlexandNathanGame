@@ -55,15 +55,15 @@ var Area1 = [
 		"options": [
 			{
 				"text": "Study the Plant [Int]",
-				"jump": "flag1"
+				"jump": "flag5"
 			},
 			{
 				"text": "Eat the Plant [Con]",
-				"jump": "flag1"
+				"jump": "flag6"
 			},
 			{
 				"text": "Attack the Plant [Str]",
-				"jump": "flag1"
+				"jump": "flag7"
 			}
 		]
 	},	
@@ -73,7 +73,8 @@ var Area1 = [
 		"check_fail": "Bush_SearchZ1_fail",
 		"character": "get_character",
 		"stat": "INT",
-		"jump": "flag5"
+		"jump": "flag8",
+		"flag": "flag5"
 	},
 	{ #index 9	
 		"type": "statcheck",
@@ -81,7 +82,8 @@ var Area1 = [
 		"check_fail": "Bush_SearchZ1_fail",
 		"character": "get_character",
 		"stat": "CON",
-		"jump": "flag5"
+		"jump": "flag8",
+		"flag": "flag6"
 	},
 	{ #index 10	
 		"type": "statcheck",
@@ -89,13 +91,14 @@ var Area1 = [
 		"check_fail": "Bush_SearchZ1_fail",
 		"character": "get_character",
 		"stat": "STR",
-		"jump": "flag5"
+		"jump": "flag8",
+		"flag": "flag7"
 	},
 	{ #index 11
 		"type": "text",
 		"text": "I found a boot",
 		"condition": "Bush_SearchZ1_pass",
-		"flag": "flag5"
+		"flag": "flag8"
 	},
 	{ #index 12
 		"type": "text",
