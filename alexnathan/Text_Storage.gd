@@ -10,17 +10,17 @@ var Area1 = [
 		"options": [
 			{
 				"text": "I'm good!",
-				"next_index": 3,
+				"jump": "flag1",
 				"set_flag": "met_johnson"
 			},
 			{
 				"text": "Leave me alone.",
-				"next_index": 4,
+				"jump": "flag2",
 				"set_flag": "rejected_convo"
 			},
 			{
 				"text": "Where am I?",
-				"next_index": 5,
+				"jump": "flag3",
 				"set_flag": "asked_where_am_i"
 			}
 		]
@@ -28,37 +28,42 @@ var Area1 = [
 	{ #index 3
 		"type": "text",
 		"text": "Johnson: Glad to hear it.",
-		"next_index": 6
-	},
-	{
-		"type": "text",
-		"text": "Johnson: Oh... okay then.",
-		"next_index": 6
+		"jump": "flag4",
+		"flag": "flag1"
 	},
 	{ #index 4
 		"type": "text",
-		"text": "Johnson: You're in the wilderness.",
-		"condition": "asked_where_am_i"
+		"text": "Johnson: Oh... okay then.",
+		"jump": "flag4",
+		"flag": "flag2"
 	},
 	{ #index 5
 		"type": "text",
-		"text": "Let's just go."
+		"text": "Johnson: You're in the wilderness.",
+		"condition": "asked_where_am_i",
+		"jump": "flag4",
+		"flag": "flag3"
 	},
-	"Let's check the bush", #index 6
-	{ #index 7
+	{ #index 6
+		"type": "text",
+		"text": "Let's just go.",
+		"flag": "flag4"
+	},
+	"Let's check the bush", #index 7
+	{ #index 8
 		"type": "choice",
 		"options": [
 			{
 				"text": "Study the Plant [Int]",
-				"next_index": 9
+				"jump": "flag1"
 			},
 			{
 				"text": "Eat the Plant [Con]",
-				"next_index": 10
+				"jump": "flag1"
 			},
 			{
 				"text": "Attack the Plant [Str]",
-				"next_index": 11
+				"jump": "flag1"
 			}
 		]
 	},	
@@ -68,7 +73,7 @@ var Area1 = [
 		"check_fail": "Bush_SearchZ1_fail",
 		"character": "get_character",
 		"stat": "INT",
-		"jump": "flag1"
+		"jump": "flag5"
 	},
 	{ #index 9	
 		"type": "statcheck",
@@ -76,7 +81,7 @@ var Area1 = [
 		"check_fail": "Bush_SearchZ1_fail",
 		"character": "get_character",
 		"stat": "CON",
-		"jump": "flag1"
+		"jump": "flag5"
 	},
 	{ #index 10	
 		"type": "statcheck",
@@ -84,13 +89,13 @@ var Area1 = [
 		"check_fail": "Bush_SearchZ1_fail",
 		"character": "get_character",
 		"stat": "STR",
-		"jump": "flag1"
+		"jump": "flag5"
 	},
 	{ #index 11
 		"type": "text",
 		"text": "I found a boot",
 		"condition": "Bush_SearchZ1_pass",
-		"flag": "flag1"
+		"flag": "flag5"
 	},
 	{ #index 12
 		"type": "text",

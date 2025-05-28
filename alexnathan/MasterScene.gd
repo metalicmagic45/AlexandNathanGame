@@ -109,8 +109,13 @@ var Current_Area = 0
 #getting the list of diolouge assinged to the currently selected area
 var Currently_Selected_Area = Area_Diolouge_Holder[Current_Area] 
 
+var test = 0
 func Diolouge_Text_Outputter():
+	print(test, "#######################################")
+	test += 1
 	print("DialogueTextOutput called")
+	print(Diolouge_Count)
+	
 	if Diolouge_Count >= Currently_Selected_Area.size():
 		return
 	
@@ -145,15 +150,17 @@ func Diolouge_Text_Outputter():
 		if current["type"] == "text":
 			Diolouge_Text_Area.add_text(current["text"])
 			Diolouge_Text_Area.newline()
+			
 
-			# Update index, but DO NOT immediately advance again
-			if current.has("next_index"):
-				Diolouge_Count = current["next_index"]
-				#print(current["next_index"])
+			if current.has("jump"):
+				var target_flag = current["jump"]
+				var jump_index = flag_jump(Currently_Selected_Area, target_flag)		
+				if jump_index != -1:
+					Diolouge_Count = jump_index
+					print("yaya")
 			else:
 				Diolouge_Count += 1
-			return
-
+			
 		# Handle choices
 		elif current["type"] == "choice":
 			show_choices(current["options"])
@@ -212,6 +219,7 @@ func flag_jump(dialogue_array: Array, target_flag: String) -> int:
 		var entry = dialogue_array[i]
 		if typeof(entry) == TYPE_DICTIONARY and entry.has("flag") and entry["flag"] == target_flag:
 			return i
+			print("yay")
 	return -1
 
 func show_choices(options: Array):
@@ -236,7 +244,15 @@ func handle_choice(option: Dictionary):
 		print("DEBUG: Flag set ->", option["set_flag"])
 
 	# Move to the next dialogue index
-	Diolouge_Count = option["next_index"]
+	if option.has("jump"):
+		var target_flag = option["jump"]
+		var jump_index = flag_jump(Currently_Selected_Area, target_flag)		
+		if jump_index != -1:
+			Diolouge_Count = jump_index
+		else:
+			Diolouge_Count += 1
+			Diolouge_Text_Outputter()
+	
 	Diolouge_Choice_Toggle = false
 func clear_choices():
 	for button in [Choice1, Choice2, Choice3]:
