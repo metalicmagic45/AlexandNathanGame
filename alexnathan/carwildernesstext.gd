@@ -1,5 +1,5 @@
 extends Node
-
+var areaID = 0
 var Area1 = [
 	"Johnson: Hello, how are you?",
 	"Kate: Doing great, thanks for asking.",

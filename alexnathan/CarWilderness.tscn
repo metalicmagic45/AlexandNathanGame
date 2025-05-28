@@ -8,6 +8,11 @@ script/source = "extends Control
 @onready var Right_Button = null
 @onready var Left_Button = null
 @onready var Bottom_Button = null
+@onready var CarwildernessScript = load(\"res://carwildernesstext.gd\").new()
+@onready var areaID = CarwildernessScript.areaID
+
+func get_ID():
+	return areaID
 
 func get_top():
 	return Top_Button

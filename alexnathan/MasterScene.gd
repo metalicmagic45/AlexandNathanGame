@@ -108,6 +108,8 @@ var Diolouge_Count = 0
 var Current_Area = 0
 #getting the list of diolouge assinged to the currently selected area
 var Currently_Selected_Area = Area_Diolouge_Holder[Current_Area] 
+func set_current_area():
+	Current_Area = current_scene_instance.get_ID()
 
 var test = 0
 func Diolouge_Text_Outputter():
@@ -287,6 +289,7 @@ func hide_buttons() -> void:
 ############################Change Scene Function#######################################
 func _process(delta: float) -> void:
 	hide_buttons()
+	set_current_area()
 
 var current_scene_instance: Node = null  # add this somewhere at the top of your script
 

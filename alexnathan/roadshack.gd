@@ -4,6 +4,11 @@ extends Control
 @onready var Right_Button = null
 @onready var Left_Button = null
 @onready var Bottom_Button = load("res://CarWilderness.tscn")
+@onready var Roadshacktext = load("res://roadshacktext.gd").new()
+@onready var areaID = Roadshacktext.areaID
+
+func get_ID():
+	return areaID
 
 func get_top():
 	return Top_Button

@@ -1,4 +1,6 @@
 extends Node
+var areaID = 1
+
 
 var dialogue = [
 	"Where are we?",
