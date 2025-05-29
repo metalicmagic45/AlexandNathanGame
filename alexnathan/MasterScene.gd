@@ -92,10 +92,17 @@ func _on_diolouge_advance_button_button_down() -> void:
 	if !Diolouge_Choice_Toggle:
 		Diolouge_Text_Outputter()
 func reset_dialogue():
-	Diolouge_Text_Area.clear()  # Clear all text from RichTextLabel
-	Diolouge_Count = 0          # Reset dialogue count to the beginning
-	Diolouge_Choice_Toggle = false  # Make sure choices are not toggled
-	clear_choices()             # Clear any leftover choices
+	Diolouge_Text_Area.clear()
+	Diolouge_Count = 0
+	clear_choices()
+	
+	# Check if the first entry is a choice and set toggle accordingly
+	var current = Currently_Selected_Area[Diolouge_Count]
+	if typeof(current) == TYPE_DICTIONARY and current.get("type", "") == "choice":
+		Diolouge_Choice_Toggle = true
+	else:
+		Diolouge_Choice_Toggle = false
+
 ########################################################################################
 ################################Diolouge Function#######################################
 #An array that contains arrays of text data for each game area
@@ -181,8 +188,10 @@ func Diolouge_Text_Outputter():
 			var check_fail = current.get("check_fail", "")
 			if flag == true:
 				Globals.set_flag(check_pass)
+				print("check pass")
 			else:
 				Globals.set_flag(check_fail)
+				print("check fail")
 			dicelabel.text = str(roll)
 			if current.has("jump"):
 				var target_flag = current["jump"]
@@ -205,8 +214,10 @@ func Diolouge_Text_Outputter():
 			var check_fail = current.get("check_fail", "")
 			if flag == true:
 				Globals.set_flag(check_pass)
+				print("check pass")
 			else:
 				Globals.set_flag(check_fail)
+				print("check fail")
 			dicelabel.text = str(roll)	
 			if current.has("jump"):
 				var target_flag = current["jump"]
@@ -242,21 +253,19 @@ func show_choices(options: Array):
 
 
 func handle_choice(option: Dictionary):
-	# Set flag if present
 	if option.has("set_flag"):
 		Globals.set_flag(option["set_flag"])
 		print("DEBUG: Flag set ->", option["set_flag"])
 
-	# Move to the next dialogue index
 	if option.has("jump"):
 		var target_flag = option["jump"]
-		var jump_index = flag_jump(Currently_Selected_Area, target_flag)		
+		var jump_index = flag_jump(Currently_Selected_Area, target_flag)
 		if jump_index != -1:
 			Diolouge_Count = jump_index
 		else:
 			Diolouge_Count += 1
-			Diolouge_Text_Outputter()
-	
+	else:
+		Diolouge_Count += 1
 	Diolouge_Choice_Toggle = false
 func clear_choices():
 	for button in [Choice1, Choice2, Choice3]:
@@ -306,9 +315,7 @@ func switch_game_scene(scene: PackedScene) -> void:
 	window.add_child(s)
 
 	set_current_area()  
-	reset_dialogue()     
-	print("current area", Current_Area)
-	
+	reset_dialogue()     	
 
 func _on_bottom_button_button_down() -> void:
 	if current_scene_instance and current_scene_instance.has_method("get_bottom"):
