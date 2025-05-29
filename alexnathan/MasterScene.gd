@@ -91,10 +91,11 @@ func _on_diolouge_advance_button_button_down() -> void:
 	clear_choices()
 	if !Diolouge_Choice_Toggle:
 		Diolouge_Text_Outputter()
-
-	
-	
-
+func reset_dialogue():
+	Diolouge_Text_Area.clear()  # Clear all text from RichTextLabel
+	Diolouge_Count = 0          # Reset dialogue count to the beginning
+	Diolouge_Choice_Toggle = false  # Make sure choices are not toggled
+	clear_choices()             # Clear any leftover choices
 ########################################################################################
 ################################Diolouge Function#######################################
 #An array that contains arrays of text data for each game area
@@ -110,6 +111,7 @@ var Current_Area = 0
 var Currently_Selected_Area = Area_Diolouge_Holder[Current_Area] 
 func set_current_area():
 	Current_Area = current_scene_instance.get_ID()
+	Currently_Selected_Area = Area_Diolouge_Holder[Current_Area]
 
 var test = 0
 func Diolouge_Text_Outputter():
@@ -289,20 +291,24 @@ func hide_buttons() -> void:
 ############################Change Scene Function#######################################
 func _process(delta: float) -> void:
 	hide_buttons()
-	set_current_area()
 
 var current_scene_instance: Node = null  # add this somewhere at the top of your script
 
 func switch_game_scene(scene: PackedScene) -> void:
 	var window = $BottomUiLayer/MainUI/VBoxContainer/Window
 	var s = scene.instantiate()
-	
+
+	# Clear old scene
 	for child in window.get_children():
 		child.queue_free()
 
-	current_scene_instance = s  
+	current_scene_instance = s
 	window.add_child(s)
-		
+
+	set_current_area()  
+	reset_dialogue()     
+	print("current area", Current_Area)
+	
 
 func _on_bottom_button_button_down() -> void:
 	if current_scene_instance and current_scene_instance.has_method("get_bottom"):
