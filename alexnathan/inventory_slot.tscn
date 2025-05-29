@@ -8,8 +8,6 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1152.0
-offset_bottom = -648.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -29,3 +27,20 @@ layout_mode = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="CenterContainer/Control"]
 scale = Vector2(0.25, 0.25)
+
+[node name="OptionButton" type="OptionButton" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 20.0
+grow_horizontal = 0
+selected = 4
+item_count = 2
+popup/item_0/text = "Menu"
+popup/item_1/text = "Discard"
+popup/item_1/id = 1
+
+[connection signal="focus_exited" from="OptionButton" to="." method="_on_option_button_focus_exited"]
+[connection signal="item_selected" from="OptionButton" to="." method="_on_option_button_item_selected"]
