@@ -37,6 +37,12 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Play"
 
+[node name="Load" type="Button" parent="CanvasLayer/Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Load
+"
+
 [node name="Exit" type="Button" parent="CanvasLayer/Control/CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
@@ -55,4 +61,5 @@ texture = ExtResource("2_pofvn")
 expand_mode = 3
 
 [connection signal="pressed" from="CanvasLayer/Control/CenterContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/CenterContainer/VBoxContainer/Load" to="." method="_on_load_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/CenterContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

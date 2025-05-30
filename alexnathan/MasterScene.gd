@@ -35,8 +35,8 @@ func _input(event):
 		get_tree().change_scene_to_file("res://party_ui.tscn")
 	if event.is_action_pressed("ToggleChar"):
 		get_tree().change_scene_to_file("res://character_ui.tscn")
+		
 
-	# ✅ Prevent advancing if a choice is on screen
 	if event.is_action_pressed("DiolougeAdvance") and !Diolouge_Choice_Toggle:
 		clear_choices()
 		Diolouge_Text_Outputter()
@@ -332,3 +332,5 @@ func _on_right_button_button_down() -> void:
 func _on_left_button_button_down() -> void:
 	if current_scene_instance and current_scene_instance.has_method("get_left"):
 		switch_game_scene(current_scene_instance.get_left())
+func _on_load_button_down() -> void:
+	get_tree().change_scene_to_file("res://load.tscn")

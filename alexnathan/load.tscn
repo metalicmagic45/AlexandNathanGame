@@ -1,0 +1,251 @@
+[gd_scene load_steps=2 format=3 uid="uid://bccwlvx5ctwl2"]
+
+[ext_resource type="Script" path="res://load.gd" id="1_2t8h0"]
+
+[node name="Load" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2t8h0")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Save1" type="Panel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/Save1"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -576.0
+offset_right = 576.0
+offset_bottom = 42.0
+grow_horizontal = 2
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.8
+theme_override_font_sizes/font_size = 30
+text = "Save 1"
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/Save1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Save1/CenterContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="HBoxContainer/Save1/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.1
+theme_override_font_sizes/font_size = 30
+text = "Untitled Save"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="HBoxContainer/Save1/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.1
+theme_override_font_sizes/font_size = 30
+text = "Load"
+
+[node name="Save2" type="Panel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/Save2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -576.0
+offset_right = 576.0
+offset_bottom = 42.0
+grow_horizontal = 2
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.8
+theme_override_font_sizes/font_size = 30
+text = "Save 2"
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/Save2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Save2/CenterContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="HBoxContainer/Save2/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.1
+theme_override_font_sizes/font_size = 30
+text = "Untitled Save"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="HBoxContainer/Save2/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.1
+theme_override_font_sizes/font_size = 30
+text = "Load"
+
+[node name="Save3" type="Panel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/Save3"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -576.0
+offset_right = 576.0
+offset_bottom = 42.0
+grow_horizontal = 2
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.8
+theme_override_font_sizes/font_size = 30
+text = "Save 3"
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/Save3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Save3/CenterContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="HBoxContainer/Save3/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.1
+theme_override_font_sizes/font_size = 30
+text = "Untitled Save"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="HBoxContainer/Save3/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.1
+theme_override_font_sizes/font_size = 30
+text = "Load"
+
+[node name="Save4" type="Panel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/Save4"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -576.0
+offset_right = 576.0
+offset_bottom = 42.0
+grow_horizontal = 2
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.8
+theme_override_font_sizes/font_size = 30
+text = "Save 4
+"
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/Save4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Save4/CenterContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="HBoxContainer/Save4/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.1
+theme_override_font_sizes/font_size = 30
+text = "Untitled Save"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="HBoxContainer/Save4/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.1
+theme_override_font_sizes/font_size = 30
+text = "Load"
+
+[node name="Save5" type="Panel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/Save5"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -576.0
+offset_right = 576.0
+offset_bottom = 42.0
+grow_horizontal = 2
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.8
+theme_override_font_sizes/font_size = 30
+text = "Save 5"
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/Save5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Save5/CenterContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="HBoxContainer/Save5/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.1
+theme_override_font_sizes/font_size = 30
+text = "Untitled Save"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="HBoxContainer/Save5/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.1
+theme_override_font_sizes/font_size = 30
+text = "Load"
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+offset_right = 1152.0
+offset_bottom = 651.0
+
+[node name="Menu" type="Button" parent="Panel"]
+layout_mode = 1
+offset_left = 1.0
+offset_top = 100.0
+offset_right = 102.0
+offset_bottom = 165.0
+text = "Main Menu"
+
+[connection signal="pressed" from="Panel/Menu" to="." method="_on_menu_pressed"]

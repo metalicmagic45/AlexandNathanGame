@@ -23,6 +23,7 @@ Playerdata="*res://playerdata.gd"
 TextStorage="*res://Text_Storage.gd"
 Globals="*res://Globals.gd"
 Skillcheck="*res://skillcheck.gd"
+SaveManager="*res://save_manager.gd"
 
 [display]
 
