@@ -72,14 +72,14 @@ func set_portrait(character_name: String):
 	else:
 		print("No player found")		
 func _ready():
-	switch_game_scene(start_scene)
+	switch_game_scene(Globals.get_current_global_scene())
+	Diolouge_Count = Globals.get_diologue_global()
+	Current_Area = Globals.get_area_global()
 	set_portrait(character_name)
 
 func _on_menu_button_down() -> void:
 	get_tree().change_scene_to_file("res://Main.tscn")
-# Replace with function body.
-#func _process(delta: float) -> void:
-	#Kate.visible = true
+
 func _on_inventory_pressed() -> void:
 	get_tree().change_scene_to_file("res://inventory_ui.tscn")
 func _on_party_pressed() -> void:
@@ -111,9 +111,9 @@ var Area_Diolouge_Holder = TextStorage.Gameplay_Area_Selecter
 #Variable to toggle diolouge choice options
 var Diolouge_Choice_Toggle = TextStorage.Diolouge_Choice_Toggle
 #Variable to store the current index inside an area's diolouge array
-var Diolouge_Count = 0
+var Diolouge_Count = Globals.get_diologue_global()
 #Current game area corisponding to its "Gameplay_Area_Selecter" index number
-var Current_Area = 0
+var Current_Area = Globals.get_area_global()
 #getting the list of diolouge assinged to the currently selected area
 var Currently_Selected_Area = Area_Diolouge_Holder[Current_Area] 
 func set_current_area():
@@ -300,22 +300,25 @@ func hide_buttons() -> void:
 ############################Change Scene Function#######################################
 func _process(delta: float) -> void:
 	hide_buttons()
+	Globals.set_current_global_scene(current_scene_packed_scene)
+	Globals.set_area_dialogue(Diolouge_Count, Current_Area)
 
-var current_scene_instance: Node = null  # add this somewhere at the top of your script
+var current_scene_instance: Node = null
+var current_scene_packed_scene: PackedScene = null
 
 func switch_game_scene(scene: PackedScene) -> void:
 	var window = $BottomUiLayer/MainUI/VBoxContainer/Window
 	var s = scene.instantiate()
 
-	# Clear old scene
 	for child in window.get_children():
 		child.queue_free()
 
 	current_scene_instance = s
+	current_scene_packed_scene = scene  # ✅ store PackedScene
 	window.add_child(s)
 
-	set_current_area()  
-	reset_dialogue()     	
+	set_current_area()
+	reset_dialogue()
 
 func _on_bottom_button_button_down() -> void:
 	if current_scene_instance and current_scene_instance.has_method("get_bottom"):

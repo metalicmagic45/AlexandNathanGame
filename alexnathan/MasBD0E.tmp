@@ -1,0 +1,371 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmbybi2a4c8lc"]
+
+[ext_resource type="Script" path="res://MasterScene.gd" id="1_en6xd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_snouo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iytyv"]
+bg_color = Color(1, 0.4, 0.4, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_skkny"]
+bg_color = Color(0.4, 0.8, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ajdv4"]
+
+[node name="MasterScene" type="Node2D"]
+script = ExtResource("1_en6xd")
+
+[node name="PauseLayer" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="Panel" type="Panel" parent="PauseLayer"]
+visible = false
+offset_right = 1152.0
+offset_bottom = 651.0
+
+[node name="Menu" type="Button" parent="PauseLayer/Panel"]
+layout_mode = 1
+offset_left = 1.0
+offset_top = 100.0
+offset_right = 102.0
+offset_bottom = 165.0
+text = "Main Menu"
+
+[node name="Save" type="Button" parent="PauseLayer/Panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 3.0
+offset_top = -95.5
+offset_right = 104.0
+offset_bottom = -32.5
+grow_vertical = 2
+text = "Save"
+
+[node name="Load" type="Button" parent="PauseLayer/Panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -3.5
+offset_right = 104.0
+offset_bottom = 45.5
+grow_vertical = 2
+text = "Load
+"
+
+[node name="BottomUiLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="MainUI" type="HBoxContainer" parent="BottomUiLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BottomUiLayer/MainUI"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Window" type="PanelContainer" parent="BottomUiLayer/MainUI/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_snouo")
+
+[node name="BottomUI" type="Control" parent="BottomUiLayer/MainUI/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="BottomUiLayer/MainUI/VBoxContainer/BottomUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BottomUiLayer/MainUI/VBoxContainer/BottomUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.35
+
+[node name="Dicelabel" type="Label" parent="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PrimaryLabel" type="Label" parent="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 1
+text = "SkillCheck"
+horizontal_alignment = 1
+
+[node name="Buttons" type="GridContainer" parent="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer"]
+layout_direction = 1
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 3
+
+[node name="Party" type="Button" parent="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Party"
+
+[node name="Character" type="Button" parent="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Character"
+
+[node name="Inventory" type="Button" parent="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Inventory"
+
+[node name="Magic" type="Button" parent="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Magic"
+
+[node name="Panel" type="Panel" parent="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons"]
+layout_mode = 2
+
+[node name="HP" type="RichTextLabel" parent="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 28.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "HP"
+
+[node name="ProgressBar" type="ProgressBar" parent="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 60.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 7
+theme_override_styles/fill = SubResource("StyleBoxFlat_iytyv")
+fill_mode = 1
+
+[node name="Panel2" type="Panel" parent="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons"]
+layout_mode = 2
+
+[node name="Mana" type="RichTextLabel" parent="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 28.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Magic Points"
+autowrap_mode = 0
+
+[node name="TextureProgressBar" type="ProgressBar" parent="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 60.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 7
+theme_override_styles/fill = SubResource("StyleBoxFlat_skkny")
+fill_mode = 1
+
+[node name="ActionUI" type="Control" parent="BottomUiLayer/MainUI"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BottomUiLayer/MainUI/ActionUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="background" type="Panel" parent="BottomUiLayer/MainUI/ActionUI/VBoxContainer"]
+z_index = 1
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="Panel" type="Panel" parent="BottomUiLayer/MainUI/ActionUI/VBoxContainer/background"]
+custom_minimum_size = Vector2(150, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ajdv4")
+
+[node name="CharacterSprite" type="TextureRect" parent="BottomUiLayer/MainUI/ActionUI/VBoxContainer/background/Panel"]
+z_index = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -40.0
+offset_right = 50.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+localize_numeral_system = false
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Panel" type="Panel" parent="BottomUiLayer/MainUI/ActionUI/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.7
+
+[node name="DiolougeTextArea" type="RichTextLabel" parent="BottomUiLayer/MainUI/ActionUI/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DiolougeAdvanceButton" type="Button" parent="BottomUiLayer/MainUI/ActionUI/VBoxContainer/Panel/DiolougeTextArea"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -20.0
+offset_bottom = 15.0
+grow_horizontal = 0
+
+[node name="DiolougeChoices" type="Panel" parent="BottomUiLayer/MainUI/ActionUI/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BottomUiLayer/MainUI/ActionUI/VBoxContainer/DiolougeChoices"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="BottomUiLayer/MainUI/ActionUI/VBoxContainer/DiolougeChoices/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.33
+
+[node name="Button2" type="Button" parent="BottomUiLayer/MainUI/ActionUI/VBoxContainer/DiolougeChoices/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.33
+
+[node name="Button3" type="Button" parent="BottomUiLayer/MainUI/ActionUI/VBoxContainer/DiolougeChoices/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.33
+
+[node name="Control" type="Control" parent="BottomUiLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 765.0
+offset_bottom = 483.0
+
+[node name="LeftButton" type="Button" parent="BottomUiLayer/Control"]
+custom_minimum_size = Vector2(30, 100)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -4.0
+offset_right = 8.0
+offset_bottom = 4.0
+grow_vertical = 2
+
+[node name="RightButton" type="Button" parent="BottomUiLayer/Control"]
+custom_minimum_size = Vector2(30, 100)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -4.0
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="TopButton" type="Button" parent="BottomUiLayer/Control"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -4.0
+offset_right = 4.0
+offset_bottom = 8.0
+grow_horizontal = 2
+
+[node name="BottomButton" type="Button" parent="BottomUiLayer/Control"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -8.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[connection signal="button_down" from="PauseLayer/Panel/Menu" to="." method="_on_menu_button_down"]
+[connection signal="button_down" from="PauseLayer/Panel/Load" to="." method="_on_load_button_down"]
+[connection signal="pressed" from="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Party" to="." method="_on_party_pressed"]
+[connection signal="pressed" from="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Character" to="." method="_on_character_pressed"]
+[connection signal="pressed" from="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Inventory" to="." method="_on_inventory_pressed"]
+[connection signal="button_down" from="BottomUiLayer/MainUI/ActionUI/VBoxContainer/Panel/DiolougeTextArea/DiolougeAdvanceButton" to="." method="_on_diolouge_advance_button_button_down"]
+[connection signal="button_down" from="BottomUiLayer/Control/LeftButton" to="." method="_on_left_button_button_down"]
+[connection signal="button_down" from="BottomUiLayer/Control/RightButton" to="." method="_on_right_button_button_down"]
+[connection signal="button_down" from="BottomUiLayer/Control/TopButton" to="." method="_on_top_button_button_down"]
+[connection signal="button_down" from="BottomUiLayer/Control/BottomButton" to="." method="_on_bottom_button_button_down"]
