@@ -57,14 +57,14 @@ theme_override_font_sizes/font_size = 30
 text = "Empty"
 alignment = 1
 
-[node name="Button" type="Button" parent="HBoxContainer/Save1/CenterContainer/VBoxContainer"]
+[node name="Load1" type="Button" parent="HBoxContainer/Save1/CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_stretch_ratio = 0.1
 theme_override_font_sizes/font_size = 30
 text = "Load"
 
-[node name="Button2" type="Button" parent="HBoxContainer/Save1/CenterContainer/VBoxContainer"]
+[node name="Save1" type="Button" parent="HBoxContainer/Save1/CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
@@ -108,14 +108,14 @@ theme_override_font_sizes/font_size = 30
 text = "Empty"
 alignment = 1
 
-[node name="Button" type="Button" parent="HBoxContainer/Save2/CenterContainer/VBoxContainer"]
+[node name="Load2" type="Button" parent="HBoxContainer/Save2/CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_stretch_ratio = 0.1
 theme_override_font_sizes/font_size = 30
 text = "Load"
 
-[node name="Button2" type="Button" parent="HBoxContainer/Save2/CenterContainer/VBoxContainer"]
+[node name="Save2" type="Button" parent="HBoxContainer/Save2/CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
@@ -159,14 +159,14 @@ theme_override_font_sizes/font_size = 30
 text = "Empty"
 alignment = 1
 
-[node name="Button" type="Button" parent="HBoxContainer/Save3/CenterContainer/VBoxContainer"]
+[node name="Load3" type="Button" parent="HBoxContainer/Save3/CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_stretch_ratio = 0.1
 theme_override_font_sizes/font_size = 30
 text = "Load"
 
-[node name="Button2" type="Button" parent="HBoxContainer/Save3/CenterContainer/VBoxContainer"]
+[node name="Save3" type="Button" parent="HBoxContainer/Save3/CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
@@ -211,14 +211,14 @@ theme_override_font_sizes/font_size = 30
 text = "Empty"
 alignment = 1
 
-[node name="Button" type="Button" parent="HBoxContainer/Save4/CenterContainer/VBoxContainer"]
+[node name="Load4" type="Button" parent="HBoxContainer/Save4/CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_stretch_ratio = 0.1
 theme_override_font_sizes/font_size = 30
 text = "Load"
 
-[node name="Button2" type="Button" parent="HBoxContainer/Save4/CenterContainer/VBoxContainer"]
+[node name="Save4" type="Button" parent="HBoxContainer/Save4/CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
@@ -262,14 +262,14 @@ theme_override_font_sizes/font_size = 30
 text = "Empty"
 alignment = 1
 
-[node name="Button" type="Button" parent="HBoxContainer/Save5/CenterContainer/VBoxContainer"]
+[node name="Load5" type="Button" parent="HBoxContainer/Save5/CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_stretch_ratio = 0.1
 theme_override_font_sizes/font_size = 30
 text = "Load"
 
-[node name="Button2" type="Button" parent="HBoxContainer/Save5/CenterContainer/VBoxContainer"]
+[node name="Save5" type="Button" parent="HBoxContainer/Save5/CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
@@ -302,5 +302,15 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 20
 text = "Return"
 
+[connection signal="button_down" from="HBoxContainer/Save1/CenterContainer/VBoxContainer/Load1" to="." method="_on_load_1_button_down"]
+[connection signal="button_down" from="HBoxContainer/Save1/CenterContainer/VBoxContainer/Save1" to="." method="_on_save_1_button_down"]
+[connection signal="button_down" from="HBoxContainer/Save2/CenterContainer/VBoxContainer/Load2" to="." method="_on_load_2_button_down"]
+[connection signal="button_down" from="HBoxContainer/Save2/CenterContainer/VBoxContainer/Save2" to="." method="_on_save_2_button_down"]
+[connection signal="button_down" from="HBoxContainer/Save3/CenterContainer/VBoxContainer/Load3" to="." method="_on_load_3_button_down"]
+[connection signal="button_down" from="HBoxContainer/Save3/CenterContainer/VBoxContainer/Save3" to="." method="_on_save_3_button_down"]
+[connection signal="button_down" from="HBoxContainer/Save4/CenterContainer/VBoxContainer/Load4" to="." method="_on_load_4_button_down"]
+[connection signal="button_down" from="HBoxContainer/Save4/CenterContainer/VBoxContainer/Save4" to="." method="_on_save_4_button_down"]
+[connection signal="button_down" from="HBoxContainer/Save5/CenterContainer/VBoxContainer/Load5" to="." method="_on_load_5_button_down"]
+[connection signal="button_down" from="HBoxContainer/Save5/CenterContainer/VBoxContainer/Save5" to="." method="_on_save_5_button_down"]
 [connection signal="pressed" from="Panel/Menu" to="." method="_on_menu_pressed"]
 [connection signal="button_down" from="Panel/Return" to="." method="_on_return_button_down"]
