@@ -150,7 +150,35 @@ func Diolouge_Text_Outputter():
 			if !Globals.get_flag(required_flag):
 				Diolouge_Count += 1
 				Diolouge_Text_Outputter()
-				return
+				return			
+		# Handle type: "jump" entries
+		if current["type"] == "jump":
+			# Set flag if specified
+			if current.has("set_flag"):
+				var flag = current["set_flag"]
+				Globals.set_flag(flag)
+			var conditions = current.get("conditions", [])
+			var all_met := true
+			for cond in conditions:
+				if !Globals.evaluate_condition_string(cond):
+					all_met = false
+					break
+
+			if all_met:
+				var target_flag = current.get("jump", "")
+				var jump_index = flag_jump(Currently_Selected_Area, target_flag)
+				if jump_index != -1:
+					print("Jumping to:", target_flag)
+					Diolouge_Count = jump_index
+					Diolouge_Text_Outputter()
+					return
+				else:
+					print("Jump failed: Flag not found ->", target_flag)
+
+			# If jump not taken or failed, advance to next dialogue
+			Diolouge_Count += 1
+			Diolouge_Text_Outputter()
+			return
 
 		# Set flag if specified
 		if current.has("set_flag"):
@@ -159,9 +187,19 @@ func Diolouge_Text_Outputter():
 
 		# Handle text lines
 		if current["type"] == "text":
+			if current.has("condition"):
+				var condition_expr = current["condition"]
+				if !Globals.evaluate_condition_string(condition_expr):
+					Diolouge_Count += 1
+					Diolouge_Text_Outputter()
+					return
+			if current.has("set_flag"):
+				var flag = current["set_flag"]
+				Globals.set_flag(flag)
+				print("DEBUG: Set flag from text entry:", flag)
+
 			Diolouge_Text_Area.add_text(current["text"])
 			Diolouge_Text_Area.newline()
-			
 
 			if current.has("jump"):
 				var target_flag = current["jump"]
@@ -171,7 +209,8 @@ func Diolouge_Text_Outputter():
 					print("yaya")
 			else:
 				Diolouge_Count += 1
-			
+
+
 		# Handle choices
 		elif current["type"] == "choice":
 			show_choices(current["options"])

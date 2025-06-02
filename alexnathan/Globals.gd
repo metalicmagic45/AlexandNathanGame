@@ -30,4 +30,23 @@ func set_current_global_scene(scene : PackedScene) -> void:
 	Global_Current_Scene = scene
 func get_current_global_scene() -> PackedScene:
 	return Global_Current_Scene
+func evaluate_condition_string(expr: String) -> bool:
+	if expr.begins_with("!"):
+		var flag = expr.substr(1, expr.length())
+		return !Globals.get_flag(flag)
+	elif expr.begins_with("OR:"):
+		var parts = expr.substr(3).split(",", false)
+		for p in parts:
+			if Globals.get_flag(p.strip_edges()):
+				return true
+		return false
+	elif expr.begins_with("AND:"):
+		var parts = expr.substr(4).split(",", false)
+		for p in parts:
+			if !Globals.get_flag(p.strip_edges()):
+				return false
+		return true
+	else:
+		return Globals.get_flag(expr.strip_edges())
+
 	

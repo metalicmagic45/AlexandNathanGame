@@ -1,6 +1,12 @@
 extends Node
 var areaID = 0
 var Area1 = [
+	{
+		"type": "jump",
+		"conditions": ["OR:met_johnson,rejected_convo,asked_where_am_i"],
+		"jump": "conditionflag",
+		"set_flag": "jump1condtion"
+	},
 	"Johnson: Hello, how are you?",
 	"Kate: Doing great, thanks for asking.",
 	{
@@ -119,7 +125,13 @@ var Area1 = [
 	{
 		"type": "text",
 		"text": "I couldn't lift it.",
-		"condition": "STRCHECKZ1_fail"
+		"condition": "STRCHECKZ1_fail",
+	},
+	{
+		"type": "text",
+		"text": "You passed previous checks, so you reached this jump",
+		"flag": "conditionflag",
+		"condition": "jump1condtion"
 	}
 	
 		
