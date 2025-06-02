@@ -209,8 +209,8 @@ func Diolouge_Text_Outputter():
 					print("yaya")
 			else:
 				Diolouge_Count += 1
-
-
+		if current["type"] == "STOP":
+			return  # Do not advance, do not output, do nothing further		
 		# Handle choices
 		elif current["type"] == "choice":
 			show_choices(current["options"])

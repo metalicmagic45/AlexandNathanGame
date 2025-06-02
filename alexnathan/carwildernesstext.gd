@@ -128,6 +128,9 @@ var Area1 = [
 		"condition": "STRCHECKZ1_fail",
 	},
 	{
+		"type": "STOP"
+	},
+	{
 		"type": "text",
 		"text": "You passed previous checks, so you reached this jump",
 		"flag": "conditionflag",
