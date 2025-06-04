@@ -24,6 +24,7 @@ TextStorage="*res://Text_Storage.gd"
 Globals="*res://Globals.gd"
 Skillcheck="*res://skillcheck.gd"
 SaveState="*res://save_state.gd"
+Npcs="*res://NPCs.gd"
 
 [display]
 

@@ -18,6 +18,8 @@ extends Node2D
 @onready var right_button = $BottomUiLayer/Control/RightButton
 @onready var left_button = $BottomUiLayer/Control/LeftButton
 @onready var dicelabel = $BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/VBoxContainer/Dicelabel
+var area_context_stack: Array = []
+
 
 
 
@@ -102,6 +104,15 @@ func reset_dialogue():
 		Diolouge_Choice_Toggle = true
 	else:
 		Diolouge_Choice_Toggle = false
+func push_area_context():
+	area_context_stack.push_back({"area": Currently_Selected_Area, "index": Diolouge_Count + 1 })
+
+func pop_area_context():
+	if area_context_stack.size() > 0:
+		var ctx = area_context_stack.pop_back()
+		Currently_Selected_Area = ctx["area"]
+		Diolouge_Count = ctx["index"]
+
 
 ########################################################################################
 ################################Diolouge Function#######################################
@@ -143,6 +154,23 @@ func Diolouge_Text_Outputter():
 	
 	# Handle dictionary lines
 	if typeof(current) == TYPE_DICTIONARY:
+		# Handle NPC dialogues
+		if current["type"] == "NPC":
+			var npc_name = current.get("character", "")
+			if Npcs.NPCs.has(npc_name):
+				# Save current context
+				push_area_context()
+				# Switch to NPC dialogue
+				Currently_Selected_Area = Npcs.NPCs[npc_name].char_dialogue
+				Diolouge_Count = 0
+				Diolouge_Text_Outputter()
+				return
+			else:
+				print("NPC not found:", npc_name)
+				Diolouge_Count += 1
+				Diolouge_Text_Outputter()
+				return
+
 		# Skip line if condition isn't met
 		if current.has("condition"):
 			var required_flag = current["condition"]
@@ -210,7 +238,14 @@ func Diolouge_Text_Outputter():
 			else:
 				Diolouge_Count += 1
 		if current["type"] == "STOP":
-			return  # Do not advance, do not output, do nothing further		
+			if area_context_stack.size() > 0:
+				print("Returning from NPC dialogue.")
+				pop_area_context()
+				Diolouge_Text_Outputter()
+			else:
+				print("End of main dialogue.")
+			return
+
 		# Handle choices
 		elif current["type"] == "choice":
 			show_choices(current["options"])
@@ -277,18 +312,33 @@ func flag_jump(dialogue_array: Array, target_flag: String) -> int:
 	return -1
 
 func show_choices(options: Array):
-	Choice1.text = options[0]["text"]
-	Choice2.text = options[1]["text"]
-	Choice3.text = options[2]["text"]
+	clear_choices()  # Optional: clear buttons first
 
-	# Enable and connect to full options
-	Choice1.disabled = false
-	Choice2.disabled = false
-	Choice3.disabled = false
+	# Disable all choices by default
+	Choice1.visible = false
+	Choice2.visible = false
+	Choice3.visible = false
 
-	Choice1.pressed.connect(func(): handle_choice(options[0]))
-	Choice2.pressed.connect(func(): handle_choice(options[1]))
-	Choice3.pressed.connect(func(): handle_choice(options[2]))
+	# Option 1
+	if options.size() > 0:
+		Choice1.text = options[0]["text"]
+		Choice1.disabled = false
+		Choice1.visible = true
+		Choice1.pressed.connect(func(): handle_choice(options[0]))
+
+	# Option 2
+	if options.size() > 1:
+		Choice2.text = options[1]["text"]
+		Choice2.disabled = false
+		Choice2.visible = true
+		Choice2.pressed.connect(func(): handle_choice(options[1]))
+
+	# Option 3
+	if options.size() > 2:
+		Choice3.text = options[2]["text"]
+		Choice3.disabled = false
+		Choice3.visible = true
+		Choice3.pressed.connect(func(): handle_choice(options[2]))
 
 
 func handle_choice(option: Dictionary):
