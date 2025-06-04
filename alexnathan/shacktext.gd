@@ -20,6 +20,7 @@ var dialogue = [
 		"character": "Bob",
 		"flag": "Talkflag",
 	},
+	"That was a short convo",
 	{
 		"type": "STOP"
 	},

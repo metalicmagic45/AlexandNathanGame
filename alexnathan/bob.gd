@@ -3,5 +3,8 @@ extends Node
 
 var char_dialogue = [
 	"hello",
-	"Goodbye"
+	"Goodbye",
+	{
+		"type": "STOP"
+	}
 ]
