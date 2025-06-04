@@ -21,8 +21,6 @@ extends Node2D
 var area_context_stack: Array = []
 
 
-
-
 #Stores currently selected character for set_portrait(), ran in _ready()
 var character_name = Playerdata.CurrentCharacter
 
