@@ -108,8 +108,17 @@ func _ready() -> void:
 		"range": "1",
 		"cost": "1"	
 	}
-	
-	#items[""] = {
-		#"name": "",
-		#"sprite": preload("res://Pictures/"),		
-	#}
+	items["MagicSword"] = {
+		"name": "Mysterious Sword",
+		"sprite": preload("res://Pictures/MagicSword.png"),
+		"type": "MagicItem",
+		"Active": "This sword has the capabilities to seal the unatural.",
+		"Passive": "Deals double damage and ignores armor from the unatural."
+	}
+	items["MagicRing"] = {
+		"name": "Mysterious Ring",
+		"sprite": preload("res://Pictures/MagicRing.png"),
+		"type": "MagicItem",
+		"Active": "Ring has the ability to shield from basic unatural effects.",
+		"Passive": "5% Boost to POW checks"
+	}

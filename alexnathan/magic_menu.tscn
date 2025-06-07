@@ -1,0 +1,168 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2gl1evrf7lqp"]
+
+[ext_resource type="Script" path="res://magic_menu.gd" id="1_h1bvt"]
+
+[node name="MagicMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h1bvt")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ContainerBase" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemControl" type="Control" parent="Panel/ContainerBase"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ContainerBase/ItemControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemDisplayControl" type="Control" parent="Panel/ContainerBase/ItemControl/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.8
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel/ContainerBase/ItemControl/VBoxContainer/ItemDisplayControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Panel/ContainerBase/ItemControl/VBoxContainer/ItemDisplayControl/CenterContainer"]
+custom_minimum_size = Vector2(300, 250)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel/ContainerBase/ItemControl/VBoxContainer/ItemDisplayControl/CenterContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MagicItemDisplay" type="TextureRect" parent="Panel/ContainerBase/ItemControl/VBoxContainer/ItemDisplayControl/CenterContainer/Panel/CenterContainer"]
+custom_minimum_size = Vector2(250, 200)
+layout_mode = 2
+expand_mode = 5
+stretch_mode = 5
+
+[node name="ItemInfoControl" type="Control" parent="Panel/ContainerBase/ItemControl/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel/ContainerBase/ItemControl/VBoxContainer/ItemInfoControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Panel/ContainerBase/ItemControl/VBoxContainer/ItemInfoControl/CenterContainer"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel/ContainerBase/ItemControl/VBoxContainer/ItemInfoControl/CenterContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemList" type="ItemList" parent="Panel/ContainerBase/ItemControl/VBoxContainer/ItemInfoControl/CenterContainer/Panel/CenterContainer"]
+custom_minimum_size = Vector2(250, 275)
+layout_mode = 2
+
+[node name="ItemDataControl" type="Control" parent="Panel/ContainerBase"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ContainerBase/ItemDataControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Active" type="Control" parent="Panel/ContainerBase/ItemDataControl/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel/ContainerBase/ItemDataControl/VBoxContainer/Active"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Panel/ContainerBase/ItemDataControl/VBoxContainer/Active/CenterContainer"]
+custom_minimum_size = Vector2(700, 300)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel/ContainerBase/ItemDataControl/VBoxContainer/Active/CenterContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/ContainerBase/ItemDataControl/VBoxContainer/Active/CenterContainer/Panel/CenterContainer"]
+custom_minimum_size = Vector2(600, 250)
+layout_mode = 2
+
+[node name="Passive" type="Control" parent="Panel/ContainerBase/ItemDataControl/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel/ContainerBase/ItemDataControl/VBoxContainer/Passive"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Panel/ContainerBase/ItemDataControl/VBoxContainer/Passive/CenterContainer"]
+custom_minimum_size = Vector2(700, 300)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel/ContainerBase/ItemDataControl/VBoxContainer/Passive/CenterContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/ContainerBase/ItemDataControl/VBoxContainer/Passive/CenterContainer/Panel/CenterContainer"]
+custom_minimum_size = Vector2(600, 250)
+layout_mode = 2
