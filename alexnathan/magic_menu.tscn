@@ -146,6 +146,17 @@ grow_vertical = 2
 custom_minimum_size = Vector2(600, 250)
 layout_mode = 2
 
+[node name="Label" type="Label" parent="Panel/ContainerBase/ItemDataControl/VBoxContainer/Active/CenterContainer/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Active Ability"
+
 [node name="Passive" type="Control" parent="Panel/ContainerBase/ItemDataControl/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -174,5 +185,17 @@ grow_vertical = 2
 custom_minimum_size = Vector2(600, 250)
 layout_mode = 2
 
+[node name="Label" type="Label" parent="Panel/ContainerBase/ItemDataControl/VBoxContainer/Passive/CenterContainer/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Passive Ability"
+
 [connection signal="pressed" from="Panel/ContainerBase/ItemControl/VBoxContainer/ItemDisplayControl/CenterContainer/Panel/Deslected" to="." method="_on_deslected_pressed"]
 [connection signal="item_clicked" from="Panel/ContainerBase/ItemControl/VBoxContainer/ItemInfoControl/CenterContainer/Panel/CenterContainer/ItemList" to="." method="_on_item_list_item_clicked"]
+[connection signal="item_selected" from="Panel/ContainerBase/ItemControl/VBoxContainer/ItemInfoControl/CenterContainer/Panel/CenterContainer/ItemList" to="." method="_on_item_list_item_selected"]
