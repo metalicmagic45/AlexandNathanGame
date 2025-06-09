@@ -2,9 +2,9 @@ extends Node
 
 var player_inventories = {
 	"Johnson": ["colt1911", "HIPower", "berettaM9", "Glock17", "m14", "axe"],
-	"Tyler": [],
+	"Tyler": ["MagicRing"],
 	"Anna": ["axe"],
-	"Kate": []
+	"Kate": ["MagicSword"]
 	}
 func get_inventory(player_name: String) -> Array:
 	return player_inventories[player_name]  # NOT .duplicate()
@@ -22,4 +22,13 @@ func print_inventory(inventory : Array) -> void:
 	for i in range(inventory.size()):
 		print(inventory[i])
 	return
+func get_magic_items() -> Array:
+	var magic_items = []
+	for player_name in player_inventories.keys():
+		var inventory = player_inventories[player_name]
+		for item_name in inventory:
+			if ItemDatabase.items.has(item_name) and ItemDatabase.items[item_name].get("type", "") == "MagicItem":
+				magic_items.append(item_name)
+	return magic_items
+
 	

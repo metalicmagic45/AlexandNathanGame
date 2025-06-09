@@ -71,6 +71,13 @@ layout_mode = 2
 expand_mode = 5
 stretch_mode = 5
 
+[node name="Deslected" type="Button" parent="Panel/ContainerBase/ItemControl/VBoxContainer/ItemDisplayControl/CenterContainer/Panel"]
+custom_minimum_size = Vector2(30, 20)
+layout_mode = 1
+offset_right = 74.0
+offset_bottom = 31.0
+text = "Deselect"
+
 [node name="ItemInfoControl" type="Control" parent="Panel/ContainerBase/ItemControl/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -166,3 +173,6 @@ grow_vertical = 2
 [node name="RichTextLabel" type="RichTextLabel" parent="Panel/ContainerBase/ItemDataControl/VBoxContainer/Passive/CenterContainer/Panel/CenterContainer"]
 custom_minimum_size = Vector2(600, 250)
 layout_mode = 2
+
+[connection signal="pressed" from="Panel/ContainerBase/ItemControl/VBoxContainer/ItemDisplayControl/CenterContainer/Panel/Deslected" to="." method="_on_deslected_pressed"]
+[connection signal="item_clicked" from="Panel/ContainerBase/ItemControl/VBoxContainer/ItemInfoControl/CenterContainer/Panel/CenterContainer/ItemList" to="." method="_on_item_list_item_clicked"]
