@@ -4,9 +4,13 @@ var choice_flags = {}
 var Global_Diolouge_Count = 0
 #Current game area corisponding to its "Gameplay_Area_Selecter" index number
 var Global_Current_Area = 0
+var current_magic_index = -1
 
 var Global_Current_Scene : PackedScene = load("res://CarWilderness.tscn")
-
+func get_current_magic_index():
+	return current_magic_index
+func set_current_magic_index(index : int):
+	current_magic_index = index
 func set_flag(name: String) -> void:
 	print("Flag set:", name)
 	choice_flags[name] = true

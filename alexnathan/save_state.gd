@@ -13,6 +13,7 @@ func save_game(slot: int, save_name : String) -> void:
 		"dialogue_count": Globals.Global_Diolouge_Count,
 		"current_area": Globals.Global_Current_Area,
 		"current_scene": Globals.Global_Current_Scene.resource_path,
+		"current_magic_item": Globals.current_magic_index,
 		"save_name": save_name,
 	}
 	var path = get_save_path(slot)
@@ -50,6 +51,7 @@ func load_game(slot: int) -> void:
 	Globals.Global_Diolouge_Count = result["dialogue_count"]
 	Globals.Global_Current_Area = result["current_area"]
 	Globals.Global_Current_Scene = load(result["current_scene"])
+	Globals.set_current_magic_index(result["current_magic_item"])
 	
 	print("Loaded game from slot", slot)
 

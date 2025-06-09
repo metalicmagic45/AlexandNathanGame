@@ -35,8 +35,8 @@ func _input(event):
 		get_tree().change_scene_to_file("res://party_ui.tscn")
 	if event.is_action_pressed("ToggleChar"):
 		get_tree().change_scene_to_file("res://character_ui.tscn")
-		
-
+	if event.is_action_pressed("ToggleMagic"):
+		get_tree().change_scene_to_file("res://magic_menu.tscn")
 	if event.is_action_pressed("DiolougeAdvance") and !Diolouge_Choice_Toggle:
 		clear_choices()
 		Diolouge_Text_Outputter()

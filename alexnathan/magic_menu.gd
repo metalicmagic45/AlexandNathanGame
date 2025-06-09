@@ -5,10 +5,16 @@ extends Control
 @onready var ActiveAbilityText = $Panel/ContainerBase/ItemDataControl/VBoxContainer/Active/CenterContainer/Panel/CenterContainer/RichTextLabel
 @onready var PassiveAbilityText = $Panel/ContainerBase/ItemDataControl/VBoxContainer/Passive/CenterContainer/Panel/CenterContainer/RichTextLabel
 @onready var deslect = $Panel/ContainerBase/ItemControl/VBoxContainer/ItemDisplayControl/CenterContainer/Panel/Deslected
-var current_index = null
+var current_index = Globals.get_current_magic_index()
 # Called when the node enters the scene tree for the first time.
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ToggleMagic"):
+		get_tree().change_scene_to_file("res://MasterScene.tscn")
 func _ready() -> void:
 	populate_list()
+	if current_index >= 0:
+		Itemlist.select(current_index)
+		_on_item_list_item_selected(current_index)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -26,17 +32,17 @@ func _on_item_list_item_selected(index: int) -> void:
 			ActiveAbilityText.text = ItemDatabase.items[item_name]["Active"]
 			PassiveAbilityText.text = ItemDatabase.items[item_name]["Passive"]
 			current_index = index
-
-
+			Globals.set_current_magic_index(current_index)
 func _on_deslected_pressed() -> void:
-	if current_index == null:
+	if current_index == -1:
 		deslect.release_focus()
 		return
 	magicrect.texture = null
 	ActiveAbilityText.text = ""
 	PassiveAbilityText.text = ""
 	Itemlist.deselect(current_index)
-	current_index = null
+	current_index = -1
+	Globals.set_current_magic_index(current_index)
 	deslect.release_focus()  
 func _on_item_list_item_clicked(index: int, at_position: Vector2, mouse_button_index: int) -> void:
 	if mouse_button_index == MOUSE_BUTTON_LEFT:
@@ -46,3 +52,4 @@ func _on_item_list_item_clicked(index: int, at_position: Vector2, mouse_button_i
 			ActiveAbilityText.text = ItemDatabase.items[item_name]["Active"]
 			PassiveAbilityText.text = ItemDatabase.items[item_name]["Passive"]
 			current_index = index
+			Globals.set_current_magic_index(current_index)
