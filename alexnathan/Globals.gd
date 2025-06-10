@@ -8,18 +8,15 @@ var current_magic_index = -1
 var current_magic_item = null
 
 var Global_Current_Scene : PackedScene = load("res://CarWilderness.tscn")
-<<<<<<< HEAD
 #Stores current charcters and allows for any script to reset it
 var Global_Current_Characters = []
 #Allows for images to be updated using a string to key the correct path
 var current_characters_images = {"Jhonson" : preload("res://Pictures/JhonsonPortrait.png"), 
 "Kate" : preload("res://Pictures/KatePortrait.png"), 
 "Tyler" : preload("res://Pictures/TylerPortrait.png"), 
-"Anna" : preload("res://Pictures/AnnaPortrait.png"),
+"Anna" : preload("res://Pictures/AnnaPortrait.png"), 
 }
 
-
-=======
 func get_current_magic_item():
 	return current_magic_item
 func set_current_magic_item(item):
@@ -28,7 +25,6 @@ func get_current_magic_index():
 	return current_magic_index
 func set_current_magic_index(index : int):
 	current_magic_index = index
->>>>>>> 3bd25d42a8e960d3124842e6ac81437b123d2c15
 func set_flag(name: String) -> void:
 	print("Flag set:", name)
 	choice_flags[name] = true
