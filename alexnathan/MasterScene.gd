@@ -495,3 +495,7 @@ func _on_left_button_button_down() -> void:
 		switch_game_scene(current_scene_instance.get_left())
 func _on_load_button_down() -> void:
 	get_tree().change_scene_to_file("res://load.tscn")
+
+
+func _on_magic_button_down() -> void:
+	get_tree().change_scene_to_file("res://magic_menu.tscn")

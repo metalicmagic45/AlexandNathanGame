@@ -421,6 +421,7 @@ flip_v = true
 [connection signal="pressed" from="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Party" to="." method="_on_party_pressed"]
 [connection signal="pressed" from="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Character" to="." method="_on_character_pressed"]
 [connection signal="pressed" from="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Inventory" to="." method="_on_inventory_pressed"]
+[connection signal="button_down" from="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Magic" to="." method="_on_magic_button_down"]
 [connection signal="button_down" from="BottomUiLayer/MainUI/ActionUI/VBoxContainer/Panel/DiolougeTextArea/DiolougeAdvanceButton" to="." method="_on_diolouge_advance_button_button_down"]
 [connection signal="button_down" from="BottomUiLayer/Control/LeftButton" to="." method="_on_left_button_button_down"]
 [connection signal="button_down" from="BottomUiLayer/Control/RightButton" to="." method="_on_right_button_button_down"]
