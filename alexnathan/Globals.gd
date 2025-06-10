@@ -6,6 +6,15 @@ var Global_Diolouge_Count = 0
 var Global_Current_Area = 0
 
 var Global_Current_Scene : PackedScene = load("res://CarWilderness.tscn")
+#Stores current charcters and allows for any script to reset it
+var Global_Current_Characters = []
+#Allows for images to be updated using a string to key the correct path
+var current_characters_images = {"Jhonson" : preload("res://Pictures/JhonsonPortrait.png"), 
+"Kate" : preload("res://Pictures/KatePortrait.png"), 
+"Tyler" : preload("res://Pictures/TylerPortrait.png"), 
+"Anna" : preload("res://Pictures/AnnaPortrait.png"),
+}
+
 
 func set_flag(name: String) -> void:
 	print("Flag set:", name)

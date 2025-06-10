@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bmbybi2a4c8lc"]
+[gd_scene load_steps=7 format=3 uid="uid://bmbybi2a4c8lc"]
 
 [ext_resource type="Script" path="res://MasterScene.gd" id="1_en6xd"]
+[ext_resource type="Texture2D" uid="uid://by3oht3nlx1aj" path="res://Pictures/JhonsonPortrait.png" id="2_ieuvi"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_snouo"]
 
@@ -369,8 +370,8 @@ grow_vertical = 2
 scale = Vector2(3.75015, -6.63457)
 
 [node name="Character1Texture" type="TextureRect" parent="Character Display/Control/Character 1"]
-visible = false
 layout_mode = 2
+texture = ExtResource("2_ieuvi")
 expand_mode = 1
 flip_v = true
 
@@ -383,10 +384,7 @@ offset_bottom = 526.0
 scale = Vector2(3.62629, -6.80598)
 
 [node name="Character2Texture" type="TextureRect" parent="Character Display/Control/Character 2"]
-visible = false
 layout_mode = 2
-expand_mode = 1
-flip_v = true
 
 [node name="Character 3" type="PanelContainer" parent="Character Display/Control"]
 layout_mode = 2
@@ -397,10 +395,7 @@ offset_bottom = 529.0
 scale = Vector2(3.40363, -6.87199)
 
 [node name="Character3Texture" type="TextureRect" parent="Character Display/Control/Character 3"]
-visible = false
 layout_mode = 2
-expand_mode = 1
-flip_v = true
 
 [node name="Character 4" type="PanelContainer" parent="Character Display/Control"]
 layout_mode = 2
@@ -411,10 +406,7 @@ offset_bottom = 525.0
 scale = Vector2(3.36403, -6.8899)
 
 [node name="Character4Texture" type="TextureRect" parent="Character Display/Control/Character 4"]
-visible = false
 layout_mode = 2
-expand_mode = 1
-flip_v = true
 
 [connection signal="button_down" from="PauseLayer/Panel/Menu" to="." method="_on_menu_button_down"]
 [connection signal="button_down" from="PauseLayer/Panel/Load" to="." method="_on_load_button_down"]

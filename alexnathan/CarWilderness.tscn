@@ -11,6 +11,13 @@ script/source = "extends Control
 @onready var CarwildernessScript = load(\"res://carwildernesstext.gd\").new()
 @onready var areaID = CarwildernessScript.areaID
 
+
+#Updates the currently selected characters when the scene is loaded
+var car_wilderness_starting_characters = [\"Jhonson\", \"Kate\", \"Tyler\", \"Anna\"]
+func _ready():
+	Globals.Global_Current_Characters = car_wilderness_starting_characters
+	#print(\"Global current characters updated\")
+
 func get_ID():
 	return areaID
 

@@ -1,5 +1,7 @@
 extends Node
 var areaID = 0
+		
+	
 var Area1 = [
 	{
 		"type": "jump",
@@ -15,17 +17,20 @@ var Area1 = [
 			{
 				"text": "I'm good!",
 				"jump": "flag1",
-				"set_flag": "met_johnson"
+				"set_flag": "met_johnson",
+				"talking" : "Anna",
 			},
 			{
 				"text": "Leave me alone.",
 				"jump": "flag2",
-				"set_flag": "rejected_convo"
+				"set_flag": "rejected_convo",
+				"talking" : "Kate",
 			},
 			{
 				"text": "Where am I?",
 				"jump": "flag3",
-				"set_flag": "asked_where_am_i"
+				"set_flag": "asked_where_am_i",
+				"talking" : "Tyler",
 			}
 		]
 	},
@@ -33,20 +38,23 @@ var Area1 = [
 		"type": "text",
 		"text": "Johnson: Glad to hear it.",
 		"jump": "flag4",
-		"flag": "flag1"
+		"flag": "flag1",
+		"talking" : "Jhonson",
 	},
 	{ #index 4
 		"type": "text",
 		"text": "Johnson: Oh... okay then.",
 		"jump": "flag4",
-		"flag": "flag2"
+		"flag": "flag2",
+		"talking" : "Jhonson",
 	},
 	{ #index 5
 		"type": "text",
 		"text": "Johnson: You're in the wilderness.",
 		"condition": "asked_where_am_i",
 		"jump": "flag4",
-		"flag": "flag3"
+		"flag": "flag3",
+		"talking" : "Jhonson",
 	},
 	{ #index 6
 		"type": "text",

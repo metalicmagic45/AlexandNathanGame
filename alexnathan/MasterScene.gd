@@ -18,6 +18,11 @@ extends Node2D
 @onready var right_button = $BottomUiLayer/Control/RightButton
 @onready var left_button = $BottomUiLayer/Control/LeftButton
 @onready var dicelabel = $BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/VBoxContainer/Dicelabel
+@onready var Character1Texture = get_node("Character Display/Control/Character 1/Character1Texture")
+@onready var Character2Texture = get_node("Character Display/Control/Character 2/Character2Texture")
+@onready var Character3Texture = get_node("Character Display/Control/Character 3/Character3Texture")
+@onready var Character4Texture = get_node("Character Display/Control/Character 4/Character4Texture")
+
 var area_context_stack: Array = []
 
 
@@ -168,6 +173,18 @@ func Diolouge_Text_Outputter():
 				Diolouge_Count += 1
 				Diolouge_Text_Outputter()
 				return
+				
+		#Load and remove characters
+		#Toggle opacity for currently talking charaacters
+		#May be in multiple places, in handle_choices() and here
+		if current.has("talking"):
+			Character1Texture.visible = false
+			Character2Texture.visible = false
+			Character3Texture.visible = false
+			Character4Texture.visible = false
+			#print("Talking has been called, ", option.get("talking", ""))
+			#Based on who is talking, there current image will be toggled on
+			current_characters_texture[current.get("talking")].visible = true
 
 		# Skip line if condition isn't met
 		if current.has("condition"):
@@ -343,6 +360,16 @@ func handle_choice(option: Dictionary):
 	if option.has("set_flag"):
 		Globals.set_flag(option["set_flag"])
 		print("DEBUG: Flag set ->", option["set_flag"])
+	
+	#Toggles visability based on who is talking
+	if option.has("talking"):
+			Character1Texture.visible = false
+			Character2Texture.visible = false
+			Character3Texture.visible = false
+			Character4Texture.visible = false
+			#print("Talking has been called, ", option.get("talking", ""))
+			#Based on who is talking, there current image will be toggled on
+			current_characters_texture[option.get("talking")].visible = true
 
 	if option.has("jump"):
 		var target_flag = option["jump"]
@@ -354,6 +381,7 @@ func handle_choice(option: Dictionary):
 	else:
 		Diolouge_Count += 1
 	Diolouge_Choice_Toggle = false
+	
 func clear_choices():
 	for button in [Choice1, Choice2, Choice3]:
 		button.text = ""
@@ -382,7 +410,48 @@ func hide_buttons() -> void:
 	else:
 		left_button.visible = false
 ########################################################################################
+################################Character Rendering#####################################
+var current_characters = []#cureent scenes starting characters
+#Global dictonary that stores all the images in, res://CarWilderness.tscn::GDScript_j4bmp
+var current_characters_images = Globals.current_characters_images
+#Dict that stores the characters fromcurrent characters as the keys for their corosponding CharacterTexture
+var current_characters_texture = {}
 
+
+func update_current_characters():
+	#Changes current list of characters based on witch scene is loaded when its loaded, also stored in res://CarWilderness.tscn::GDScript_j4bmp
+	current_characters = Globals.Global_Current_Characters
+	print("Current Character: ", current_characters)
+	#print( current_characters_images[current_characters[0]], current_characters_images[current_characters[1]], current_characters_images[current_characters[2]], current_characters_images[current_characters[3]])
+	
+	#Updates the images
+	Character1Texture.texture = current_characters_images[current_characters[0]]
+	Character2Texture.texture = current_characters_images[current_characters[1]]
+	Character3Texture.texture = current_characters_images[current_characters[2]]
+	Character4Texture.texture = current_characters_images[current_characters[3]]
+	
+	#Links the Current Characters to their corosponding TextureRect
+	current_characters_texture = {
+		str(current_characters[0]) : Character1Texture,
+		str(current_characters[1]) : Character2Texture,
+		str(current_characters[2]) : Character3Texture,
+		str(current_characters[3]) : Character4Texture,
+	}
+	#print(current_characters_texture)
+	
+#Change images of characters based on witch characters are currently selected both at start of loading the scene, based on the scene, and dynamicly when doing diolouge
+#Create a variable in master scene that stores who the current characters are that gets updated when laoding a new scene and when that get changed through diolouge
+	#current_characters = [], update inside the change scene function, have the defualt character listed in each zone script
+#Then Update the nodes to the current_characters
+#When dilouge accurs, it reads the character key and gets the name witch is used to update the opacity to show whos talking
+#Characters can be removed or added from a key in the diolouge
+
+#Global current_characters variabl is establised in Globals.gd
+#Global varriable is updated when new zone is loaded, ex; in car wilderness attached script
+#Current characters in master scnene is then updated inside the load scene function
+#Then all the images are updated based on the currently selected characters
+#And then all characters are assigned to their corosponding TextureRect
+#Portraits are being shown again even for the skills checks because "connect" inside show_choices adds fuconalaties instead of overiting them
 ########################################################################################
 ############################Change Scene Function#######################################
 func _process(delta: float) -> void:
@@ -394,16 +463,18 @@ var current_scene_instance: Node = null
 var current_scene_packed_scene: PackedScene = null
 
 func switch_game_scene(scene: PackedScene) -> void:
+	
 	var window = $BottomUiLayer/MainUI/VBoxContainer/Window
-	var s = scene.instantiate()
-
 	for child in window.get_children():
 		child.queue_free()
+	var s = scene.instantiate()
+
 
 	current_scene_instance = s
 	current_scene_packed_scene = scene  # ✅ store PackedScene
 	window.add_child(s)
-
+	
+	update_current_characters()
 	set_current_area()
 	reset_dialogue()
 
