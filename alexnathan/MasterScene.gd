@@ -326,41 +326,62 @@ func flag_jump(dialogue_array: Array, target_flag: String) -> int:
 			print("yay")
 	return -1
 
+var current_dictonary = Currently_Selected_Area[Diolouge_Count]
+func Choice1_Handler():
+	#var options = current_dictonary["options"]
+	handle_choice(current_dictonary["options"][0])
+	#print("This is the current dictonary", current_dictonary)
+func Choice2_Handler():
+	#var options = current_dictonary["options"]
+	handle_choice(current_dictonary["options"][1])
+func Choice3_Handler():
+	#var options = current_dictonary["options"]
+	handle_choice(current_dictonary["options"][2])
+
 func show_choices(options: Array):
+	
 	clear_choices()  # Optional: clear buttons first
+	current_dictonary = Currently_Selected_Area[Diolouge_Count]
 
-	# Disable all choices by default
-	Choice1.visible = false
-	Choice2.visible = false
-	Choice3.visible = false
-
+	# Enable and connect to full options
+	Choice1.disabled = false
+	Choice2.disabled = false
+	Choice3.disabled = false
+	
+	if Choice1.pressed.is_connected(Callable(self, "Choice1_Handler")):
+		#print("connection detected")
+		Choice1.pressed.disconnect(Callable(self, "Choice1_Handler"))
+		Choice2.pressed.disconnect(Callable(self, "Choice2_Handler"))
+		Choice3.pressed.disconnect(Callable(self, "Choice3_Handler"))
+			
+	
 	# Option 1
 	if options.size() > 0:
 		Choice1.text = options[0]["text"]
 		Choice1.disabled = false
 		Choice1.visible = true
-		Choice1.pressed.connect(func(): handle_choice(options[0]))
+		Choice1.pressed.connect(Callable(self, "Choice1_Handler"))
 
 	# Option 2
 	if options.size() > 1:
 		Choice2.text = options[1]["text"]
 		Choice2.disabled = false
 		Choice2.visible = true
-		Choice2.pressed.connect(func(): handle_choice(options[1]))
+		Choice2.pressed.connect(Callable(self, "Choice2_Handler"))
 
 	# Option 3
 	if options.size() > 2:
 		Choice3.text = options[2]["text"]
 		Choice3.disabled = false
 		Choice3.visible = true
-		Choice3.pressed.connect(func(): handle_choice(options[2]))
+		Choice3.pressed.connect(Callable(self, "Choice3_Handler"))
 
 
 func handle_choice(option: Dictionary):
 	if option.has("set_flag"):
 		Globals.set_flag(option["set_flag"])
 		print("DEBUG: Flag set ->", option["set_flag"])
-	
+	var turn = 0
 	#Toggles visability based on who is talking
 	if option.has("talking"):
 			Character1Texture.visible = false
@@ -370,6 +391,7 @@ func handle_choice(option: Dictionary):
 			#print("Talking has been called, ", option.get("talking", ""))
 			#Based on who is talking, there current image will be toggled on
 			current_characters_texture[option.get("talking")].visible = true
+			
 
 	if option.has("jump"):
 		var target_flag = option["jump"]
