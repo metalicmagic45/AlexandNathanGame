@@ -1,7 +1,13 @@
 extends Node2D
 
+#Pause menu nodes
+#Must preload the scene with the UI element, instaniate it (witch creates a malluable copy), then add it as a child
 @onready var PauseLayer = $PauseLayer
 @onready var PausePanel = $PauseLayer/Panel
+@onready var PauseLayerBackground = get_node("PauseLayer/PauseLayerBackground")
+@onready var Menu_Actions = get_node("PauseLayer/Panel/HBoxContainer/Control2/CenterContainer/Control")
+@onready var Settings = preload("res://Settings.tscn")
+
 @onready var Portrait: TextureRect = $BottomUiLayer/MainUI/ActionUI/VBoxContainer/background/Panel/CharacterSprite
 @onready var HPLabel = $BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Panel/HP
 @onready var MPLabel = $BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Panel2/Mana
@@ -22,6 +28,7 @@ extends Node2D
 @onready var Character2Texture = get_node("Character Display/Control/Character 2/Character2Texture")
 @onready var Character3Texture = get_node("Character Display/Control/Character 3/Character3Texture")
 @onready var Character4Texture = get_node("Character Display/Control/Character 4/Character4Texture")
+
 
 var area_context_stack: Array = []
 
@@ -47,8 +54,6 @@ func _input(event):
 		Diolouge_Text_Outputter()
 
 	
-func toggle_pause_menu():
-	PausePanel.visible = !PausePanel.visible
 func reset_portrait():
 	for child in Portrait.get_children():
 		child.queue_free()
@@ -81,9 +86,34 @@ func _ready():
 	Diolouge_Count = Globals.get_diologue_global()
 	Current_Area = Globals.get_area_global()
 	set_portrait(character_name)
+	
+#########################################################################
+#########################Pause Menu#####################################
+var pause_layer_elements = 1
 
+func toggle_pause_menu():
+	PauseLayer.visible = !PauseLayer.visible
+	PauseLayerBackground.visible = !PauseLayerBackground.visible
+
+func _on_save_button_down() -> void:
+	pass # Replace with function body.	
+	
+func _on_load_button_down() -> void:
+	get_tree().change_scene_to_file("res://load.tscn")	
+	
+func _on_settings_button_down() -> void:
+	var setting = Settings.instantiate()
+	
+	for child in Menu_Actions.get_children():
+		child.queue_free()
+	Menu_Actions.add_child(setting)
+	for child in Menu_Actions.get_children():
+		print(1035)
+	
 func _on_menu_button_down() -> void:
 	get_tree().change_scene_to_file("res://Main.tscn")
+	
+#########################################################################
 
 func _on_inventory_pressed() -> void:
 	get_tree().change_scene_to_file("res://inventory_ui.tscn")
@@ -323,7 +353,6 @@ func flag_jump(dialogue_array: Array, target_flag: String) -> int:
 		var entry = dialogue_array[i]
 		if typeof(entry) == TYPE_DICTIONARY and entry.has("flag") and entry["flag"] == target_flag:
 			return i
-			print("yay")
 	return -1
 
 var current_dictonary = Currently_Selected_Area[Diolouge_Count]
@@ -473,7 +502,6 @@ func update_current_characters():
 #Current characters in master scnene is then updated inside the load scene function
 #Then all the images are updated based on the currently selected characters
 #And then all characters are assigned to their corosponding TextureRect
-#Portraits are being shown again even for the skills checks because "connect" inside show_choices adds fuconalaties instead of overiting them
 ########################################################################################
 ############################Change Scene Function#######################################
 func _process(delta: float) -> void:
@@ -515,9 +543,6 @@ func _on_right_button_button_down() -> void:
 func _on_left_button_button_down() -> void:
 	if current_scene_instance and current_scene_instance.has_method("get_left"):
 		switch_game_scene(current_scene_instance.get_left())
-func _on_load_button_down() -> void:
-	get_tree().change_scene_to_file("res://load.tscn")
-
 
 func _on_magic_button_down() -> void:
 	get_tree().change_scene_to_file("res://magic_menu.tscn")
