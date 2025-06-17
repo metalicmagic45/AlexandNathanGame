@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bmbybi2a4c8lc"]
+[gd_scene load_steps=7 format=3 uid="uid://bmbybi2a4c8lc"]
 
 [ext_resource type="Script" path="res://MasterScene.gd" id="1_en6xd"]
+[ext_resource type="Texture2D" uid="uid://bb4ls48n28fjk" path="res://Pictures/Blue.png" id="2_ash1t"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_snouo"]
 
@@ -17,31 +18,103 @@ script = ExtResource("1_en6xd")
 
 [node name="PauseLayer" type="CanvasLayer" parent="."]
 layer = 5
+visible = false
 
 [node name="Panel" type="Panel" parent="PauseLayer"]
-visible = false
-offset_right = 1152.0
-offset_bottom = 651.0
+modulate = Color(0.672849, 0.251015, 1.92523e-07, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Menu" type="Button" parent="PauseLayer/Panel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PauseLayer/Panel"]
 layout_mode = 1
-offset_left = 1.0
-offset_top = 100.0
-offset_right = 102.0
-offset_bottom = 165.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="PauseLayer/Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="PauseLayer/Panel/HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -68.0
+offset_right = 48.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseLayer/Panel/HBoxContainer/Control/CenterContainer"]
+custom_minimum_size = Vector2(150, 250)
+layout_mode = 2
+
+[node name="Save" type="Button" parent="PauseLayer/Panel/HBoxContainer/Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Save Game"
+
+[node name="EmptySpace" type="Label" parent="PauseLayer/Panel/HBoxContainer/Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Load" type="Button" parent="PauseLayer/Panel/HBoxContainer/Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Load Game
+"
+
+[node name="EmptySpace2" type="Label" parent="PauseLayer/Panel/HBoxContainer/Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Settings" type="Button" parent="PauseLayer/Panel/HBoxContainer/Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+
+[node name="EmptySpace3" type="Label" parent="PauseLayer/Panel/HBoxContainer/Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Menu" type="Button" parent="PauseLayer/Panel/HBoxContainer/Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
 text = "Main Menu"
 
-[node name="Load" type="Button" parent="PauseLayer/Panel"]
+[node name="Control2" type="Control" parent="PauseLayer/Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.8
+
+[node name="CenterContainer" type="CenterContainer" parent="PauseLayer/Panel/HBoxContainer/Control2"]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -3.5
-offset_right = 104.0
-offset_bottom = 45.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
 grow_vertical = 2
-text = "Load and Save
-"
+scale = Vector2(1, 0.997558)
+
+[node name="Control" type="Control" parent="PauseLayer/Panel/HBoxContainer/Control2/CenterContainer"]
+custom_minimum_size = Vector2(375, 525)
+layout_mode = 2
+
+[node name="PauseLayerBackground" type="CanvasLayer" parent="PauseLayer"]
+visible = false
+
+[node name="TextureRect" type="TextureRect" parent="PauseLayer/PauseLayerBackground"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.00775, 0.94078)
+size_flags_horizontal = 6
+size_flags_vertical = 6
+texture = ExtResource("2_ash1t")
 
 [node name="BottomUiLayer" type="CanvasLayer" parent="."]
 layer = 0
@@ -416,8 +489,10 @@ layout_mode = 2
 expand_mode = 1
 flip_v = true
 
-[connection signal="button_down" from="PauseLayer/Panel/Menu" to="." method="_on_menu_button_down"]
-[connection signal="button_down" from="PauseLayer/Panel/Load" to="." method="_on_load_button_down"]
+[connection signal="button_down" from="PauseLayer/Panel/HBoxContainer/Control/CenterContainer/VBoxContainer/Save" to="." method="_on_save_button_down"]
+[connection signal="button_down" from="PauseLayer/Panel/HBoxContainer/Control/CenterContainer/VBoxContainer/Load" to="." method="_on_load_button_down"]
+[connection signal="button_down" from="PauseLayer/Panel/HBoxContainer/Control/CenterContainer/VBoxContainer/Settings" to="." method="_on_settings_button_down"]
+[connection signal="button_down" from="PauseLayer/Panel/HBoxContainer/Control/CenterContainer/VBoxContainer/Menu" to="." method="_on_menu_button_down"]
 [connection signal="pressed" from="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Party" to="." method="_on_party_pressed"]
 [connection signal="pressed" from="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Character" to="." method="_on_character_pressed"]
 [connection signal="pressed" from="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Inventory" to="." method="_on_inventory_pressed"]
