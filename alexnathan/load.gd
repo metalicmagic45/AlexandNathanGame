@@ -69,3 +69,6 @@ func _on_load_4_button_down() -> void:
 func _on_load_5_button_down() -> void:
 	SaveState.load_game(5)
 	load5.release_focus()
+	
+func _on_exit_to_master_button_down() -> void:
+	get_tree().change_scene_to_file("res://MasterScene.tscn")
