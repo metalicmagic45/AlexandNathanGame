@@ -348,6 +348,7 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="Character Display" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Control" type="Control" parent="Character Display"]
 layout_mode = 3
