@@ -4,7 +4,8 @@ var bob = load("res://bob.gd").new()
 
 var NPCs = {
 	"Bob": {
-		"char_dialogue": bob.char_dialogue
+		"char_dialogue": bob.char_dialogue,
+		"sprite": preload("res://Pictures/Cop.png")
 	}
 	
 }

@@ -24,10 +24,8 @@ extends Node2D
 @onready var right_button = $BottomUiLayer/Control/RightButton
 @onready var left_button = $BottomUiLayer/Control/LeftButton
 @onready var dicelabel = $BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/VBoxContainer/Dicelabel
-@onready var Character1Texture = get_node("Character Display/Control/Character 1/Character1Texture")
-@onready var Character2Texture = get_node("Character Display/Control/Character 2/Character2Texture")
-@onready var Character3Texture = get_node("Character Display/Control/Character 3/Character3Texture")
-@onready var Character4Texture = get_node("Character Display/Control/Character 4/Character4Texture")
+@onready var Character1Texture = $BottomUiLayer/Control/HBoxContainer/Control2/CenterContainer/HBoxContainer/CenterContainer/LeftTexture
+@onready var Character2Texture = $BottomUiLayer/Control/HBoxContainer/Control2/CenterContainer/HBoxContainer/CenterContainer2/RightTexture
 
 
 var area_context_stack: Array = []
@@ -36,8 +34,24 @@ var area_context_stack: Array = []
 #Stores currently selected character for set_portrait(), ran in _ready()
 var character_name = Playerdata.CurrentCharacter
 
-
-
+func depict_image(character : String, Placement : String, type : String):
+	var image = null
+	if type == "PlayerCharacter":		
+		image = Playerdata.players[character].get("sprite", null)
+		if Placement == "left":
+			Character1Texture.texture = image
+		if Placement == "right":
+			Character2Texture.texture = image	
+	elif type == "NPC":
+		if Npcs.NPCs.has(character):
+			image = Npcs.NPCs[character].get("sprite", null)
+		else:
+			print("NPC not found:", character)
+			return
+		if Placement == "left":
+			Character1Texture.texture = image
+		if Placement == "right":
+			Character2Texture.texture = image		
 func _input(event): 
 	if event.is_action_pressed("uicancel"):
 		toggle_pause_menu()
@@ -86,6 +100,7 @@ func _ready():
 	Diolouge_Count = Globals.get_diologue_global()
 	Current_Area = Globals.get_area_global()
 	set_portrait(character_name)
+	depict_image("Bob", "left", "NPC")
 	
 #########################################################################
 #########################Pause Menu#####################################
@@ -210,8 +225,7 @@ func Diolouge_Text_Outputter():
 		if current.has("talking"):
 			Character1Texture.visible = false
 			Character2Texture.visible = false
-			Character3Texture.visible = false
-			Character4Texture.visible = false
+
 			#print("Talking has been called, ", option.get("talking", ""))
 			#Based on who is talking, there current image will be toggled on
 			current_characters_texture[current.get("talking")].visible = true
@@ -415,8 +429,6 @@ func handle_choice(option: Dictionary):
 	if option.has("talking"):
 			Character1Texture.visible = false
 			Character2Texture.visible = false
-			Character3Texture.visible = false
-			Character4Texture.visible = false
 			#print("Talking has been called, ", option.get("talking", ""))
 			#Based on who is talking, there current image will be toggled on
 			current_characters_texture[option.get("talking")].visible = true

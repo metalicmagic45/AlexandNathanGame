@@ -1,9 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://bmbybi2a4c8lc"]
+[gd_scene load_steps=7 format=3 uid="uid://bmbybi2a4c8lc"]
 
 [ext_resource type="Script" path="res://MasterScene.gd" id="1_en6xd"]
 [ext_resource type="Texture2D" uid="uid://bb4ls48n28fjk" path="res://Pictures/Blue.png" id="2_ash1t"]
-[ext_resource type="Texture2D" uid="uid://b011rsp8i57ia" path="res://Pictures/Johnson2.png" id="3_lhlxa"]
-[ext_resource type="Texture2D" uid="uid://ch71sxiunwe10" path="res://Pictures/Anna3.png" id="4_wv1kq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_snouo"]
 
@@ -456,23 +454,21 @@ theme_override_constants/separation = 110
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextureRect" type="TextureRect" parent="BottomUiLayer/Control/HBoxContainer/Control2/CenterContainer/HBoxContainer/CenterContainer"]
+[node name="LeftTexture" type="TextureRect" parent="BottomUiLayer/Control/HBoxContainer/Control2/CenterContainer/HBoxContainer/CenterContainer"]
 z_index = 1
 custom_minimum_size = Vector2(200, 290)
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("3_lhlxa")
 expand_mode = 3
 
 [node name="CenterContainer2" type="CenterContainer" parent="BottomUiLayer/Control/HBoxContainer/Control2/CenterContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextureRect2" type="TextureRect" parent="BottomUiLayer/Control/HBoxContainer/Control2/CenterContainer/HBoxContainer/CenterContainer2"]
+[node name="RightTexture" type="TextureRect" parent="BottomUiLayer/Control/HBoxContainer/Control2/CenterContainer/HBoxContainer/CenterContainer2"]
 custom_minimum_size = Vector2(200, 290)
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("4_wv1kq")
 expand_mode = 3
 
 [connection signal="button_down" from="PauseLayer/Panel/HBoxContainer/Control/CenterContainer/VBoxContainer/Save" to="." method="_on_save_button_down"]
