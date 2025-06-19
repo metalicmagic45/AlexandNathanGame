@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmbybi2a4c8lc"]
+[gd_scene load_steps=9 format=3 uid="uid://bmbybi2a4c8lc"]
 
 [ext_resource type="Script" path="res://MasterScene.gd" id="1_en6xd"]
 [ext_resource type="Texture2D" uid="uid://bb4ls48n28fjk" path="res://Pictures/Blue.png" id="2_ash1t"]
+[ext_resource type="Texture2D" uid="uid://b011rsp8i57ia" path="res://Pictures/Johnson2.png" id="3_lhlxa"]
+[ext_resource type="Texture2D" uid="uid://ch71sxiunwe10" path="res://Pictures/Anna3.png" id="4_wv1kq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_snouo"]
 
@@ -420,75 +422,58 @@ offset_right = 4.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Character Display" type="CanvasLayer" parent="."]
-visible = false
-
-[node name="Control" type="Control" parent="Character Display"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Character 1" type="PanelContainer" parent="Character Display/Control"]
+[node name="HBoxContainer" type="VBoxContainer" parent="BottomUiLayer/Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -2.0
-offset_top = 477.0
-offset_right = -2.0
-offset_bottom = 477.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(3.75015, -6.63457)
 
-[node name="Character1Texture" type="TextureRect" parent="Character Display/Control/Character 1"]
-visible = false
+[node name="Control" type="Control" parent="BottomUiLayer/Control/HBoxContainer"]
 layout_mode = 2
-expand_mode = 1
-flip_v = true
+size_flags_vertical = 3
 
-[node name="Character 2" type="PanelContainer" parent="Character Display/Control"]
-layout_mode = 0
-offset_left = 214.0
-offset_top = 486.0
-offset_right = 254.0
-offset_bottom = 526.0
-scale = Vector2(3.62629, -6.80598)
-
-[node name="Character2Texture" type="TextureRect" parent="Character Display/Control/Character 2"]
-visible = false
+[node name="Control2" type="Control" parent="BottomUiLayer/Control/HBoxContainer"]
 layout_mode = 2
-expand_mode = 1
-flip_v = true
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
 
-[node name="Character 3" type="PanelContainer" parent="Character Display/Control"]
-layout_mode = 2
-offset_left = 430.0
-offset_top = 489.0
-offset_right = 470.0
-offset_bottom = 529.0
-scale = Vector2(3.40363, -6.87199)
+[node name="CenterContainer" type="CenterContainer" parent="BottomUiLayer/Control/HBoxContainer/Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Character3Texture" type="TextureRect" parent="Character Display/Control/Character 3"]
-visible = false
+[node name="HBoxContainer" type="HBoxContainer" parent="BottomUiLayer/Control/HBoxContainer/Control2/CenterContainer"]
+custom_minimum_size = Vector2(690, 290)
 layout_mode = 2
-expand_mode = 1
-flip_v = true
+theme_override_constants/separation = 110
 
-[node name="Character 4" type="PanelContainer" parent="Character Display/Control"]
+[node name="CenterContainer" type="CenterContainer" parent="BottomUiLayer/Control/HBoxContainer/Control2/CenterContainer/HBoxContainer"]
 layout_mode = 2
-offset_left = 610.0
-offset_top = 485.0
-offset_right = 650.0
-offset_bottom = 525.0
-scale = Vector2(3.36403, -6.8899)
+size_flags_horizontal = 3
 
-[node name="Character4Texture" type="TextureRect" parent="Character Display/Control/Character 4"]
-visible = false
+[node name="TextureRect" type="TextureRect" parent="BottomUiLayer/Control/HBoxContainer/Control2/CenterContainer/HBoxContainer/CenterContainer"]
+z_index = 1
+custom_minimum_size = Vector2(200, 290)
 layout_mode = 2
-expand_mode = 1
-flip_v = true
+size_flags_horizontal = 3
+texture = ExtResource("3_lhlxa")
+expand_mode = 3
+
+[node name="CenterContainer2" type="CenterContainer" parent="BottomUiLayer/Control/HBoxContainer/Control2/CenterContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect2" type="TextureRect" parent="BottomUiLayer/Control/HBoxContainer/Control2/CenterContainer/HBoxContainer/CenterContainer2"]
+custom_minimum_size = Vector2(200, 290)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("4_wv1kq")
+expand_mode = 3
 
 [connection signal="button_down" from="PauseLayer/Panel/HBoxContainer/Control/CenterContainer/VBoxContainer/Save" to="." method="_on_save_button_down"]
 [connection signal="button_down" from="PauseLayer/Panel/HBoxContainer/Control/CenterContainer/VBoxContainer/Load" to="." method="_on_load_button_down"]

@@ -469,39 +469,6 @@ var current_characters_images = Globals.current_characters_images
 var current_characters_texture = {}
 
 
-func update_current_characters():
-	#Changes current list of characters based on witch scene is loaded when its loaded, also stored in res://CarWilderness.tscn::GDScript_j4bmp
-	current_characters = Globals.Global_Current_Characters
-	print("Current Character: ", current_characters)
-	#print( current_characters_images[current_characters[0]], current_characters_images[current_characters[1]], current_characters_images[current_characters[2]], current_characters_images[current_characters[3]])
-	
-	#Updates the images
-	Character1Texture.texture = current_characters_images[current_characters[0]]
-	Character2Texture.texture = current_characters_images[current_characters[1]]
-	Character3Texture.texture = current_characters_images[current_characters[2]]
-	Character4Texture.texture = current_characters_images[current_characters[3]]
-	
-	#Links the Current Characters to their corosponding TextureRect
-	current_characters_texture = {
-		str(current_characters[0]) : Character1Texture,
-		str(current_characters[1]) : Character2Texture,
-		str(current_characters[2]) : Character3Texture,
-		str(current_characters[3]) : Character4Texture,
-	}
-	#print(current_characters_texture)
-	
-#Change images of characters based on witch characters are currently selected both at start of loading the scene, based on the scene, and dynamicly when doing diolouge
-#Create a variable in master scene that stores who the current characters are that gets updated when laoding a new scene and when that get changed through diolouge
-	#current_characters = [], update inside the change scene function, have the defualt character listed in each zone script
-#Then Update the nodes to the current_characters
-#When dilouge accurs, it reads the character key and gets the name witch is used to update the opacity to show whos talking
-#Characters can be removed or added from a key in the diolouge
-
-#Global current_characters variabl is establised in Globals.gd
-#Global varriable is updated when new zone is loaded, ex; in car wilderness attached script
-#Current characters in master scnene is then updated inside the load scene function
-#Then all the images are updated based on the currently selected characters
-#And then all characters are assigned to their corosponding TextureRect
 ########################################################################################
 ############################Change Scene Function#######################################
 func _process(delta: float) -> void:
@@ -524,7 +491,6 @@ func switch_game_scene(scene: PackedScene) -> void:
 	current_scene_packed_scene = scene  # ✅ store PackedScene
 	window.add_child(s)
 	
-	update_current_characters()
 	set_current_area()
 	reset_dialogue()
 
