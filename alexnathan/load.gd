@@ -18,16 +18,31 @@ extends Control
 @onready var load5 = $HBoxContainer/Save5/CenterContainer/VBoxContainer/Load5
 
 
+func _ready():
+	refresh_save_titles()
 
-func toggle_pause_menu():
-	PausePanel.visible = !PausePanel.visible
 func _input(event): 
 	if event.is_action_pressed("uicancel"):
 		get_tree().change_scene_to_file("res://Main.tscn")
 	if event.is_action_pressed("ToggleMasterScene"):
 		get_tree().change_scene_to_file("res://MasterScene.tscn")
-
-
+func refresh_save_titles():
+	for i in range(1, 6):
+		var path = SaveState.get_save_path(i)
+		var label = get_node("HBoxContainer/Save%d/CenterContainer/VBoxContainer/Title" % i)
+		if FileAccess.file_exists(path):
+			var file = FileAccess.open(path, FileAccess.READ)
+			if file:
+				var result = JSON.parse_string(file.get_as_text())
+				file.close()
+				if typeof(result) == TYPE_DICTIONARY and result.has("save_name"):
+					label.text = result["save_name"]
+				else:
+					label.text = "Corrupt"
+			else:
+				label.text = "Error"
+		else:
+			label.text = "Empty"
 
 func _on_save_1_button_down() -> void:
 	SaveState.save_game(1, title1.text)
