@@ -34,6 +34,14 @@ var area_context_stack: Array = []
 #Stores currently selected character for set_portrait(), ran in _ready()
 var character_name = Playerdata.CurrentCharacter
 
+func remove_image(Placement : String):
+	if Placement == "left":
+		Character1Texture.texture = null
+		return
+	if Placement == "right":
+		Character2Texture.texture = null
+		return
+
 func depict_image(character : String, Placement : String, type : String):
 	var image = null
 	if type == "PlayerCharacter":		
@@ -201,11 +209,18 @@ func Diolouge_Text_Outputter():
 	
 	# Handle dictionary lines
 	if typeof(current) == TYPE_DICTIONARY:
+		if current["type"] == "RemoveDisplay":
+			var direction = current["direction"]
+			remove_image(direction)
+			Diolouge_Count += 1
+			Diolouge_Text_Outputter()
 		if current["type"] == "Display":
 			var chartype = current["chartype"]
 			var character = current["character"]
 			var direction = current["direction"]
 			depict_image(character, direction, chartype)
+			Diolouge_Count += 1
+			Diolouge_Text_Outputter()
 		# Handle NPC dialogues
 		if current["type"] == "NPC":
 			var npc_name = current.get("character", "")

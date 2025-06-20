@@ -13,6 +13,10 @@ var char_dialogue = [
 	"hello",
 	"Goodbye",
 	{
+		"type": "RemoveDisplay",
+		"direction": "left"
+	},
+	{
 		"type": "STOP"
 	}
 ]
