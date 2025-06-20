@@ -100,7 +100,6 @@ func _ready():
 	Diolouge_Count = Globals.get_diologue_global()
 	Current_Area = Globals.get_area_global()
 	set_portrait(character_name)
-	depict_image("Bob", "left", "NPC")
 	
 #########################################################################
 #########################Pause Menu#####################################
@@ -202,6 +201,11 @@ func Diolouge_Text_Outputter():
 	
 	# Handle dictionary lines
 	if typeof(current) == TYPE_DICTIONARY:
+		if current["type"] == "Display":
+			var chartype = current["chartype"]
+			var character = current["character"]
+			var direction = current["direction"]
+			depict_image(character, direction, chartype)
 		# Handle NPC dialogues
 		if current["type"] == "NPC":
 			var npc_name = current.get("character", "")
@@ -510,9 +514,7 @@ func _on_bottom_button_button_down() -> void:
 	if current_scene_instance and current_scene_instance.has_method("get_bottom"):
 		switch_game_scene(current_scene_instance.get_bottom())
 
-func _on_top_button_button_down() -> void:
-	if current_scene_instance and current_scene_instance.has_method("get_top"):
-		switch_game_scene(current_scene_instance.get_top())
+
 
 func _on_right_button_button_down() -> void:
 	if current_scene_instance and current_scene_instance.has_method("get_right"):
@@ -524,3 +526,6 @@ func _on_left_button_button_down() -> void:
 
 func _on_magic_button_down() -> void:
 	get_tree().change_scene_to_file("res://magic_menu.tscn")
+func _on_top_button_button_down() -> void:
+	if current_scene_instance and current_scene_instance.has_method("get_top"):
+		switch_game_scene(current_scene_instance.get_top())

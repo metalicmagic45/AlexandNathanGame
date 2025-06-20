@@ -365,60 +365,11 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 0.33
 
 [node name="Control" type="Control" parent="BottomUiLayer"]
+z_index = 2
 layout_mode = 3
 anchors_preset = 0
 offset_right = 765.0
 offset_bottom = 483.0
-
-[node name="LeftButton" type="Button" parent="BottomUiLayer/Control"]
-custom_minimum_size = Vector2(30, 100)
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -4.0
-offset_right = 8.0
-offset_bottom = 4.0
-grow_vertical = 2
-
-[node name="RightButton" type="Button" parent="BottomUiLayer/Control"]
-custom_minimum_size = Vector2(30, 100)
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -8.0
-offset_top = -4.0
-offset_bottom = 4.0
-grow_horizontal = 0
-grow_vertical = 2
-
-[node name="TopButton" type="Button" parent="BottomUiLayer/Control"]
-custom_minimum_size = Vector2(100, 30)
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -4.0
-offset_right = 4.0
-offset_bottom = 8.0
-grow_horizontal = 2
-
-[node name="BottomButton" type="Button" parent="BottomUiLayer/Control"]
-custom_minimum_size = Vector2(100, 30)
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -4.0
-offset_top = -8.0
-offset_right = 4.0
-grow_horizontal = 2
-grow_vertical = 0
 
 [node name="HBoxContainer" type="VBoxContainer" parent="BottomUiLayer/Control"]
 layout_mode = 1
@@ -470,6 +421,60 @@ custom_minimum_size = Vector2(200, 290)
 layout_mode = 2
 size_flags_horizontal = 3
 expand_mode = 3
+
+[node name="LeftButton" type="Button" parent="BottomUiLayer/Control"]
+z_index = 2
+custom_minimum_size = Vector2(30, 100)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -50.0
+offset_right = 30.0
+offset_bottom = 50.0
+grow_vertical = 2
+
+[node name="RightButton" type="Button" parent="BottomUiLayer/Control"]
+z_index = 2
+custom_minimum_size = Vector2(30, 100)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -50.0
+offset_bottom = 50.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="TopButton" type="Button" parent="BottomUiLayer/Control"]
+z_index = 2
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_right = 50.0
+offset_bottom = 30.0
+grow_horizontal = 2
+
+[node name="BottomButton" type="Button" parent="BottomUiLayer/Control"]
+z_index = 2
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -30.0
+offset_right = 50.0
+grow_horizontal = 2
+grow_vertical = 0
 
 [connection signal="button_down" from="PauseLayer/Panel/HBoxContainer/Control/CenterContainer/VBoxContainer/Save" to="." method="_on_save_button_down"]
 [connection signal="button_down" from="PauseLayer/Panel/HBoxContainer/Control/CenterContainer/VBoxContainer/Load" to="." method="_on_load_button_down"]
