@@ -54,6 +54,8 @@ func load_game(slot: int) -> void:
 	var item_name = result.get("current_magic_item_name", null)
 	if item_name != null and ItemDatabase.items.has(item_name):
 		Globals.set_current_magic_item(ItemDatabase.items[item_name])
+	get_tree().change_scene_to_file("res://MasterScene.tscn")
+
 	
 	print("Loaded game from slot", slot)
 

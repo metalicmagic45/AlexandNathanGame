@@ -18,15 +18,15 @@ extends Control
 @onready var load5 = $HBoxContainer/Save5/CenterContainer/VBoxContainer/Load5
 
 
-func _on_menu_pressed() -> void:
-	get_tree().change_scene_to_file("res://Main.tscn")
+
 func toggle_pause_menu():
 	PausePanel.visible = !PausePanel.visible
 func _input(event): 
 	if event.is_action_pressed("uicancel"):
-		toggle_pause_menu()
-func _on_return_button_down() -> void:
-	get_tree().change_scene_to_file("res://MasterScene.tscn")
+		get_tree().change_scene_to_file("res://Main.tscn")
+	if event.is_action_pressed("ToggleMasterScene"):
+		get_tree().change_scene_to_file("res://MasterScene.tscn")
+
 
 
 func _on_save_1_button_down() -> void:
@@ -71,4 +71,4 @@ func _on_load_5_button_down() -> void:
 	load5.release_focus()
 	
 func _on_exit_to_master_button_down() -> void:
-	get_tree().change_scene_to_file("res://MasterScene.tscn")
+	get_tree().change_scene_to_file("res://Main.tscn")
