@@ -1,6 +1,7 @@
 extends Node
 
 var choice_flags = {}
+var new_game = true
 var Global_Diolouge_Count = 0
 #Current game area corisponding to its "Gameplay_Area_Selecter" index number
 var Global_Current_Area = 0
@@ -16,7 +17,10 @@ var current_characters_images = {"Jhonson" : preload("res://Pictures/JhonsonPort
 "Tyler" : preload("res://Pictures/TylerPortrait.png"), 
 "Anna" : preload("res://Pictures/AnnaPortrait.png"), 
 }
-
+func get_new_game():
+	return new_game
+func set_new_game() -> void:
+	new_game = false
 func get_current_magic_item():
 	return current_magic_item
 func set_current_magic_item(item):
