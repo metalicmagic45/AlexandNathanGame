@@ -1,7 +1,7 @@
 extends Node
 
 var choice_flags = {}
-var new_game = true
+var new_game = false
 var Global_Diolouge_Count = 0
 #Current game area corisponding to its "Gameplay_Area_Selecter" index number
 var Global_Current_Area = 0

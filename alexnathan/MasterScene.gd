@@ -26,13 +26,23 @@ extends Node2D
 @onready var dicelabel = $BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/VBoxContainer/Dicelabel
 @onready var Character1Texture = $BottomUiLayer/Control/HBoxContainer/Control2/CenterContainer/HBoxContainer/CenterContainer/LeftTexture
 @onready var Character2Texture = $BottomUiLayer/Control/HBoxContainer/Control2/CenterContainer/HBoxContainer/CenterContainer2/RightTexture
-
+@onready var PopUpImage = $BottomUiLayer/PopUp/CenterContainer/TextureRect
+@onready var PopUp = $BottomUiLayer/PopUp
 
 var area_context_stack: Array = []
 
 
 #Stores currently selected character for set_portrait(), ran in _ready()
 var character_name = Playerdata.CurrentCharacter
+var popup = false
+
+func display_mission():
+	var not_new_game = Globals.get_flag("NewGameFalse")
+	var image = preload("res://Pictures/Missionreport.png")
+	if not_new_game == false:
+		PopUp.visible = !PopUp.visible
+		PopUpImage.texture = image
+		popup = true
 
 func remove_image(Placement : String):
 	if Placement == "left":
@@ -62,7 +72,13 @@ func depict_image(character : String, Placement : String, type : String):
 			Character2Texture.texture = image		
 func _input(event): 
 	if event.is_action_pressed("uicancel"):
-		toggle_pause_menu()
+		if popup == true:
+			PopUp.visible = !PopUp.visible
+			PopUpImage.texture = null
+			popup = false
+			Globals.set_flag("NewGameFalse")
+		else:
+			toggle_pause_menu()
 	if event.is_action_pressed("ToggleInvetory"):
 		get_tree().change_scene_to_file("res://inventory_ui.tscn")
 	if event.is_action_pressed("ToggleParty"):
@@ -108,6 +124,8 @@ func _ready():
 	Diolouge_Count = Globals.get_diologue_global()
 	Current_Area = Globals.get_area_global()
 	set_portrait(character_name)
+	hide_buttons()
+	display_mission()
 	
 #########################################################################
 #########################Pause Menu#####################################

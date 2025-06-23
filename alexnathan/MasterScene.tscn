@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmbybi2a4c8lc"]
+[gd_scene load_steps=8 format=3 uid="uid://bmbybi2a4c8lc"]
 
 [ext_resource type="Script" path="res://MasterScene.gd" id="1_en6xd"]
 [ext_resource type="Texture2D" uid="uid://wfieg0g3mx3b" path="res://Pictures/pausebackground.png" id="2_wcuqv"]
+[ext_resource type="Texture2D" uid="uid://cokv5yubusecm" path="res://Pictures/Missionreport.png" id="3_3s1li"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_snouo"]
 
@@ -438,6 +439,34 @@ offset_top = -30.0
 offset_right = 50.0
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="PopUp" type="Control" parent="BottomUiLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="BottomUiLayer/PopUp"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="BottomUiLayer/PopUp/CenterContainer"]
+z_index = 4
+custom_minimum_size = Vector2(400, 550)
+layout_mode = 2
+texture = ExtResource("3_3s1li")
+expand_mode = 3
 
 [connection signal="button_down" from="PauseLayer/Panel/Control/VBoxContainer/Load" to="." method="_on_load_button_down"]
 [connection signal="button_down" from="PauseLayer/Panel/Control/VBoxContainer/Menu" to="." method="_on_menu_button_down"]

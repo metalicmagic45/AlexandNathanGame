@@ -8,6 +8,7 @@ extends Control
 var current_index = Globals.get_current_magic_index()
 var current_magic_item = Globals.get_current_magic_item()
 # Called when the node enters the scene tree for the first time.
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ToggleMagic"):
 		get_tree().change_scene_to_file("res://MasterScene.tscn")
