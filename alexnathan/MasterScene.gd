@@ -28,6 +28,7 @@ extends Node2D
 @onready var Character2Texture = $BottomUiLayer/Control/HBoxContainer/Control2/CenterContainer/HBoxContainer/CenterContainer2/RightTexture
 @onready var PopUpImage = $BottomUiLayer/PopUp/CenterContainer/TextureRect
 @onready var PopUp = $BottomUiLayer/PopUp
+@onready var notes = $BottomUiLayer/Notes
 
 var area_context_stack: Array = []
 
@@ -90,6 +91,9 @@ func _input(event):
 	if event.is_action_pressed("DiolougeAdvance") and !Diolouge_Choice_Toggle:
 		clear_choices()
 		Diolouge_Text_Outputter()
+	if event.is_action_pressed("NotesToggle"):
+		notes.visible = !notes.visible
+		
 
 	
 func reset_portrait():

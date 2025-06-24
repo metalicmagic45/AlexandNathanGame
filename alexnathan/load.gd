@@ -22,8 +22,6 @@ func _ready():
 	refresh_save_titles()
 
 func _input(event): 
-	if event.is_action_pressed("uicancel"):
-		get_tree().change_scene_to_file("res://Main.tscn")
 	if event.is_action_pressed("ToggleMasterScene"):
 		get_tree().change_scene_to_file("res://MasterScene.tscn")
 func refresh_save_titles():
