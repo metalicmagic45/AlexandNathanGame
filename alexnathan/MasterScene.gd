@@ -92,7 +92,7 @@ func _input(event):
 		clear_choices()
 		Diolouge_Text_Outputter()
 	if event.is_action_pressed("NotesToggle"):
-		notes.visible = !notes.visible
+		get_tree().change_scene_to_file("res://notes.tscn")
 		
 
 	
