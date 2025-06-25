@@ -2,6 +2,7 @@ extends Node
 
 const SAVE_PREFIX := "user://savegame_slot_"
 const SAVE_SUFFIX := ".save"
+signal save_popup
 
 func get_save_path(slot: int) -> String:
 	return "%s%d%s" % [SAVE_PREFIX, slot, SAVE_SUFFIX]
@@ -22,6 +23,7 @@ func save_game(slot: int, save_name : String) -> void:
 		file.store_string(JSON.stringify(save_data))
 		file.close()
 		print("Saved to slot", slot)
+		emit_signal("save_popup")
 	else:
 		print("Failed to open file for saving.")
 func load_game(slot: int) -> void:

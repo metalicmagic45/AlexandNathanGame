@@ -1,5 +1,7 @@
 extends Node
 
+signal journal_entry_added
+
 var journal_entries = {
 	"MissionReport": {
 		"title": "Operation Hollow Butcher",
@@ -23,3 +25,19 @@ func _process(delta: float) -> void:
 	pass
 func get_journal():
 	return journal_entries
+func add_journal_entry(id: String, title: String, description: String, status: String = "Incomplete") -> void:
+	journal_entries[id] = {
+		"title": title,
+		"status": status,
+		"description": description
+	}
+	emit_signal("journal_entry_added")
+func edit_journal_status(id: String, new_status: String) -> void:
+	if journal_entries.has(id):
+		journal_entries[id]["status"] = new_status
+func get_journal_entry(id : String):
+	if journal_entries.has(id):
+		return journal_entries[id]
+	else:
+		print("Journal Entry Not Found")
+		return

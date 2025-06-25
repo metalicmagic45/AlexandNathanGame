@@ -468,6 +468,20 @@ layout_mode = 2
 texture = ExtResource("3_3s1li")
 expand_mode = 3
 
+[node name="PopUpMessage" type="Label" parent="BottomUiLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="button_down" from="PauseLayer/Panel/Control/VBoxContainer/Load" to="." method="_on_load_button_down"]
 [connection signal="button_down" from="PauseLayer/Panel/Control/VBoxContainer/Menu" to="." method="_on_menu_button_down"]
 [connection signal="pressed" from="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Party" to="." method="_on_party_pressed"]

@@ -29,6 +29,7 @@ extends Node2D
 @onready var PopUpImage = $BottomUiLayer/PopUp/CenterContainer/TextureRect
 @onready var PopUp = $BottomUiLayer/PopUp
 @onready var notes = $BottomUiLayer/Notes
+@onready var PopUpMsg = $BottomUiLayer/PopUpMessage
 
 var area_context_stack: Array = []
 
@@ -128,8 +129,12 @@ func _ready():
 	Diolouge_Count = Globals.get_diologue_global()
 	Current_Area = Globals.get_area_global()
 	set_portrait(character_name)
+	Journal.connect("journal_entry_added", Callable(self, "_on_journal_entry_added"))
 	hide_buttons()
 	display_mission()
+func _on_journal_entry_added() -> void:
+	show_journal_popup("New Journal Entry Added")
+
 	
 #########################################################################
 #########################Pause Menu#####################################
@@ -328,6 +333,14 @@ func Diolouge_Text_Outputter():
 
 			Diolouge_Text_Area.add_text(current["text"])
 			Diolouge_Text_Area.newline()
+			if current.has("add_journal"):
+				var journal_data = current["add_journal"]
+				Journal.add_journal_entry(
+					journal_data["id"],
+					journal_data["title"],
+					journal_data["description"],
+					journal_data["status"]
+				)
 
 			if current.has("jump"):
 				var target_flag = current["jump"]
@@ -541,7 +554,7 @@ func switch_game_scene(scene: PackedScene) -> void:
 
 
 	current_scene_instance = s
-	current_scene_packed_scene = scene  # ✅ store PackedScene
+	current_scene_packed_scene = scene  
 	window.add_child(s)
 	
 	set_current_area()
@@ -566,3 +579,8 @@ func _on_magic_button_down() -> void:
 func _on_top_button_button_down() -> void:
 	if current_scene_instance and current_scene_instance.has_method("get_top"):
 		switch_game_scene(current_scene_instance.get_top())
+func show_journal_popup(message: String) -> void:
+	PopUpMsg.visible = !PopUpMsg.visible
+	PopUpMsg.text = message
+	await get_tree().create_timer(1.0).timeout  # Wait 1.0 seconds
+	PopUpMsg.visible = false
