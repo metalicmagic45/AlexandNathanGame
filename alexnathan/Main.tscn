@@ -32,6 +32,12 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Pacifica"
 
+[node name="Button" type="Button" parent="CanvasLayer/Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 30
+text = "New Game"
+
 [node name="Play" type="Button" parent="CanvasLayer/Control/CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
@@ -60,6 +66,7 @@ mouse_filter = 2
 texture = ExtResource("2_pofvn")
 expand_mode = 3
 
+[connection signal="pressed" from="CanvasLayer/Control/CenterContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/CenterContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/CenterContainer/VBoxContainer/Load" to="." method="_on_load_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/CenterContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

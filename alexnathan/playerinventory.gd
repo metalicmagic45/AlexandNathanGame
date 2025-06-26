@@ -7,7 +7,12 @@ var player_inventories = {
 	"Kate": ["MagicSword"]
 	}
 func get_inventory(player_name: String) -> Array:
-	return player_inventories[player_name]  # NOT .duplicate()
+	if player_inventories.has(player_name):
+		return player_inventories[player_name]
+	else:
+		print("Warning: Inventory not found for player '%s'" % player_name)
+		return []  # Return empty inventory as fallback
+
 
 func delete_inventory_item(player_name: String, index: int) -> void:
 	player_inventories[player_name].remove_at(index)   # <─ one reference, no copy

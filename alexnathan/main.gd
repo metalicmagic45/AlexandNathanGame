@@ -20,3 +20,7 @@ func _on_exit_pressed() -> void:
 
 func _on_load_pressed() -> void:
 	get_tree().change_scene_to_file("res://load.tscn")
+
+
+func _on_button_pressed() -> void:
+	SaveState.new_game()

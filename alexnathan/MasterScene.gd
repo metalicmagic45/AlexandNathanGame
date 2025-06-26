@@ -19,17 +19,18 @@ extends Node2D
 @onready var Choice3 = $BottomUiLayer/MainUI/ActionUI/VBoxContainer/DiolougeChoices/VBoxContainer/Button3
 @onready var HPbar = $BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Panel/ProgressBar
 @onready var MPbar = $BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Panel2/TextureProgressBar
-@onready var top_button = $BottomUiLayer/Control/TopButton
-@onready var bottom_button = $BottomUiLayer/Control/BottomButton
-@onready var right_button = $BottomUiLayer/Control/RightButton
-@onready var left_button = $BottomUiLayer/Control/LeftButton
+@onready var top_button = $BottomUiLayer/MainUI/VBoxContainer/Control/TopButton
+@onready var bottom_button = $BottomUiLayer/MainUI/VBoxContainer/Control/BottomButton
+@onready var right_button = $BottomUiLayer/MainUI/VBoxContainer/Control/RightButton
+@onready var left_button = $BottomUiLayer/MainUI/VBoxContainer/Control/LeftButton
 @onready var dicelabel = $BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/VBoxContainer/Dicelabel
 @onready var Character1Texture = $BottomUiLayer/Control/HBoxContainer/Control2/CenterContainer/HBoxContainer/CenterContainer/LeftTexture
 @onready var Character2Texture = $BottomUiLayer/Control/HBoxContainer/Control2/CenterContainer/HBoxContainer/CenterContainer2/RightTexture
 @onready var PopUpImage = $BottomUiLayer/PopUp/CenterContainer/TextureRect
 @onready var PopUp = $BottomUiLayer/PopUp
 @onready var notes = $BottomUiLayer/Notes
-@onready var PopUpMsg = $BottomUiLayer/PopUpMessage
+@onready var PopUpMsg = $BottomUiLayer/Panel/PopUpMessage
+@onready var PopUpPannel = $BottomUiLayer/Panel
 
 var area_context_stack: Array = []
 
@@ -547,7 +548,7 @@ var current_scene_packed_scene: PackedScene = null
 
 func switch_game_scene(scene: PackedScene) -> void:
 	
-	var window = $BottomUiLayer/MainUI/VBoxContainer/Window
+	var window = $BottomUiLayer/MainUI/VBoxContainer/Control/Window
 	for child in window.get_children():
 		child.queue_free()
 	var s = scene.instantiate()
@@ -580,7 +581,8 @@ func _on_top_button_button_down() -> void:
 	if current_scene_instance and current_scene_instance.has_method("get_top"):
 		switch_game_scene(current_scene_instance.get_top())
 func show_journal_popup(message: String) -> void:
-	PopUpMsg.visible = !PopUpMsg.visible
+	print("PopUp Function Called")
+	PopUpPannel.visible = !PopUpPannel.visible
 	PopUpMsg.text = message
 	await get_tree().create_timer(1.0).timeout  # Wait 1.0 seconds
-	PopUpMsg.visible = false
+	PopUpPannel.visible = false

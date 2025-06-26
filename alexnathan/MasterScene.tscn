@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bmbybi2a4c8lc"]
+[gd_scene load_steps=9 format=3 uid="uid://bmbybi2a4c8lc"]
 
 [ext_resource type="Script" path="res://MasterScene.gd" id="1_en6xd"]
 [ext_resource type="Texture2D" uid="uid://wfieg0g3mx3b" path="res://Pictures/pausebackground.png" id="2_wcuqv"]
@@ -13,6 +13,8 @@ bg_color = Color(1, 0.4, 0.4, 1)
 bg_color = Color(0.4, 0.8, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ajdv4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vnume"]
 
 [node name="MasterScene" type="Node2D"]
 script = ExtResource("1_en6xd")
@@ -81,6 +83,94 @@ texture = ExtResource("2_wcuqv")
 [node name="BottomUiLayer" type="CanvasLayer" parent="."]
 layer = 0
 
+[node name="Control" type="Control" parent="BottomUiLayer"]
+z_index = 2
+layout_mode = 3
+anchors_preset = 0
+offset_right = 765.0
+offset_bottom = 483.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="VBoxContainer" parent="BottomUiLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="BottomUiLayer/Control/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Control2" type="Control" parent="BottomUiLayer/Control/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+
+[node name="CenterContainer" type="CenterContainer" parent="BottomUiLayer/Control/HBoxContainer/Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BottomUiLayer/Control/HBoxContainer/Control2/CenterContainer"]
+custom_minimum_size = Vector2(690, 290)
+layout_mode = 2
+theme_override_constants/separation = 110
+
+[node name="CenterContainer" type="CenterContainer" parent="BottomUiLayer/Control/HBoxContainer/Control2/CenterContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LeftTexture" type="TextureRect" parent="BottomUiLayer/Control/HBoxContainer/Control2/CenterContainer/HBoxContainer/CenterContainer"]
+z_index = 1
+custom_minimum_size = Vector2(200, 290)
+layout_mode = 2
+size_flags_horizontal = 3
+expand_mode = 3
+
+[node name="CenterContainer2" type="CenterContainer" parent="BottomUiLayer/Control/HBoxContainer/Control2/CenterContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RightTexture" type="TextureRect" parent="BottomUiLayer/Control/HBoxContainer/Control2/CenterContainer/HBoxContainer/CenterContainer2"]
+custom_minimum_size = Vector2(200, 290)
+layout_mode = 2
+size_flags_horizontal = 3
+expand_mode = 3
+
+[node name="PopUp" type="Control" parent="BottomUiLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="BottomUiLayer/PopUp"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="BottomUiLayer/PopUp/CenterContainer"]
+z_index = 4
+custom_minimum_size = Vector2(400, 550)
+layout_mode = 2
+texture = ExtResource("3_3s1li")
+expand_mode = 3
+
 [node name="MainUI" type="HBoxContainer" parent="BottomUiLayer"]
 anchors_preset = 15
 anchor_right = 1.0
@@ -94,11 +184,75 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Window" type="PanelContainer" parent="BottomUiLayer/MainUI/VBoxContainer"]
+[node name="Control" type="Control" parent="BottomUiLayer/MainUI/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
+
+[node name="Window" type="PanelContainer" parent="BottomUiLayer/MainUI/VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_snouo")
+
+[node name="LeftButton" type="Button" parent="BottomUiLayer/MainUI/VBoxContainer/Control"]
+z_index = 2
+custom_minimum_size = Vector2(30, 100)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -50.0
+offset_right = 30.0
+offset_bottom = 50.0
+grow_vertical = 2
+
+[node name="RightButton" type="Button" parent="BottomUiLayer/MainUI/VBoxContainer/Control"]
+z_index = 2
+custom_minimum_size = Vector2(30, 100)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -50.0
+offset_bottom = 50.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="TopButton" type="Button" parent="BottomUiLayer/MainUI/VBoxContainer/Control"]
+z_index = 2
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_right = 50.0
+offset_bottom = 30.0
+grow_horizontal = 2
+
+[node name="BottomButton" type="Button" parent="BottomUiLayer/MainUI/VBoxContainer/Control"]
+z_index = 2
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -30.0
+offset_right = 50.0
+grow_horizontal = 2
+grow_vertical = 0
 
 [node name="BottomUI" type="Control" parent="BottomUiLayer/MainUI/VBoxContainer"]
 layout_mode = 2
@@ -326,157 +480,27 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.33
 
-[node name="Control" type="Control" parent="BottomUiLayer"]
-z_index = 2
-layout_mode = 3
-anchors_preset = 0
-offset_right = 765.0
-offset_bottom = 483.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="HBoxContainer" type="VBoxContainer" parent="BottomUiLayer/Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Control" type="Control" parent="BottomUiLayer/Control/HBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Control2" type="Control" parent="BottomUiLayer/Control/HBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 1.5
-
-[node name="CenterContainer" type="CenterContainer" parent="BottomUiLayer/Control/HBoxContainer/Control2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="BottomUiLayer/Control/HBoxContainer/Control2/CenterContainer"]
-custom_minimum_size = Vector2(690, 290)
-layout_mode = 2
-theme_override_constants/separation = 110
-
-[node name="CenterContainer" type="CenterContainer" parent="BottomUiLayer/Control/HBoxContainer/Control2/CenterContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="LeftTexture" type="TextureRect" parent="BottomUiLayer/Control/HBoxContainer/Control2/CenterContainer/HBoxContainer/CenterContainer"]
-z_index = 1
-custom_minimum_size = Vector2(200, 290)
-layout_mode = 2
-size_flags_horizontal = 3
-expand_mode = 3
-
-[node name="CenterContainer2" type="CenterContainer" parent="BottomUiLayer/Control/HBoxContainer/Control2/CenterContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="RightTexture" type="TextureRect" parent="BottomUiLayer/Control/HBoxContainer/Control2/CenterContainer/HBoxContainer/CenterContainer2"]
-custom_minimum_size = Vector2(200, 290)
-layout_mode = 2
-size_flags_horizontal = 3
-expand_mode = 3
-
-[node name="LeftButton" type="Button" parent="BottomUiLayer/Control"]
-z_index = 2
-custom_minimum_size = Vector2(30, 100)
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -50.0
-offset_right = 30.0
-offset_bottom = 50.0
-grow_vertical = 2
-
-[node name="RightButton" type="Button" parent="BottomUiLayer/Control"]
-z_index = 2
-custom_minimum_size = Vector2(30, 100)
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -50.0
-offset_bottom = 50.0
-grow_horizontal = 0
-grow_vertical = 2
-
-[node name="TopButton" type="Button" parent="BottomUiLayer/Control"]
-z_index = 2
-custom_minimum_size = Vector2(100, 30)
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -50.0
-offset_right = 50.0
-offset_bottom = 30.0
-grow_horizontal = 2
-
-[node name="BottomButton" type="Button" parent="BottomUiLayer/Control"]
-z_index = 2
-custom_minimum_size = Vector2(100, 30)
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -50.0
-offset_top = -30.0
-offset_right = 50.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="PopUp" type="Control" parent="BottomUiLayer"]
+[node name="Panel" type="Panel" parent="BottomUiLayer"]
 visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+custom_minimum_size = Vector2(200, 75)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -37.5
+offset_right = 100.0
+offset_bottom = 37.5
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_vnume")
 
-[node name="CenterContainer" type="CenterContainer" parent="BottomUiLayer/PopUp"]
+[node name="PopUpMessage" type="Label" parent="BottomUiLayer/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="TextureRect" type="TextureRect" parent="BottomUiLayer/PopUp/CenterContainer"]
-z_index = 4
-custom_minimum_size = Vector2(400, 550)
-layout_mode = 2
-texture = ExtResource("3_3s1li")
-expand_mode = 3
-
-[node name="PopUpMessage" type="Label" parent="BottomUiLayer"]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = -4.0
-offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 horizontal_alignment = 1
@@ -484,12 +508,12 @@ vertical_alignment = 1
 
 [connection signal="button_down" from="PauseLayer/Panel/Control/VBoxContainer/Load" to="." method="_on_load_button_down"]
 [connection signal="button_down" from="PauseLayer/Panel/Control/VBoxContainer/Menu" to="." method="_on_menu_button_down"]
+[connection signal="button_down" from="BottomUiLayer/MainUI/VBoxContainer/Control/LeftButton" to="." method="_on_left_button_button_down"]
+[connection signal="button_down" from="BottomUiLayer/MainUI/VBoxContainer/Control/RightButton" to="." method="_on_right_button_button_down"]
+[connection signal="button_down" from="BottomUiLayer/MainUI/VBoxContainer/Control/TopButton" to="." method="_on_top_button_button_down"]
+[connection signal="button_down" from="BottomUiLayer/MainUI/VBoxContainer/Control/BottomButton" to="." method="_on_bottom_button_button_down"]
 [connection signal="pressed" from="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Party" to="." method="_on_party_pressed"]
 [connection signal="pressed" from="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Character" to="." method="_on_character_pressed"]
 [connection signal="pressed" from="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Inventory" to="." method="_on_inventory_pressed"]
 [connection signal="button_down" from="BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Magic" to="." method="_on_magic_button_down"]
 [connection signal="button_down" from="BottomUiLayer/MainUI/ActionUI/VBoxContainer/Panel/DiolougeTextArea/DiolougeAdvanceButton" to="." method="_on_diolouge_advance_button_button_down"]
-[connection signal="button_down" from="BottomUiLayer/Control/LeftButton" to="." method="_on_left_button_button_down"]
-[connection signal="button_down" from="BottomUiLayer/Control/RightButton" to="." method="_on_right_button_button_down"]
-[connection signal="button_down" from="BottomUiLayer/Control/TopButton" to="." method="_on_top_button_button_down"]
-[connection signal="button_down" from="BottomUiLayer/Control/BottomButton" to="." method="_on_bottom_button_button_down"]
