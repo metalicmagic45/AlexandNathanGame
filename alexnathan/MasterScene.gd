@@ -264,13 +264,13 @@ func Diolouge_Text_Outputter():
 		#Load and remove characters
 		#Toggle opacity for currently talking charaacters
 		#May be in multiple places, in handle_choices() and here
-		if current.has("talking"):
-			Character1Texture.visible = false
-			Character2Texture.visible = false
+		#if current.has("talking"):
+			#Character1Texture.visible = false
+			#Character2Texture.visible = false
 
 			#print("Talking has been called, ", option.get("talking", ""))
 			#Based on who is talking, there current image will be toggled on
-			current_characters_texture[current.get("talking")].visible = true
+			#current_characters_texture[current.get("talking")].visible = true
 
 		# Skip line if condition isn't met
 		if current.has("condition"):
@@ -474,14 +474,14 @@ func handle_choice(option: Dictionary):
 	if option.has("set_flag"):
 		Globals.set_flag(option["set_flag"])
 		print("DEBUG: Flag set ->", option["set_flag"])
-	var turn = 0
+	#var turn = 0
 	#Toggles visability based on who is talking
-	if option.has("talking"):
-			Character1Texture.visible = false
-			Character2Texture.visible = false
+	#if option.has("talking"):
+			#Character1Texture.visible = false
+			#Character2Texture.visible = false
 			#print("Talking has been called, ", option.get("talking", ""))
 			#Based on who is talking, there current image will be toggled on
-			current_characters_texture[option.get("talking")].visible = true
+ 			#current_characters_texture[option.get("talking")].visible = true
 			
 
 	if option.has("jump"):
