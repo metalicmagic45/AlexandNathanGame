@@ -32,25 +32,25 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Control" type="Control" parent="PauseLayer/Panel"]
-layout_mode = 2
-anchors_preset = 0
-offset_right = 1152.0
-offset_bottom = 648.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PauseLayer/Panel/Control"]
 custom_minimum_size = Vector2(600, 200)
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -48.0
-offset_top = -68.0
-offset_right = 48.0
-offset_bottom = 68.0
+anchors_preset = -1
+anchor_left = 0.24
+anchor_top = 0.253
+anchor_right = 0.76
+anchor_bottom = 0.747
+offset_left = -0.480011
+offset_top = 0.0559845
+offset_right = 0.479919
+offset_bottom = -0.0560303
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
@@ -65,6 +65,11 @@ text = "Save and Load
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 text = "Main Menu"
+
+[node name="Settings" type="Button" parent="PauseLayer/Panel/Control/VBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+text = "Settings"
 
 [node name="PauseLayerBackground" type="CanvasLayer" parent="PauseLayer"]
 visible = false
@@ -508,6 +513,7 @@ vertical_alignment = 1
 
 [connection signal="button_down" from="PauseLayer/Panel/Control/VBoxContainer/Load" to="." method="_on_load_button_down"]
 [connection signal="button_down" from="PauseLayer/Panel/Control/VBoxContainer/Menu" to="." method="_on_menu_button_down"]
+[connection signal="button_down" from="PauseLayer/Panel/Control/VBoxContainer/Settings" to="." method="_on_settings_button_down"]
 [connection signal="button_down" from="BottomUiLayer/MainUI/VBoxContainer/Control/LeftButton" to="." method="_on_left_button_button_down"]
 [connection signal="button_down" from="BottomUiLayer/MainUI/VBoxContainer/Control/RightButton" to="." method="_on_right_button_button_down"]
 [connection signal="button_down" from="BottomUiLayer/MainUI/VBoxContainer/Control/TopButton" to="." method="_on_top_button_button_down"]

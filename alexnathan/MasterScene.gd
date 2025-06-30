@@ -6,7 +6,8 @@ extends Node2D
 @onready var PausePanel = $PauseLayer/Panel
 @onready var PauseLayerBackground = get_node("PauseLayer/PauseLayerBackground")
 @onready var Menu_Actions = get_node("PauseLayer/Panel/HBoxContainer/Control2/CenterContainer/Control")
-@onready var Settings = preload("res://Settings.tscn")
+@onready var Settings_Button = get_node("PauseLayer/Panel/Control/VBoxContainer/Settings")
+#@onready var Settings = preload("res://Settings.tscn")
 
 @onready var Portrait: TextureRect = $BottomUiLayer/MainUI/ActionUI/VBoxContainer/background/Panel/CharacterSprite
 @onready var HPLabel = $BottomUiLayer/MainUI/VBoxContainer/BottomUI/HBoxContainer/Buttons/Panel/HP
@@ -151,18 +152,12 @@ func _on_save_button_down() -> void:
 func _on_load_button_down() -> void:
 	get_tree().change_scene_to_file("res://load.tscn")	
 	
-func _on_settings_button_down() -> void:
-	var setting = Settings.instantiate()
-	
-	for child in Menu_Actions.get_children():
-		child.queue_free()
-	Menu_Actions.add_child(setting)
-	for child in Menu_Actions.get_children():
-		print(1035)
-	
 func _on_menu_button_down() -> void:
 	get_tree().change_scene_to_file("res://Main.tscn")
-	
+
+func _on_settings_button_down() -> void:
+	get_tree().change_scene_to_file("res://Settings.tscn")
+		
 #########################################################################
 
 func _on_inventory_pressed() -> void:
