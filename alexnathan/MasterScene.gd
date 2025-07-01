@@ -34,6 +34,7 @@ extends Node2D
 @onready var PopUpPannel = $BottomUiLayer/Panel
 
 var area_context_stack: Array = []
+var npc_interaction : bool = false
 
 
 #Stores currently selected character for set_portrait(), ran in _ready()
@@ -76,26 +77,47 @@ func depict_image(character : String, Placement : String, type : String):
 			Character2Texture.texture = image		
 func _input(event): 
 	if event.is_action_pressed("uicancel"):
-		if popup == true:
-			PopUp.visible = !PopUp.visible
+		if popup:
+			PopUp.visible = false
 			PopUpImage.texture = null
 			popup = false
 			Globals.set_flag("NewGameFalse")
+		elif npc_interaction:
+			return  # Don't do anything during NPC interaction
 		else:
 			toggle_pause_menu()
+
 	if event.is_action_pressed("ToggleInvetory"):
-		get_tree().change_scene_to_file("res://inventory_ui.tscn")
+		if popup == true:
+			return
+		else:
+			get_tree().change_scene_to_file("res://inventory_ui.tscn")
 	if event.is_action_pressed("ToggleParty"):
-		get_tree().change_scene_to_file("res://party_ui.tscn")
+		if popup == true:
+			return
+		else:	
+			get_tree().change_scene_to_file("res://party_ui.tscn")
 	if event.is_action_pressed("ToggleChar"):
-		get_tree().change_scene_to_file("res://character_ui.tscn")
+		if popup == true:
+			return
+		else:
+			get_tree().change_scene_to_file("res://character_ui.tscn")
 	if event.is_action_pressed("ToggleMagic"):
-		get_tree().change_scene_to_file("res://magic_menu.tscn")
+		if popup == true:
+			return
+		else:
+			get_tree().change_scene_to_file("res://magic_menu.tscn")
 	if event.is_action_pressed("DiolougeAdvance") and !Diolouge_Choice_Toggle:
-		clear_choices()
-		Diolouge_Text_Outputter()
+		if popup == true:
+			return
+		else:
+			clear_choices()
+			Diolouge_Text_Outputter()
 	if event.is_action_pressed("NotesToggle"):
-		get_tree().change_scene_to_file("res://notes.tscn")
+		if popup == true:
+			return
+		else:
+			get_tree().change_scene_to_file("res://notes.tscn")
 		
 
 	
@@ -161,16 +183,28 @@ func _on_settings_button_down() -> void:
 #########################################################################
 
 func _on_inventory_pressed() -> void:
-	get_tree().change_scene_to_file("res://inventory_ui.tscn")
+	if popup == true:
+		return
+	else:
+		get_tree().change_scene_to_file("res://inventory_ui.tscn")
 func _on_party_pressed() -> void:
-	get_tree().change_scene_to_file("res://party_ui.tscn")
+	if popup == true:
+		return
+	else:
+		get_tree().change_scene_to_file("res://party_ui.tscn")
 func _on_character_pressed() -> void:
-	get_tree().change_scene_to_file("res://character_ui.tscn")
+	if popup == true:
+		return
+	else:
+		get_tree().change_scene_to_file("res://character_ui.tscn")
 #Advances diolouge on button press
 func _on_diolouge_advance_button_button_down() -> void:
-	clear_choices()
-	if !Diolouge_Choice_Toggle:
-		Diolouge_Text_Outputter()
+	if popup == true:
+		return
+	else:
+		clear_choices()
+		if !Diolouge_Choice_Toggle:
+			Diolouge_Text_Outputter()
 func reset_dialogue():
 	Diolouge_Text_Area.clear()
 	Diolouge_Count = 0
@@ -253,6 +287,7 @@ func Diolouge_Text_Outputter():
 				# Switch to NPC dialogue
 				Currently_Selected_Area = Npcs.NPCs[npc_name].char_dialogue
 				Diolouge_Count = 0
+				npc_interaction = true
 				Diolouge_Text_Outputter()
 				return
 			else:
@@ -349,6 +384,7 @@ func Diolouge_Text_Outputter():
 		if current["type"] == "STOP":
 			if area_context_stack.size() > 0:
 				print("Returning from NPC dialogue.")
+				npc_interaction = false
 				pop_area_context()
 				Diolouge_Text_Outputter()
 			else:
@@ -522,6 +558,25 @@ func hide_buttons() -> void:
 		left_button.visible = true
 	else:
 		left_button.visible = false
+func disable_visible_navigation_buttons() -> void:
+	if top_button.visible:
+		top_button.disabled = true
+	if bottom_button.visible:
+		bottom_button.disabled = true
+	if left_button.visible:
+		left_button.disabled = true
+	if right_button.visible:
+		right_button.disabled = true
+func enable_visible_navigation_buttons() -> void:
+	if top_button.visible:
+		top_button.disabled = false
+	if bottom_button.visible:
+		bottom_button.disabled = false
+	if left_button.visible:
+		left_button.disabled = false
+	if right_button.visible:
+		right_button.disabled = false
+	
 ########################################################################################
 ################################Character Rendering#####################################
 var current_characters = []#cureent scenes starting characters
@@ -535,6 +590,10 @@ var current_characters_texture = {}
 ############################Change Scene Function#######################################
 func _process(delta: float) -> void:
 	hide_buttons()
+	if popup or npc_interaction == true:
+		disable_visible_navigation_buttons()
+	else:
+		enable_visible_navigation_buttons()
 	Globals.set_current_global_scene(current_scene_packed_scene)
 	Globals.set_area_dialogue(Diolouge_Count, Current_Area)
 
@@ -571,7 +630,10 @@ func _on_left_button_button_down() -> void:
 		switch_game_scene(current_scene_instance.get_left())
 
 func _on_magic_button_down() -> void:
-	get_tree().change_scene_to_file("res://magic_menu.tscn")
+	if popup == true:
+		return
+	else:
+		get_tree().change_scene_to_file("res://magic_menu.tscn")
 func _on_top_button_button_down() -> void:
 	if current_scene_instance and current_scene_instance.has_method("get_top"):
 		switch_game_scene(current_scene_instance.get_top())
