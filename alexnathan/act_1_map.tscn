@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://cyydr23kr4toc"]
+[gd_scene load_steps=9 format=3 uid="uid://cyydr23kr4toc"]
 
 [ext_resource type="Script" path="res://act_1_map.gd" id="1_bxro5"]
 [ext_resource type="Texture2D" uid="uid://cioyn44kb8q5i" path="res://Pictures/MapBackground2.png" id="1_wwmex"]
 [ext_resource type="Texture2D" uid="uid://ycxf5kiroas1" path="res://Pictures/shacksprite2.png" id="3_ejwh8"]
 [ext_resource type="Texture2D" uid="uid://boqtlqj3w6j2s" path="res://Pictures/shacksprite3.png" id="4_021hh"]
 [ext_resource type="Texture2D" uid="uid://biga6nrck2cv2" path="res://Pictures/shackgrey.png" id="4_pie0e"]
+[ext_resource type="Texture2D" uid="uid://c2vei7itddh06" path="res://Pictures/GasStation.png" id="6_nvhvy"]
+[ext_resource type="Texture2D" uid="uid://cktdgcjm6v685" path="res://Pictures/gasstation3.png" id="7_uqbrl"]
+[ext_resource type="Texture2D" uid="uid://dctu3oc3c14n5" path="res://Pictures/gasstation2.png" id="8_qsmys"]
 
 [node name="Act1Map" type="Control"]
 layout_mode = 3
@@ -27,7 +30,7 @@ texture = ExtResource("1_wwmex")
 [node name="ShackButton" type="Control" parent="Sprite2D"]
 layout_mode = 1
 anchor_left = 0.1
-anchor_top = 0.4
+anchor_top = 0.1
 anchor_right = 0.2
 anchor_bottom = 0.4
 offset_right = 576.0
@@ -56,5 +59,43 @@ size_flags_stretch_ratio = 1.5
 theme_override_font_sizes/font_size = 50
 text = "Shack"
 horizontal_alignment = 1
+
+[node name="GasStationButton" type="Control" parent="Sprite2D"]
+custom_minimum_size = Vector2(1024, 1097)
+layout_mode = 1
+anchor_left = 0.3
+anchor_top = 0.2
+anchor_right = 0.3
+anchor_bottom = 0.25
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.15, 0.15)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Sprite2D/GasStationButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureButton" type="TextureButton" parent="Sprite2D/GasStationButton/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.9
+texture_normal = ExtResource("6_nvhvy")
+texture_pressed = ExtResource("7_uqbrl")
+texture_hover = ExtResource("8_qsmys")
+texture_disabled = ExtResource("7_uqbrl")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Sprite2D/GasStationButton/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+theme_override_font_sizes/font_size = 50
+text = "Gas Station"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="Sprite2D/ShackButton/VBoxContainer/ShackButton" to="." method="_on_shack_button_pressed"]
