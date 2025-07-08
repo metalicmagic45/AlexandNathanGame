@@ -2,8 +2,8 @@ extends Control
 
 @onready var Top_Button = null
 @onready var Right_Button = null
-@onready var Left_Button = load("res://shack.tscn")
-@onready var Bottom_Button = load("res://CarWilderness.tscn")
+@onready var Left_Button = null
+@onready var Bottom_Button = null
 @onready var Roadshacktext = load("res://roadshacktext.gd").new()
 @onready var areaID = Roadshacktext.areaID
 

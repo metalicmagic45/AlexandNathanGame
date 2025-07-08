@@ -1,7 +1,7 @@
 extends Control
 
 @onready var Top_Button = null
-@onready var Right_Button = load("res://roadshack.tscn")
+@onready var Right_Button = null
 @onready var Left_Button = null
 @onready var Bottom_Button = null
 @onready var shacktext = load("res://shacktext.gd").new()
