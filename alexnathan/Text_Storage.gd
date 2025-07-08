@@ -13,3 +13,10 @@ var Area4 = []
 var Area5 = []
 var Gameplay_Area_Selecter = [Area1, Area2, Area3, Area4, Area5]
 #Text.append()
+var AreaScripts = [CarwildernessScript, roadshack, shack]
+func get_area_id(Name : String) -> int:
+	for i in range(AreaScripts.size()):
+		if AreaScripts[i].areaname == Name:
+			return i
+	return -1
+	

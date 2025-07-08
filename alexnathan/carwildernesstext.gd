@@ -1,5 +1,6 @@
 extends Node
 var areaID = 0
+var areaname = "Carwildernessstart"
 		
 	
 var Area1 = [

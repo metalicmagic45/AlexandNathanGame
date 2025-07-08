@@ -1,5 +1,6 @@
 extends Node
 var areaID = 2
+var areaname = "shack"
 
 var dialogue = [
 	"There a person in this shack",

@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyydr23kr4toc"]
+
+[ext_resource type="Script" path="res://act_1_map.gd" id="1_bxro5"]
+[ext_resource type="Texture2D" uid="uid://cioyn44kb8q5i" path="res://Pictures/MapBackground2.png" id="1_wwmex"]
+
+[node name="Act1Map" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bxro5")
+
+[node name="Sprite2D" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_wwmex")
