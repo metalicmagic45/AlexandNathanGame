@@ -86,6 +86,11 @@ func _input(event):
 			return  # Don't do anything during NPC interaction
 		else:
 			toggle_pause_menu()
+	if event.is_action_pressed("ToggleMasterScene"):
+		if popup == true:
+			return
+		else:
+			get_tree().change_scene_to_file("res://act_1_map.tscn")
 
 	if event.is_action_pressed("ToggleInvetory"):
 		if popup == true:
@@ -102,7 +107,7 @@ func _input(event):
 			return
 		else:
 			get_tree().change_scene_to_file("res://character_ui.tscn")
-	if event.is_action_pressed("ToggleMagic"):
+	if event.is_action_pressed("ToggleMagic") and !Input.is_key_pressed(KEY_CTRL):
 		if popup == true:
 			return
 		else:

@@ -42,13 +42,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureButton" type="TextureButton" parent="Sprite2D/ShackButton/VBoxContainer"]
+[node name="ShackButton" type="TextureButton" parent="Sprite2D/ShackButton/VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("3_ejwh8")
 texture_pressed = ExtResource("4_pie0e")
 texture_hover = ExtResource("4_021hh")
 texture_disabled = ExtResource("4_pie0e")
-texture_focused = ExtResource("4_021hh")
 
 [node name="Label" type="Label" parent="Sprite2D/ShackButton/VBoxContainer"]
 layout_mode = 2
@@ -57,3 +56,5 @@ size_flags_stretch_ratio = 1.5
 theme_override_font_sizes/font_size = 50
 text = "Shack"
 horizontal_alignment = 1
+
+[connection signal="pressed" from="Sprite2D/ShackButton/VBoxContainer/ShackButton" to="." method="_on_shack_button_pressed"]
