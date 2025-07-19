@@ -50,8 +50,8 @@ texture = ExtResource("1_wwmex")
 
 [node name="ShackButton" type="Control" parent="Sprite2D"]
 layout_mode = 1
-anchor_left = 0.1
-anchor_top = 0.1
+anchor_left = 0.05
+anchor_top = 0.15
 anchor_right = 0.2
 anchor_bottom = 0.4
 offset_right = 576.0
@@ -124,7 +124,7 @@ vertical_alignment = 1
 [node name="Bridge" type="Control" parent="Sprite2D"]
 custom_minimum_size = Vector2(1536, 1024)
 layout_mode = 1
-anchor_left = 0.8
+anchor_left = 0.75
 anchor_top = 0.05
 anchor_right = 0.9
 anchor_bottom = 0.1
@@ -315,10 +315,10 @@ vertical_alignment = 1
 
 [node name="Control6" type="Control" parent="Sprite2D"]
 layout_mode = 1
-anchor_left = 0.8
-anchor_top = 0.45
-anchor_right = 0.8
-anchor_bottom = 0.45
+anchor_left = 0.85
+anchor_top = 0.35
+anchor_right = 0.85
+anchor_bottom = 0.35
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(0.15, 0.15)
@@ -342,4 +342,308 @@ text = "River"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Sprite2D" type="TextureRect" parent="Sprite2D"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_wwmex")
+
+[node name="ShackButton" type="Control" parent="Sprite2D/Sprite2D"]
+layout_mode = 1
+anchor_left = 0.05
+anchor_top = 0.15
+anchor_right = 0.2
+anchor_bottom = 0.4
+offset_right = 576.0
+offset_bottom = 498.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.2, 0.2)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Sprite2D/Sprite2D/ShackButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ShackButton" type="TextureButton" parent="Sprite2D/Sprite2D/ShackButton/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_ejwh8")
+texture_pressed = ExtResource("4_pie0e")
+texture_hover = ExtResource("4_021hh")
+texture_disabled = ExtResource("4_pie0e")
+
+[node name="Label" type="Label" parent="Sprite2D/Sprite2D/ShackButton/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+theme_override_font_sizes/font_size = 50
+text = "Shack"
+horizontal_alignment = 1
+
+[node name="GasStationButton" type="Control" parent="Sprite2D/Sprite2D"]
+custom_minimum_size = Vector2(1024, 1097)
+layout_mode = 1
+anchor_left = 0.3
+anchor_top = 0.2
+anchor_right = 0.3
+anchor_bottom = 0.25
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.15, 0.15)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Sprite2D/Sprite2D/GasStationButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureButton" type="TextureButton" parent="Sprite2D/Sprite2D/GasStationButton/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.9
+texture_normal = ExtResource("6_nvhvy")
+texture_pressed = ExtResource("7_uqbrl")
+texture_hover = ExtResource("8_qsmys")
+texture_disabled = ExtResource("7_uqbrl")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Sprite2D/Sprite2D/GasStationButton/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+theme_override_font_sizes/font_size = 50
+text = "Gas Station"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Bridge" type="Control" parent="Sprite2D/Sprite2D"]
+custom_minimum_size = Vector2(1536, 1024)
+layout_mode = 1
+anchor_left = 0.75
+anchor_top = 0.05
+anchor_right = 0.9
+anchor_bottom = 0.1
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.15, 0.15)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Sprite2D/Sprite2D/Bridge"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureButton" type="TextureButton" parent="Sprite2D/Sprite2D/Bridge/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("9_485la")
+texture_pressed = ExtResource("10_hfrs7")
+texture_hover = ExtResource("11_2lq6i")
+texture_disabled = ExtResource("10_hfrs7")
+
+[node name="Label" type="Label" parent="Sprite2D/Sprite2D/Bridge/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 60
+text = "Bridge"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="Sprite2D/Sprite2D"]
+custom_minimum_size = Vector2(1536, 1051)
+layout_mode = 1
+anchor_left = 0.55
+anchor_top = 0.35
+anchor_right = 0.55
+anchor_bottom = 0.35
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.15, 0.15)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Sprite2D/Sprite2D/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureButton" type="TextureButton" parent="Sprite2D/Sprite2D/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("12_rtab5")
+texture_pressed = ExtResource("13_fyt11")
+texture_hover = ExtResource("14_rqdn4")
+texture_disabled = ExtResource("13_fyt11")
+
+[node name="Label" type="Label" parent="Sprite2D/Sprite2D/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Ranger Station"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control2" type="Control" parent="Sprite2D/Sprite2D"]
+custom_minimum_size = Vector2(1024, 1097)
+layout_mode = 1
+anchor_left = 0.45
+anchor_top = 0.6
+anchor_right = 0.45
+anchor_bottom = 0.6
+offset_right = 1024.0
+offset_bottom = 1097.0
+scale = Vector2(0.2, 0.2)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Sprite2D/Sprite2D/Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureButton" type="TextureButton" parent="Sprite2D/Sprite2D/Control2/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("15_e2n8l")
+texture_pressed = ExtResource("16_j2hfh")
+texture_hover = ExtResource("17_t1lnn")
+texture_disabled = ExtResource("16_j2hfh")
+
+[node name="Label" type="Label" parent="Sprite2D/Sprite2D/Control2/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Campground
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control3" type="Control" parent="Sprite2D/Sprite2D"]
+custom_minimum_size = Vector2(1024, 1097)
+layout_mode = 1
+anchor_left = 0.75
+anchor_top = 0.7
+anchor_right = 0.75
+anchor_bottom = 0.7
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.2, 0.2)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Sprite2D/Sprite2D/Control3"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureButton" type="TextureButton" parent="Sprite2D/Sprite2D/Control3/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("17_tjlut")
+texture_pressed = ExtResource("18_loxb7")
+texture_hover = ExtResource("19_1r7ga")
+texture_disabled = ExtResource("18_loxb7")
+
+[node name="Label" type="Label" parent="Sprite2D/Sprite2D/Control3/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Cave"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control4" type="Control" parent="Sprite2D/Sprite2D"]
+custom_minimum_size = Vector2(996, 1079)
+layout_mode = 1
+anchor_left = 0.15
+anchor_top = 0.39
+anchor_right = 0.15
+anchor_bottom = 0.39
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.15, 0.15)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Sprite2D/Sprite2D/Control4"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureButton" type="TextureButton" parent="Sprite2D/Sprite2D/Control4/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("21_3ymwt")
+texture_pressed = ExtResource("22_hqubv")
+texture_hover = ExtResource("23_he6k3")
+texture_disabled = ExtResource("22_hqubv")
+
+[node name="Label" type="Label" parent="Sprite2D/Sprite2D/Control4/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Forest Clearing"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control5" type="Control" parent="Sprite2D/Sprite2D"]
+custom_minimum_size = Vector2(1024, 1623)
+layout_mode = 1
+anchor_left = 0.08
+anchor_top = 0.65
+anchor_right = 0.08
+anchor_bottom = 0.65
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.18, 0.18)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Sprite2D/Sprite2D/Control5"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureButton" type="TextureButton" parent="Sprite2D/Sprite2D/Control5/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("24_84dnl")
+texture_pressed = ExtResource("25_37vmd")
+texture_hover = ExtResource("26_4ro2c")
+texture_disabled = ExtResource("25_37vmd")
+
+[node name="Label" type="Label" parent="Sprite2D/Sprite2D/Control5/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Totem Ground"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control6" type="Control" parent="Sprite2D/Sprite2D"]
+layout_mode = 1
+anchor_left = 0.85
+anchor_top = 0.35
+anchor_right = 0.85
+anchor_bottom = 0.35
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.15, 0.15)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Sprite2D/Sprite2D/Control6"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureButton" type="TextureButton" parent="Sprite2D/Sprite2D/Control6/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("27_46vc7")
+texture_pressed = ExtResource("28_3v16b")
+texture_hover = ExtResource("29_5g6u3")
+texture_disabled = ExtResource("28_3v16b")
+
+[node name="Label" type="Label" parent="Sprite2D/Sprite2D/Control6/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "River"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="pressed" from="Sprite2D/ShackButton/VBoxContainer/ShackButton" to="." method="_on_shack_button_pressed"]
+[connection signal="pressed" from="Sprite2D/Sprite2D/ShackButton/VBoxContainer/ShackButton" to="." method="_on_shack_button_pressed"]
