@@ -6,23 +6,23 @@ var CurrentCharacter: String = "Johnson"
 func get_skill(name: String, skill: String) -> int:
 	if players.has(name):
 		var char_data = players[name]
-		if char_data.has("skills") and char_data["skills"].has(skill):
-			return char_data["skills"][skill]
+		if char_data.has("skill_modifiers") and char_data["skill_modifiers"].has(skill):
+			return char_data["skill_modifiers"][skill]
 		else:
 			print("Skill not found")
 	else:
 		print("Character not found")
 	return -1
-func get_stat(name: String, stat: String) -> int:
-	if players.has(name):
-		var char_data = players[name]
-		if char_data.has(stat):
-			return char_data[stat]
-		else:
-			print("Stat not found")
-	else:
-		print("Character not found")
-	return -1
+#func get_stat(name: String, stat: String) -> int:
+	#if players.has(name):
+		#var char_data = players[name]
+		#if char_data.has(stat):
+			#return char_data[stat]
+		#else:
+			#print("Stat not found")
+	#else:
+		#print("Character not found")
+	#return -1
 
 var players = {
 	"Johnson": {
@@ -35,36 +35,39 @@ var players = {
 		"STR": 14,
 		"CON": 14,
 		"DEX": 14,
-		"POW": 10,
 		"INT": 10,
-		"LUCK": 10,
-		"skills": {
-			"Alertness": 40,
-			"Athletics": 40,
-			"COMPUTERSCIENCE": 5,
-			"CRIMINOLOGY": 5,
-			"CRAFT": 40,
-			"DODGE": 35,
-			"RESEARCH": 5,
-			"DRIVE": 50,
-			"FIREARMS(PISTOL)": 60,
-			"FIREARMS(SHOT/RIFLE)": 60,
-			"FIRSTAID": 20,
-			"MACHINERY": 30,
-			"HISTORY": 5,
-			"LAW": 5,
-			"MELEEWEAPONS": 20,
-			"NAVIGATE": 40,
-			"PERSUADE": 5,
-			"SLIGHTOFHAND": 5,
-			"SURVIVAL": 50,
-			"STEALTH": 50,
-			"UNARMED": 50,
-			"SWIM": 20,
-			"SEARCH": 30,
-			"UNATURAL": 1,
-			"SCIENCE": 5,
-			"MEDCINE": 5,
+		"WIL": 12,
+		"skill_modifiers": {
+			"STR": 2,
+			"CON": 2,
+			"DEX": 2,
+			"INT": 0,
+			"WIL": 1,
+			"ALERTNESS": 2,
+			"ATHLETICS": 2,
+			"COMPUTERSCIENCE": 2,
+			"CRIMINOLOGY": 2,
+			"CRAFT": 2,
+			"DODGE": 2,
+			"RESEARCH": 2,
+			"DRIVE": 2,
+			"FIREARMS": 2,
+			"FIRSTAID": 2,
+			"MACHINERY": 2,
+			"HISTORY": 2,
+			"LAW": 2,
+			"MELEEWEAPONS": 2,
+			"NAVIGATE": 2,
+			"PERSUADE": 2,
+			"SLIGHTOFHAND": 2,
+			"SURVIVAL": 2,
+			"STEALTH": 2,
+			"UNARMED": 2,
+			"SWIM": 2,
+			"SEARCH": 2,
+			"UNATURAL": 2,
+			"SCIENCE": 2,
+			"MEDCINE": 2,
 		}
 	},
 	"Anna": {

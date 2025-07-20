@@ -17,6 +17,28 @@ var current_characters_images = {"Jhonson" : preload("res://Pictures/JhonsonPort
 "Tyler" : preload("res://Pictures/TylerPortrait.png"), 
 "Anna" : preload("res://Pictures/AnnaPortrait.png"), 
 }
+################Dice Rolls###################
+func dice_roll() -> int:
+	return randi_range(1,20)
+func skill_check(DC : int, roll : int, modifier : int) -> bool:
+	roll = roll + modifier
+	#Auto Complete Check, arbitrary numbers
+	if modifier + 10 >= DC + 4:
+		print("Auto Pass Happened!")
+		return true
+	else:
+		if roll >= DC:
+			return true
+		else: 
+			return false
+#func stat_check(DC : int, roll : int) -> bool:
+	
+	#var DC2 = DC * 5
+	#if roll <= DC2:
+		#return true
+	#else:
+		#return false
+#############################################
 func get_new_game():
 	return new_game
 func set_new_game() -> void:

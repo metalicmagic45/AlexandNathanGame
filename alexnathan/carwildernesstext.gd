@@ -81,29 +81,32 @@ var Area1 = [
 		]
 	},	
 	{ #index 8
-		"type": "statcheck",
+		"type": "skillcheck",
 		"check_pass": "Bush_SearchZ1_pass",
 		"check_fail": "Bush_SearchZ1_fail",
 		"character": "get_character",
-		"stat": "INT",
+		"skill": "SEARCH",
+		"DC": 14,
 		"jump": "flag8",
 		"flag": "flag5"
 	},
 	{ #index 9	
-		"type": "statcheck",
+		"type": "skillcheck",
 		"check_pass": "Bush_SearchZ1_pass",
 		"check_fail": "Bush_SearchZ1_fail",
 		"character": "get_character",
-		"stat": "CON",
+		"skill": "CON",
+		"DC": 14,
 		"jump": "flag8",
 		"flag": "flag6"
 	},
 	{ #index 10	
-		"type": "statcheck",
+		"type": "skillcheck",
 		"check_pass": "Bush_SearchZ1_pass",
 		"check_fail": "Bush_SearchZ1_fail",
 		"character": "get_character",
-		"stat": "STR",
+		"skill": "UNARMED",
+		"DC": 14,
 		"jump": "flag8",
 		"flag": "flag7"
 	},
@@ -120,11 +123,12 @@ var Area1 = [
 	},
 	"Let's try to lift this rock.",
 	{
-		"type": "statcheck",
+		"type": "skillcheck",
 		"check_pass": "STRCHECKZ1_pass",
 		"check_fail": "STRCHECKZ1_fail",
 		"character": "get_character",
-		"stat": "STR"
+		"skill": "ATHLETICS",
+		"DC": 14
 	},
 	{
 		"type": "text",

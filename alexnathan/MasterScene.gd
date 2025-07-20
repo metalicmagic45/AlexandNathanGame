@@ -404,10 +404,18 @@ func Diolouge_Text_Outputter():
 		if current["type"] == "skillcheck":
 			dicelabel.text = ""
 			var char_name = Playerdata.CurrentCharacter
+			var roll = Globals.dice_roll()
+			#Gets the skill being rolled for
 			var skill_name = current.get("skill", "")
-			var roll = Skillcheck.dice_roll()
-			var dc = Playerdata.get_skill(char_name, skill_name)
-			var flag = Skillcheck.skill_check(dc, roll)
+			#Gets the DC for the check
+			var dc = current.get("DC", "")
+			#Gets current characters modifer for roll
+			var modifier = Playerdata.get_skill(char_name, skill_name)
+			print("Skill Modifier, ", modifier)
+			print("Skill DC, ", dc)
+			print("Skill Roll, ", roll)
+			print("Total Roll, ", roll + modifier)
+			var flag = Globals.skill_check(dc, roll, modifier)
 			var check_pass = current.get("check_pass", "")
 			var check_fail = current.get("check_fail", "")
 			if flag == true:
@@ -416,7 +424,7 @@ func Diolouge_Text_Outputter():
 			else:
 				Globals.set_flag(check_fail)
 				print("check fail")
-			dicelabel.text = str(roll)
+			dicelabel.text = str(roll + modifier)
 			if current.has("jump"):
 				var target_flag = current["jump"]
 				var jump_index = flag_jump(Currently_Selected_Area, target_flag)	
@@ -427,32 +435,32 @@ func Diolouge_Text_Outputter():
 				Diolouge_Count += 1
 			Diolouge_Text_Outputter()
 			return
-		if current["type"] == "statcheck":
-			dicelabel.text = ""
-			var char_name = Playerdata.CurrentCharacter
-			var stat_name = current.get("stat", "")
-			var roll = Skillcheck.dice_roll()
-			var dc = Playerdata.get_stat(char_name, stat_name)
-			var flag = Skillcheck.stat_check(dc, roll)
-			var check_pass = current.get("check_pass", "")
-			var check_fail = current.get("check_fail", "")
-			if flag == true:
-				Globals.set_flag(check_pass)
-				print("check pass")
-			else:
-				Globals.set_flag(check_fail)
-				print("check fail")
-			dicelabel.text = str(roll)	
-			if current.has("jump"):
-				var target_flag = current["jump"]
-				var jump_index = flag_jump(Currently_Selected_Area, target_flag)	
-				print(jump_index)	
-				if jump_index != -1:
-					Diolouge_Count = jump_index
-			else:
-				Diolouge_Count += 1
-			Diolouge_Text_Outputter()
-			return
+		#if current["type"] == "statcheck":
+			#dicelabel.text = ""
+			#var char_name = Playerdata.CurrentCharacter
+			#var stat_name = current.get("stat", "")
+			#var roll = Globals.dice_roll()
+			#var dc = Playerdata.get_stat(char_name, stat_name)
+			#var flag = Globals.stat_check(dc, roll)
+			#var check_pass = current.get("check_pass", "")
+			#var check_fail = current.get("check_fail", "")
+			#if flag == true:
+				#Globals.set_flag(check_pass)
+				#print("check pass")
+			#else:
+				#Globals.set_flag(check_fail)
+				#print("check fail")
+			#dicelabel.text = str(roll)	
+			#if current.has("jump"):
+				#var target_flag = current["jump"]
+				#var jump_index = flag_jump(Currently_Selected_Area, target_flag)	
+				#print(jump_index)	
+				#if jump_index != -1:
+					#Diolouge_Count = jump_index
+			#else:
+				#Diolouge_Count += 1
+			#Diolouge_Text_Outputter()
+			#return
 func flag_jump(dialogue_array: Array, target_flag: String) -> int:
 	for i in range(dialogue_array.size()):
 		var entry = dialogue_array[i]
