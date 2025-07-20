@@ -30,14 +30,14 @@ func set_character(character_name: String) -> void:
 	for child in skill_container.get_children():
 		child.queue_free()
 	# === Populate Basic Stats ===
-	for key in ["HP", "MP", "STR", "CON", "DEX", "POW", "INT", "LUCK"]:
+	for key in ["HP", "MP", "STR", "CON", "DEX", "WIL", "INT"]:
 		var label = Label.new()
 		label.text = "%s: %s" % [key, character_data[key]]
 		stat_box.add_child(label)
 	# === Populate Skills ===
-	for skill in character_data["skills"].keys():
+	for skill in character_data["skill_modifiers"].keys():
 		var label = Label.new()
-		label.text = "%s: %d" % [skill, character_data["skills"][skill]]
+		label.text = "%s: %d" % [skill, character_data["skill_modifiers"][skill]]
 		skill_container.add_child(label)	
 func _ready():
 	set_portrait(character_name)

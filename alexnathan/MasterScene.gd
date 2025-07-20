@@ -97,11 +97,6 @@ func _input(event):
 			return
 		else:
 			get_tree().change_scene_to_file("res://inventory_ui.tscn")
-	if event.is_action_pressed("ToggleParty"):
-		if popup == true:
-			return
-		else:	
-			get_tree().change_scene_to_file("res://party_ui.tscn")
 	if event.is_action_pressed("ToggleChar"):
 		if popup == true:
 			return
@@ -192,11 +187,6 @@ func _on_inventory_pressed() -> void:
 		return
 	else:
 		get_tree().change_scene_to_file("res://inventory_ui.tscn")
-func _on_party_pressed() -> void:
-	if popup == true:
-		return
-	else:
-		get_tree().change_scene_to_file("res://party_ui.tscn")
 func _on_character_pressed() -> void:
 	if popup == true:
 		return
@@ -656,3 +646,10 @@ func show_journal_popup(message: String) -> void:
 	PopUpMsg.text = message
 	await get_tree().create_timer(1.0).timeout  # Wait 1.0 seconds
 	PopUpPannel.visible = false
+
+
+func _on_map_pressed() -> void:
+	if popup == true:
+		return
+	else:
+		get_tree().change_scene_to_file("res://act_1_map.tscn")

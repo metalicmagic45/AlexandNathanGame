@@ -1,10 +1,7 @@
 extends Node
 
 var player_inventories = {
-	"Johnson": ["colt1911", "HIPower", "berettaM9", "Glock17", "m14", "axe"],
-	"Tyler": ["MagicRing"],
-	"Anna": ["axe"],
-	"Kate": ["MagicSword"]
+	"William Clark": ["colt1911", "HIPower", "berettaM9", "Glock17", "m14", "axe"],
 	}
 func get_inventory(player_name: String) -> Array:
 	if player_inventories.has(player_name):
