@@ -404,7 +404,7 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 0.3
 
 [node name="Panel" type="Panel" parent="BottomUiLayer/MainUI/ActionUI/VBoxContainer/background"]
-custom_minimum_size = Vector2(150, 100)
+custom_minimum_size = Vector2(125, 100)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

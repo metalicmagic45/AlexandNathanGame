@@ -27,7 +27,7 @@ func get_skill(name: String, skill: String) -> int:
 var players = {
 	"William Clark": {
 		"name": "William Clark",
-		"sprite": preload("res://Pictures/JhonsonPortrait.png"),
+		"sprite": preload("res://Pictures/William Clark.png"),
 		"HP": 14,
 		"Current_HP": 14,
 		"MP": 10,

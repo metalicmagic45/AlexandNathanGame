@@ -21,19 +21,4 @@ func load_player_inventory(player : String):
 		add_item(item)
 func _ready():
 	reset()
-
-func _on_button_pressed() -> void:
-	load_player_inventory("Anna") # Replace with function body.
-	Playerdata.CurrentCharacter = "Anna"
-
-
-func _on_johnson_pressed() -> void:
-	load_player_inventory("Johnson")
-	Playerdata.CurrentCharacter = "Johnson"
-func _on_tyler_pressed() -> void:
-	load_player_inventory("Tyler")
-	Playerdata.CurrentCharacter = "Tyler"
-
-func _on_kate_pressed() -> void:
-	load_player_inventory("Kate")
-	Playerdata.CurrentCharacter = "Kate"
+	load_player_inventory("William Clark")

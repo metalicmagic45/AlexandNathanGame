@@ -22,34 +22,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-
-[node name="Anna" type="Button" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Anna"
-
-[node name="Johnson" type="Button" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Johnson
-"
-
-[node name="Tyler" type="Button" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Tyler"
-
-[node name="Kate" type="Button" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Kate
-"
-
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 20
-columns = 3
-
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/Anna" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/Johnson" to="." method="_on_johnson_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/Tyler" to="." method="_on_tyler_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/Kate" to="." method="_on_kate_pressed"]
+columns = 4
