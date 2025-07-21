@@ -3,13 +3,13 @@
 [ext_resource type="Script" path="res://inventory_slot.gd" id="1_5sgks"]
 
 [node name="InventorySlot" type="Control"]
-custom_minimum_size = Vector2(250, 200)
+custom_minimum_size = Vector2(350, 300)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -902.0
-offset_bottom = -448.0
+offset_right = -802.0
+offset_bottom = -348.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 6
@@ -25,9 +25,14 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="CenterContainer"]
-custom_minimum_size = Vector2(200, 150)
+custom_minimum_size = Vector2(300, 200)
 layout_mode = 2
 expand_mode = 3
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+z_index = -1
+custom_minimum_size = Vector2(325, 210)
+layout_mode = 2
 
 [node name="OptionButton" type="OptionButton" parent="."]
 layout_mode = 1
@@ -35,8 +40,9 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -91.0
-offset_bottom = 31.0
+offset_bottom = 25.0
 grow_horizontal = 0
+theme_override_font_sizes/font_size = 20
 selected = 4
 item_count = 2
 popup/item_0/text = "Menu"
