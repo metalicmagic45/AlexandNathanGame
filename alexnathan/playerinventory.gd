@@ -6,7 +6,8 @@ var player_inventories = {
 	"berettaM9",
 	"colt1911",
 	"ColtPython",
-	"S&WModel29"],
+	"S&WModel29",
+	"MagicSword"],
 	}
 func get_inventory(player_name: String) -> Array:
 	if player_inventories.has(player_name):

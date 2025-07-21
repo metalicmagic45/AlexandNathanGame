@@ -26,14 +26,20 @@ func populate_list():
 	var item_list = Itemlist
 	item_list.clear()
 	var magic_items = Playerinventory.get_magic_items()
-	for item_name in magic_items:
-		item_list.add_item(item_name)
+	for i in magic_items:
+		if ItemDatabase.items.has(i):
+			item_list.add_item(ItemDatabase.items[i]["name"])
 func find_item_index(target_item: Dictionary) -> int:
 	for i in Itemlist.item_count:
 		var name = Itemlist.get_item_text(i)
 		if ItemDatabase.items.has(name) and ItemDatabase.items[name] == target_item:
 			return i
 	return -1
+func get_id_from_name(target_name: String) -> String:
+	for id in ItemDatabase.items.keys():
+		if ItemDatabase.items[id].has("name") and ItemDatabase.items[id]["name"] == target_name:
+			return id
+	return ""
 	
 func _on_deslected_pressed() -> void:
 	if current_index == -1:
@@ -49,7 +55,7 @@ func _on_deslected_pressed() -> void:
 	deslect.release_focus()  
 func _on_item_list_item_clicked(index: int, at_position: Vector2, mouse_button_index: int) -> void:
 	if mouse_button_index == MOUSE_BUTTON_LEFT:
-		var item_name = Itemlist.get_item_text(index)
+		var item_name = get_id_from_name(Itemlist.get_item_text(index))
 		if ItemDatabase.items.has(item_name) and ItemDatabase.items[item_name].has("sprite"):
 			magicrect.texture = ItemDatabase.items[item_name]["sprite"]
 			ActiveAbilityText.text = ItemDatabase.items[item_name]["Active"]
