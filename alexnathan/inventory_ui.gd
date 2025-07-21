@@ -21,4 +21,4 @@ func load_player_inventory(player : String):
 		add_item(item)
 func _ready():
 	reset()
-	load_player_inventory("William Clark")
+	#load_player_inventory("William Clark")
