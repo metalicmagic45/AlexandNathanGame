@@ -9,7 +9,6 @@ var textdata = {
 	"Space": "The space button will progress through the text and dialogue.",
 	"M-Key": "The M-Key activates the magic menu.",
 	"N-Key": "The N-Key activates the journal menu.",
-	"P-Key": "The P-Key activates the menu to select the current character.",
 	"Ctrl+M": "This key can be used in the load menu to go back to the gameplay scene.",
 	"Esc": "This key can activate the pause menu in the gameplayscene. In other scenes, it can be used to exit menus.",
 	"C-Key": "The C-Key activates the character menu to view stats and info.",

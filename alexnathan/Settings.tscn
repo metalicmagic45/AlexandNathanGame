@@ -79,15 +79,14 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.3
-item_count = 9
+item_count = 8
 item_0/text = "Space"
 item_1/text = "M-Key"
 item_2/text = "N-Key"
-item_3/text = "P-Key"
-item_4/text = "Ctrl+M"
-item_5/text = "Esc"
-item_6/text = "C-Key"
-item_7/text = "I-Key"
+item_3/text = "Ctrl+M"
+item_4/text = "Esc"
+item_5/text = "C-Key"
+item_6/text = "I-Key"
 
 [node name="Control" type="Control" parent="Panel/Panel/VBoxContainer/Control2/HBoxContainer"]
 layout_mode = 2
