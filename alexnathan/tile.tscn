@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgcadsf2641ak"]
+
+[ext_resource type="Script" path="res://tile.gd" id="1_l5w84"]
+
+[node name="tile" type="ColorRect"]
+script = ExtResource("1_l5w84")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(32, 32)
