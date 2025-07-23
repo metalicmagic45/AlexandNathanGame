@@ -1,22 +1,33 @@
-[gd_scene load_steps=7 format=3 uid="uid://dt5t1eitmr2ig"]
+[gd_scene load_steps=13 format=3 uid="uid://dt5t1eitmr2ig"]
 
 [ext_resource type="PackedScene" uid="uid://cgcadsf2641ak" path="res://tile.tscn" id="1_fjlsg"]
 [ext_resource type="PackedScene" uid="uid://dyvyedpa8w3b" path="res://gasstationcorner.tscn" id="2_6xjlh"]
+[ext_resource type="PackedScene" uid="uid://pfjpameg13fh" path="res://ConcreteWallRight.tscn" id="2_bbdem"]
 [ext_resource type="PackedScene" uid="uid://bq3b10jq1irr0" path="res://gassstationwall.tscn" id="3_ql33f"]
+[ext_resource type="PackedScene" uid="uid://dlbepn7ig3nm8" path="res://ConcreteCornerBR.tscn" id="3_wolam"]
+[ext_resource type="PackedScene" uid="uid://4j2kr78bai23" path="res://ConcreteCornerTR.tscn" id="4_0modt"]
 [ext_resource type="PackedScene" uid="uid://j88esmnxn82e" path="res://bottomleftcornergasstation.tscn" id="4_8s3lk"]
+[ext_resource type="PackedScene" uid="uid://bc0v2my1yw51m" path="res://concretefloor.tscn" id="5_gimcx"]
+[ext_resource type="PackedScene" uid="uid://doy7j0ca8sc6k" path="res://walltopgasStation.tscn" id="6_0vjid"]
+[ext_resource type="PackedScene" uid="uid://bi2vdq46g02yp" path="res://GasStationWallBottom.tscn" id="7_734a5"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_x3goe"]
 scenes/1/scene = ExtResource("1_fjlsg")
 scenes/4/scene = ExtResource("2_6xjlh")
 scenes/5/scene = ExtResource("3_ql33f")
 scenes/6/scene = ExtResource("4_8s3lk")
+scenes/7/scene = ExtResource("5_gimcx")
+scenes/8/scene = ExtResource("6_0vjid")
+scenes/9/scene = ExtResource("7_734a5")
+scenes/10/scene = ExtResource("2_bbdem")
+scenes/11/scene = ExtResource("3_wolam")
+scenes/12/scene = ExtResource("4_0modt")
 
 [sub_resource type="TileSet" id="TileSet_n7b5h"]
 tile_size = Vector2i(64, 64)
-uv_clipping = true
 sources/1 = SubResource("TileSetScenesCollectionSource_x3goe")
 
 [node name="TileMap" type="TileMap"]
 tile_set = SubResource("TileSet_n7b5h")
 format = 2
-layer_0/tile_data = PackedInt32Array(131076, 1, 262144, 196612, 1, 327680, 262148, 1, 327680, 327684, 1, 327680, 393220, 1, 327680, 458756, 1, 393216)
+layer_0/tile_data = PackedInt32Array(131076, 1, 262144, 196612, 1, 327680, 262148, 1, 327680, 327684, 1, 327680, 393220, 1, 327680, 458756, 1, 393216, 327685, 1, 458752, 393221, 1, 458752, 262149, 1, 458752, 196613, 1, 458752, 196614, 1, 458752, 196615, 1, 458752, 196616, 1, 458752, 196617, 1, 458752, 262153, 1, 458752, 262154, 1, 458752, 262155, 1, 458752, 327691, 1, 458752, 393227, 1, 458752, 393226, 1, 458752, 393225, 1, 458752, 393224, 1, 458752, 393223, 1, 458752, 393222, 1, 458752, 327686, 1, 458752, 262150, 1, 458752, 262151, 1, 458752, 262152, 1, 458752, 327689, 1, 458752, 327690, 1, 458752, 327688, 1, 458752, 327687, 1, 458752, 196618, 1, 458752, 196619, 1, 458752, 196620, 1, 458752, 262156, 1, 458752, 327692, 1, 458752, 393228, 1, 458752, 131077, 1, 524288, 131078, 1, 524288, 131079, 1, 524288, 131080, 1, 524288, 131081, 1, 524288, 131082, 1, 524288, 131083, 1, 524288, 131084, 1, 524288, 458757, 1, 589824, 458758, 1, 589824, 458759, 1, 589824, 458760, 1, 589824, 458761, 1, 589824, 458762, 1, 589824, 458763, 1, 589824, 458764, 1, 589824, 196621, 1, 655360, 262157, 1, 655360, 327693, 1, 655360, 393229, 1, 655360, 458765, 1, 720896, 131085, 1, 786432)
