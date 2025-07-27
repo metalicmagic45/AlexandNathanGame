@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvhppwrj2irnv"]
+
+[ext_resource type="PackedScene" uid="uid://c0h4kno4c2gge" path="res://ReadOnlyAssets/BluePiece.glb" id="1_8o10t"]
+[ext_resource type="Script" path="res://static_body_3d.gd" id="2_fwtgb"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_g4026"]
+points = PackedVector3Array(-0.149629, -0.591624, -0.149629, 0.149629, -0.591624, -0.149629, -0.149629, -0.591624, 0.149599, -0.149629, 0.383538, -0.149629, 0.149629, -0.591624, 0.149599, 0.149629, 0.383538, -0.149629, -0.149629, 0.383538, 0.149599, 0, 0.518748, -2.92957e-05, 0.149629, 0.383538, 0.149599)
+
+[node name="BluePiece" instance=ExtResource("1_8o10t")]
+
+[node name="Cube" parent="." index="0"]
+transform = Transform3D(0.686185, 0, 0, 0, 0.686185, 0, 0, 0, 0.686185, 0, 0, 0)
+
+[node name="StaticBody3D" type="CharacterBody3D" parent="Cube" index="0"]
+script = ExtResource("2_fwtgb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_g4026")

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://du6g0of3vuett"]
+
+[ext_resource type="PackedScene" uid="uid://c0h4kno4c2gge" path="res://ReadOnlyAssets/BluePiece.glb" id="1_d1a2c"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="BluePiece" parent="." instance=ExtResource("1_d1a2c")]

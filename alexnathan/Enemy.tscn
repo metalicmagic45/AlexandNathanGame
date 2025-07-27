@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1qbo31j7txp0"]
+
+[ext_resource type="PackedScene" uid="uid://b6vmetk6c5d1p" path="res://ReadOnlyAssets/RedPiece.glb" id="1_kk5ng"]
+[ext_resource type="Script" path="res://enemy.gd" id="2_8x8g1"]
+[ext_resource type="Script" path="res://static_body_3d.gd" id="2_oe3ft"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_v6dsf"]
+points = PackedVector3Array(-0.149629, -0.591624, -0.149629, 0.149629, -0.591624, -0.149629, -0.149629, -0.591624, 0.149599, -0.149629, 0.383538, -0.149629, 0.149629, -0.591624, 0.149599, 0.149629, 0.383538, -0.149629, -0.149629, 0.383538, 0.149599, 0, 0.518748, -2.92957e-05, 0.149629, 0.383538, 0.149599)
+
+[node name="RedPiece" instance=ExtResource("1_kk5ng")]
+script = ExtResource("2_8x8g1")
+
+[node name="Cube_001" parent="." index="0"]
+transform = Transform3D(0.686185, 0, 0, 0, 0.686185, 0, 0, 0, 0.686185, 0, 0, 0)
+
+[node name="StaticBody3D" type="CharacterBody3D" parent="Cube_001" index="0"]
+script = ExtResource("2_oe3ft")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube_001/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_v6dsf")

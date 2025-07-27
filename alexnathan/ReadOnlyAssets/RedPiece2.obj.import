@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dugpx0ife1n8i"
+path="res://.godot/imported/RedPiece2.obj-6bd796643629d03d96278ac9370a9d45.mesh"
+
+[deps]
+
+files=["res://.godot/imported/RedPiece2.obj-6bd796643629d03d96278ac9370a9d45.mesh"]
+
+source_file="res://ReadOnlyAssets/RedPiece2.obj"
+dest_files=["res://.godot/imported/RedPiece2.obj-6bd796643629d03d96278ac9370a9d45.mesh", "res://.godot/imported/RedPiece2.obj-6bd796643629d03d96278ac9370a9d45.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
