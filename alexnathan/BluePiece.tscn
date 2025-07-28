@@ -21,6 +21,7 @@ mesh = ExtResource("1_jpxi7")
 
 [node name="Ring" type="MeshInstance3D" parent="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+visible = false
 mesh = SubResource("TorusMesh_a6ogu")
 surface_material_override/0 = SubResource("StandardMaterial3D_sh20v")
 

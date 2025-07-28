@@ -23,6 +23,7 @@ mesh = ExtResource("1_xeg5e")
 
 [node name="Ring" type="MeshInstance3D" parent="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+visible = false
 mesh = SubResource("TorusMesh_8tdiq")
 skin = SubResource("Skin_jtabp")
 skeleton = NodePath("../..")
