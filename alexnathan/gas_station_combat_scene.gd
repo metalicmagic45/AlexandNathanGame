@@ -39,14 +39,19 @@ func _input(event: InputEvent) -> void:
 				current_piece.highlight(false)
 				current_piece = turn_order[turn_index]
 				current_piece.highlight(true)
-func transport(piece,hit_position) -> bool:
+func transport(piece, hit_position: Vector3, test_margin := -0.01, max_allowed_collisions := 1) -> bool:
 	var origin = piece.global_transform.origin
-	var origin_y = piece.global_transform.origin.y
 	var distance = origin.distance_to(hit_position)
 	var distance_y = abs(origin.y - hit_position.y)
 	if (distance > max_distance) or (distance_y > 0.1):
 		return false
+	if tp_boundary(hit_position) == false:
+		return false
 	else:
 		piece.global_transform.origin = hit_position
 		return true
+func tp_boundary(pos : Vector3) -> bool:
+	return(pos.x >= -5.5 and pos.x <= 4.1 and pos.z >= -2.8 and pos.z <= 3)
+	
+
 	

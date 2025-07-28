@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://crd2aagkbyotl"]
+[gd_scene load_steps=7 format=3 uid="uid://crd2aagkbyotl"]
 
 [ext_resource type="Script" path="res://gas_station_combat_scene.gd" id="1_eyt4g"]
 [ext_resource type="PackedScene" uid="uid://0osstfe0apfo" path="res://GasStationBattleMap.tscn" id="1_ik1mb"]
 [ext_resource type="Script" path="res://camera_3d.gd" id="3_4qjn7"]
+[ext_resource type="Script" path="res://addons/measuring_tape/measuring_tape_3d.gd" id="3_iuglq"]
 [ext_resource type="PackedScene" uid="uid://cw8ta8nb2c80k" path="res://RedPiece.tscn" id="3_yd0fq"]
 [ext_resource type="PackedScene" uid="uid://dq36lb4wxy21i" path="res://BluePiece.tscn" id="4_cmgjt"]
 
@@ -10,6 +11,10 @@
 script = ExtResource("1_eyt4g")
 
 [node name="GasStation" parent="." instance=ExtResource("1_ik1mb")]
+
+[node name="MeasuringTape3D" type="Marker3D" parent="GasStation"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.8)
+script = ExtResource("3_iuglq")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 4, 0)
