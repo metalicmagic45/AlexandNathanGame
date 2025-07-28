@@ -9,6 +9,7 @@ var turn_order = []
 var turn_index = 0
 var current_piece 
 var temp : bool = false
+#gas station is about 9.6 x 6
 
 func _ready() -> void:
 	turn_order = [bluepiece, redpiece]
@@ -43,7 +44,7 @@ func transport(piece,hit_position) -> bool:
 	var origin_y = piece.global_transform.origin.y
 	var distance = origin.distance_to(hit_position)
 	var distance_y = abs(origin.y - hit_position.y)
-	if (distance > max_distance) or (distance_y > 0.5):
+	if (distance > max_distance) or (distance_y > 0.1):
 		return false
 	else:
 		piece.global_transform.origin = hit_position
