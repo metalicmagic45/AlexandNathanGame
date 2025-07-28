@@ -6,6 +6,15 @@ const GRAVITY = 9.8
 var has_moved : bool = false
 var ring1 : MeshInstance3D
 func _ready() -> void:
+	
+	#var hut_green = Color(0.1, 0.8, 0.1) # Brighter, more saturated
+
+	
+	
+	# Apply it to the mesh
+	#ring.set_surface_override_material(0, hut_green)
+	
+	
 	ring1 = make_ring()
 	add_child(ring1)
 func _physics_process(delta: float) -> void:

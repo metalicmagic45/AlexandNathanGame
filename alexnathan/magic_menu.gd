@@ -18,7 +18,6 @@ func _ready() -> void:
 		current_index = find_item_index(current_magic_item)
 		Itemlist.select(current_index)
 		_on_item_list_item_selected(current_index)
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
@@ -63,6 +62,7 @@ func _on_item_list_item_clicked(index: int, at_position: Vector2, mouse_button_i
 			current_index = index
 			Globals.set_current_magic_index(current_index)
 			Globals.set_current_magic_item(ItemDatabase.items[item_name])
+	
 func _on_item_list_item_selected(index: int) -> void:
 	var item_name = Itemlist.get_item_text(index)
 	if ItemDatabase.items.has(item_name) and ItemDatabase.items[item_name].has("sprite"):
@@ -72,3 +72,4 @@ func _on_item_list_item_selected(index: int) -> void:
 		current_index = index
 		Globals.set_current_magic_index(current_index)
 		Globals.set_current_magic_item(ItemDatabase.items[item_name])
+	

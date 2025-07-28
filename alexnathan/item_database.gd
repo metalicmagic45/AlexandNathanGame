@@ -136,6 +136,6 @@ func _ready() -> void:
 		"sprite": preload("res://Pictures/MagicRing.png"),
 		"type": "MagicItem",
 		"Active": "Ring has the ability to shield from basic unatural effects.",
-		"Passive": "5% Boost to POW checks",
+		"Passive": "Increases Willpower by 2",
 		"text": "Looted from a grave"
 	}

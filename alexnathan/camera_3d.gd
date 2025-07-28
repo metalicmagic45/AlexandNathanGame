@@ -11,14 +11,18 @@ extends Camera3D
 func _process(delta: float) -> void:
 	var input_dir = Vector3.ZERO
 
-	if Input.is_action_pressed("ui_up"):
+	if Input.is_action_pressed("ui_camera_up"):
+		print(1)
 		input_dir.y -= 1
-	if Input.is_action_pressed("ui_down"):
+	if Input.is_action_pressed("ui_camera_down"):
 		input_dir.y += 1
-	if Input.is_action_pressed("ui_left"):
+		print(1)
+	if Input.is_action_pressed("ui_camera_left"):
 		input_dir.x -= 1
-	if Input.is_action_pressed("ui_right"):
+		print(1)
+	if Input.is_action_pressed("ui_camera_right"):
 		input_dir.x += 1
+		print(1)
 
 	input_dir = input_dir.normalized()
 

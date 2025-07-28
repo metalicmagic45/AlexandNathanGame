@@ -8,7 +8,12 @@ var ring1 : MeshInstance3D
 func _ready() -> void:
 	ring1 = make_ring()
 	add_child(ring1)
+	#var ring1_color = ring1.get_surface_override_material_count()
+	#print(ring1_color, " ring1 material")
 func _physics_process(delta: float) -> void:
+	#Mesh acts as the frame, need to put a material over the frame, material is what stores the color or texture
+	#Mesh is just a shape, material is color
+	#Create mesh, create material, edit MATERUIAL albedo color
 	if not is_on_floor():
 		velocity.y = velocity.y - (GRAVITY * delta)
 	else:
@@ -25,6 +30,13 @@ func highlight(value : bool):
 func make_ring() -> MeshInstance3D:
 	var ring2 = MeshInstance3D.new()
 	var torus := TorusMesh.new()
+	var torus_material = StandardMaterial3D.new()
+	#albedo_color [default: Color(1, 1, 1, 1)], set_albedo(value) setter, get_albedo() getter
+
+	torus_material.set_albedo(Color(1, 0.270588, 0, 1))
+	var torus_current_color = torus_material.get_albedo()
+	print(torus_current_color, " torus material")
+	
 	# Set torus properties safely
 	torus.set("outer_radius", 3.0)  # Outer radius
 	torus.set("inner_radius", 2.99)  # Thickness of the ring
@@ -35,7 +47,7 @@ func make_ring() -> MeshInstance3D:
 
 	ring2.mesh = torus
 	ring2.visible = false
-
+	print(torus_current_color, " torus material")
 	return ring2
 
 	

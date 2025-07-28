@@ -44,7 +44,9 @@ func get_new_game():
 func set_new_game() -> void:
 	new_game = false
 func get_current_magic_item():
+	print(current_magic_item)
 	return current_magic_item
+	print(current_magic_item)
 func set_current_magic_item(item):
 	current_magic_item = item
 func get_current_magic_index():

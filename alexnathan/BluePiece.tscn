@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dq36lb4wxy21i"]
+[gd_scene load_steps=6 format=3 uid="uid://dq36lb4wxy21i"]
 
 [ext_resource type="Script" path="res://blue_piece.gd" id="1_dy45s"]
 [ext_resource type="ArrayMesh" uid="uid://b2eal1wompl74" path="res://ReadOnlyAssets/BluePiece4.obj" id="1_jpxi7"]
@@ -6,6 +6,9 @@
 [sub_resource type="TorusMesh" id="TorusMesh_a6ogu"]
 inner_radius = 0.09
 outer_radius = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sh20v"]
+albedo_color = Color(0.0470588, 0.960784, 0.0784314, 1)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ylbn1"]
 points = PackedVector3Array(0.0559998, 0.20639, 0.102653, -0.0560199, 0.20639, 0.102653, 0.0559998, 0, 0.102653, 0.102673, 0.20639, 0.0559998, 0.054834, 0.367293, 0.101507, -0.102673, 0.20639, 0.0559998, -0.0560199, 0, 0.102653, -0.0548541, 0.367293, 0.101507, 0.102673, 0, 0.0559998, 0.102673, 0.20639, -0.0560199, 0.101507, 0.367293, 0.054834, 0.0451456, 0.623336, 0.0940499, -0.101527, 0.367293, 0.054834, -0.102673, 0.20639, -0.0560199, -0.102673, 0, 0.0559998, -0.0451657, 0.623336, 0.0940499, 0.102673, 0, -0.0560199, 0.0559998, 0.20639, -0.102673, 0.054834, 0.367293, -0.101527, 0.101507, 0.367293, -0.0548541, 0.0940499, 0.623336, 0.0451456, 0.00990952, 0.70049, 0.0680199, -0.101527, 0.367293, -0.0548541, -0.09407, 0.623336, 0.0451456, -0.0560199, 0.20639, -0.102673, -0.102673, 0, -0.0560199, -0.00992961, 0.70049, 0.0680199, 0.0559998, 0, -0.102673, 0.0451456, 0.623336, -0.09407, -0.0548541, 0.367293, -0.101527, 0.0940499, 0.623336, -0.0451657, 0.0680199, 0.70049, 0.00990953, 0, 0.709448, 0.0581104, -0.09407, 0.623336, -0.0451657, -0.06804, 0.70049, 0.00990953, -0.0560199, 0, -0.102673, -0.0451657, 0.623336, -0.09407, 0.00990952, 0.70049, -0.06804, 0.0680199, 0.70049, -0.0099296, 0.0581103, 0.709448, -2.00868e-05, -0.0581304, 0.709448, -2.00868e-05, -0.06804, 0.70049, -0.0099296, -0.00992961, 0.70049, -0.06804, 0, 0.709448, -0.0581304)
@@ -18,8 +21,8 @@ mesh = ExtResource("1_jpxi7")
 
 [node name="Ring" type="MeshInstance3D" parent="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
-visible = false
 mesh = SubResource("TorusMesh_a6ogu")
+surface_material_override/0 = SubResource("StandardMaterial3D_sh20v")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConvexPolygonShape3D_ylbn1")
