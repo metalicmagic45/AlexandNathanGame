@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://lbtxlwktj4sr"]
+
+[ext_resource type="Script" path="res://TargetingLine.gd" id="1_bjcse"]
+
+[node name="TargetingLine" type="Node3D"]
+script = ExtResource("1_bjcse")

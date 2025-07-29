@@ -1,21 +1,12 @@
 extends CharacterBody3D
 
 @onready var ring = $MeshInstance3D/Ring
-
+var current_weapon = ItemDatabase.get_item("HIPower")
 const GRAVITY = 9.8
 var has_moved : bool = false
 var ring1 : MeshInstance3D
 var name_id = "test2"
 func _ready() -> void:
-	
-	#var hut_green = Color(0.1, 0.8, 0.1) # Brighter, more saturated
-
-	
-	
-	# Apply it to the mesh
-	#ring.set_surface_override_material(0, hut_green)
-	
-	
 	ring1 = make_ring()
 	add_child(ring1)
 func _physics_process(delta: float) -> void:
@@ -66,6 +57,8 @@ func make_ring() -> MeshInstance3D:
 	ring2.visible = false
 	
 	return ring2
+func access_weapon():
+	return current_weapon
 
 	
 	

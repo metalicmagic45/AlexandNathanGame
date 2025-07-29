@@ -11,18 +11,58 @@ var turn_index = 0
 var turn_count = 0
 var current_piece 
 var temp : bool = false
-#gas station is about 9.6 x 6
+var line = Node3D.new()
 
+#gas station is about 9.6 x 6
+var is_targeting: bool = false
+var targeting_line: Node3D
+var targeting_weapon
+var mouse_pos
 func _ready() -> void:
 	turn_order = [bluepiece, redpiece]
 	current_piece = turn_order[0]
 	current_piece.highlight(true)
 	populate_turnorder()
 	highlight_text(turn_index)
+func _process(delta: float) -> void:
+	if is_targeting:
+		var space_state = get_world_3d().direct_space_state
+		var mouse_2d = get_viewport().get_mouse_position()
+		var ray_origin = camera3d.project_ray_origin(mouse_2d)
+		var ray_normal = camera3d.project_ray_normal(mouse_2d)
+		var ray_end = ray_origin + ray_normal * 100
+		var query = PhysicsRayQueryParameters3D.create(ray_origin,ray_end)
+		query.collide_with_areas = false
+		query.collide_with_bodies = true
+		var result = space_state.intersect_ray(query)
+		if result and result.has("position"):
+			var base = current_piece.global_transform.origin
+			base.y = 0.3  
+			mouse_pos = result.position
+			var origin = current_piece.global_transform.origin
+			var direction = (mouse_pos - origin)
+			var max_range = targeting_weapon["range"]
+			var length = min(direction.length(), max_range)
 
+			var dir_normalized = direction.normalized()
+
+			# Set line base position
+			line.global_transform.origin = base
+
+			# Rotate the line to face cursor
+			line.look_at(mouse_pos, Vector3.UP)
+
+			# Adjust mesh to point forward from origin
+			for child in line.get_children():
+				if child is MeshInstance3D and child.mesh is CylinderMesh:
+					child.mesh.height = length
+					child.position = Vector3(0, 0, -length / 2.0)
+
+				
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		if get_viewport().gui_get_hovered_control():
+		var hovered = get_viewport().gui_get_hovered_control()
+		if hovered and hovered != $CanvasLayer/Control:
 			return
 		var mouse_position = event.position
 		var ray_origin = camera3d.project_ray_origin(mouse_position)
@@ -44,6 +84,9 @@ func _input(event: InputEvent) -> void:
 				unhighlight_text(turn_index)
 				turn_index = (turn_index + 1) % turn_order.size()
 				current_piece.highlight(false)
+				line.queue_free()
+				line = Node3D.new()
+				is_targeting = false
 				current_piece = turn_order[turn_index]
 				current_piece.highlight(true)
 				highlight_text(turn_index)
@@ -80,8 +123,54 @@ func unhighlight_text(turnindex):
 	var slot = turnorderbar.get_child(turnindex)
 	var label = slot.get_child(0)
 	label.add_theme_color_override("font_color", Color(1,1,1))
+func weapon_targeting(weapon, range):
+	is_targeting = true
+	targeting_weapon = weapon
 	
-	
-	
+	# Create line holder node and position it at the current_piece's origin
+	line = Node3D.new()
+	line.global_transform = current_piece.global_transform
+
+	# Create mesh
+	var mesh_instance = MeshInstance3D.new()
+	var cylinder_mesh = CylinderMesh.new()
+	cylinder_mesh.top_radius = 0.01
+	cylinder_mesh.bottom_radius = 0.01
+	cylinder_mesh.height = range
+	cylinder_mesh.radial_segments = 10
+	mesh_instance.mesh = cylinder_mesh
+
+	# Material
+	var material = StandardMaterial3D.new()
+	material.albedo_color = Color(1, 0, 0)
+	mesh_instance.material_override = material
+
+	# Position mesh so base is at origin (extend along +Z)
+	mesh_instance.rotation_degrees.x = 90
+
+	# Collision shape
+	var collision = CollisionShape3D.new()
+	var shape = CylinderShape3D.new()
+	shape.radius = 0.01
+	shape.height = range
+	collision.shape = shape
+	collision.rotation_degrees.x = 90
+
+	# Add to line
+	line.add_child(mesh_instance)
+	line.add_child(collision)
+
+	add_child(line)
 
 	
+func _on_weapon_pressed() -> void:
+	var weapon = current_piece.access_weapon()
+	weapon_targeting(weapon, weapon["range"])
+	
+
+func _on_reaction_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_guard_pressed() -> void:
+	pass # Replace with function body.
