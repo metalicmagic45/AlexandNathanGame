@@ -11,7 +11,7 @@ var turn_index = 0
 var turn_count = 0
 var current_piece 
 var temp : bool = false
-var line = Node3D.new()
+var line = Area3D.new()
 
 #gas station is about 9.6 x 6
 var is_targeting: bool = false
@@ -32,8 +32,7 @@ func _process(delta: float) -> void:
 		var ray_normal = camera3d.project_ray_normal(mouse_2d)
 		var ray_end = ray_origin + ray_normal * 100
 		var query = PhysicsRayQueryParameters3D.create(ray_origin,ray_end)
-		query.collide_with_areas = false
-		query.collide_with_bodies = true
+
 		var result = space_state.intersect_ray(query)
 		if result and result.has("position"):
 			var base = current_piece.global_transform.origin
@@ -85,7 +84,7 @@ func _input(event: InputEvent) -> void:
 				turn_index = (turn_index + 1) % turn_order.size()
 				current_piece.highlight(false)
 				line.queue_free()
-				line = Node3D.new()
+				line = Area3D.new()
 				is_targeting = false
 				current_piece = turn_order[turn_index]
 				current_piece.highlight(true)
@@ -128,7 +127,7 @@ func weapon_targeting(weapon, range):
 	targeting_weapon = weapon
 	
 	# Create line holder node and position it at the current_piece's origin
-	line = Node3D.new()
+	line = Area3D.new()
 	line.global_transform = current_piece.global_transform
 
 	# Create mesh

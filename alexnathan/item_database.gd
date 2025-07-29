@@ -17,7 +17,7 @@ var items = {
 		"name": "Hi-Power",
 		"sprite": preload("res://Pictures/Weapons/HiPower.png"),
 		"dmg": "2d6",
-		"range": 1,
+		"range": 50,
 		"cost": 1,
 		"text": "Classic 9mm with a high-capacity mag."
 	},
