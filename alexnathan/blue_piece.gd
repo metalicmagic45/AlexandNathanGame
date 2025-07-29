@@ -5,6 +5,7 @@ extends CharacterBody3D
 const GRAVITY = 9.8
 var has_moved : bool = false
 var ring1 : MeshInstance3D
+var name_id = "test2"
 func _ready() -> void:
 	
 	#var hut_green = Color(0.1, 0.8, 0.1) # Brighter, more saturated
