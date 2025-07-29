@@ -77,7 +77,8 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/Panel/HBoxContainer/Control"]
+[node name="MainMenu" type="HBoxContainer" parent="CanvasLayer/Control/Panel/HBoxContainer/Control"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -85,11 +86,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="CanvasLayer/Control/Panel/HBoxContainer/Control/VBoxContainer"]
+[node name="Button" type="Button" parent="CanvasLayer/Control/Panel/HBoxContainer/Control/MainMenu"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/Panel/HBoxContainer/Control/VBoxContainer/Button"]
+[node name="Label" type="Label" parent="CanvasLayer/Control/Panel/HBoxContainer/Control/MainMenu/Button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -100,11 +101,11 @@ text = "Actions"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button2" type="Button" parent="CanvasLayer/Control/Panel/HBoxContainer/Control/VBoxContainer"]
+[node name="Button2" type="Button" parent="CanvasLayer/Control/Panel/HBoxContainer/Control/MainMenu"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/Panel/HBoxContainer/Control/VBoxContainer/Button2"]
+[node name="Label" type="Label" parent="CanvasLayer/Control/Panel/HBoxContainer/Control/MainMenu/Button2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -115,11 +116,11 @@ text = "Abilities"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button3" type="Button" parent="CanvasLayer/Control/Panel/HBoxContainer/Control/VBoxContainer"]
+[node name="Button3" type="Button" parent="CanvasLayer/Control/Panel/HBoxContainer/Control/MainMenu"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/Panel/HBoxContainer/Control/VBoxContainer/Button3"]
+[node name="Label" type="Label" parent="CanvasLayer/Control/Panel/HBoxContainer/Control/MainMenu/Button3"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -129,3 +130,25 @@ grow_vertical = 2
 text = "Items"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Actions" type="Control" parent="CanvasLayer/Control/Panel/HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Control/Panel/HBoxContainer/Control/Actions"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 6
+
+[node name="Button" type="Button" parent="CanvasLayer/Control/Panel/HBoxContainer/Control/Actions/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
