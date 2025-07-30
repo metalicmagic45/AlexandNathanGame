@@ -23,7 +23,18 @@ func get_skill(name: String, skill: String) -> int:
 	#else:
 		#print("Character not found")
 	#return -1
-
+	
+func character_stat_update(effected_stat, effect):
+	var current_value_of_skill
+	
+	#Gets the to be updated stat's current value and adds the amount to be modifed
+	current_value_of_skill = players[CurrentCharacter]["skill_modifiers"][effected_stat]
+	current_value_of_skill = current_value_of_skill + effect
+	#Updates the current skill to the current amount
+	players[CurrentCharacter]["skill_modifiers"][effected_stat] = current_value_of_skill
+	#print(current_value_of_skill)
+	print("Updated stat is ", effected_stat, ", Amount increased by is ", effect, ", New stat amount is: ", players[CurrentCharacter]["skill_modifiers"][effected_stat])
+	
 var players = {
 	"William Clark": {
 		"name": "William Clark",
