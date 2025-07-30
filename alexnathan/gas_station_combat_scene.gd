@@ -12,6 +12,7 @@ var turn_count = 0
 var current_piece 
 var temp : bool = false
 var line = Area3D.new()
+var targeting_active = false
 
 #gas station is about 9.6 x 6
 var is_targeting: bool = false
@@ -86,6 +87,7 @@ func _input(event: InputEvent) -> void:
 				line.queue_free()
 				line = Area3D.new()
 				is_targeting = false
+				targeting_active = false
 				current_piece = turn_order[turn_index]
 				current_piece.highlight(true)
 				highlight_text(turn_index)
@@ -124,6 +126,7 @@ func unhighlight_text(turnindex):
 	label.add_theme_color_override("font_color", Color(1,1,1))
 func weapon_targeting(weapon, range):
 	is_targeting = true
+	targeting_active = true
 	targeting_weapon = weapon
 	
 	# Create line holder node and position it at the current_piece's origin
@@ -163,8 +166,11 @@ func weapon_targeting(weapon, range):
 
 	
 func _on_weapon_pressed() -> void:
-	var weapon = current_piece.access_weapon()
-	weapon_targeting(weapon, weapon["range"])
+	if targeting_active == true:
+		return
+	else:
+		var weapon = current_piece.access_weapon()
+		weapon_targeting(weapon, weapon["range"])
 	
 
 func _on_reaction_pressed() -> void:
