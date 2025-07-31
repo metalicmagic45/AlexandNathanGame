@@ -20,6 +20,8 @@ var targeting_line: Node3D
 var targeting_weapon
 var mouse_pos
 func _ready() -> void:
+	redpiece.add_to_group("units")
+	bluepiece.add_to_group("units")
 	turn_order = [bluepiece, redpiece]
 	current_piece = turn_order[0]
 	current_piece.highlight(true)
@@ -51,6 +53,7 @@ func _process(delta: float) -> void:
 
 			# Rotate the line to face cursor
 			line.look_at(mouse_pos, Vector3.UP)
+		
 
 			# Adjust mesh to point forward from origin
 			for child in line.get_children():
@@ -60,7 +63,27 @@ func _process(delta: float) -> void:
 
 				
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT and is_targeting:
+		var mouse_position = event.position
+		var ray_origin = camera3d.project_ray_origin(mouse_position)
+		var ray_normal = camera3d.project_ray_normal(mouse_position)
+
+		var space_state = get_world_3d().direct_space_state
+		var query = PhysicsRayQueryParameters3D.create(ray_origin, ray_origin + ray_normal * 100 )
+		var result = space_state.intersect_ray(query)
+
+		if result and result.has("collider"):
+			var clicked = result.collider
+
+			# Traverse up to root if you hit a Mesh or CollisionShape
+			while clicked and not clicked.is_in_group("units"):
+				clicked = clicked.get_parent()
+			if clicked and clicked.is_in_group("units"):
+				print("Clicked unit: ", clicked.name)
+			else:
+				print("Hit something, but not a unit")
+		
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT and is_targeting == false:
 		var hovered = get_viewport().gui_get_hovered_control()
 		if hovered and hovered != $CanvasLayer/Control:
 			return
@@ -84,7 +107,8 @@ func _input(event: InputEvent) -> void:
 				unhighlight_text(turn_index)
 				turn_index = (turn_index + 1) % turn_order.size()
 				current_piece.highlight(false)
-				line.queue_free()
+				if is_instance_valid(line):
+					line.queue_free()
 				line = Area3D.new()
 				is_targeting = false
 				targeting_active = false
@@ -92,6 +116,10 @@ func _input(event: InputEvent) -> void:
 				current_piece.highlight(true)
 				highlight_text(turn_index)
 				turn_count += (1/turn_order.size())
+	if event.is_action_pressed("uicancel") and is_targeting == true:
+		line.queue_free()
+		is_targeting = false
+		targeting_active = false 
 func transport(piece, hit_position: Vector3, test_margin := -0.01, max_allowed_collisions := 1) -> bool:
 	var origin = piece.global_transform.origin
 	var distance = origin.distance_to(hit_position)
