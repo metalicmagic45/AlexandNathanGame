@@ -1,5 +1,7 @@
 extends Node
 
+var equiped_items = ["MagicRing"]
+
 var player_inventories = {
 	"William Clark": [	"Glock17",
 	"HIPower",
@@ -10,6 +12,10 @@ var player_inventories = {
 	"MagicSword",
 	"MagicRing"],
 	}
+	
+func _ready() -> void:
+	equiped_item_effects()
+	
 func get_inventory(player_name: String) -> Array:
 	if player_inventories.has(player_name):
 		return player_inventories[player_name]
@@ -40,4 +46,13 @@ func get_magic_items() -> Array:
 				magic_items.append(item_name)
 	return magic_items
 
+#Get modifier from equiped items and then add them to playerdata
+func equiped_item_effects():
+	var effect
+	var effected_stat
+	for item in equiped_items:
+		effect = ItemDatabase.items[item]["effect"]
+		effected_stat = ItemDatabase.items[item]["effected_stat"]
+		Playerdata.character_stat_update(effected_stat, effect)
+		#Playerdata.CurrentCharacter
 	

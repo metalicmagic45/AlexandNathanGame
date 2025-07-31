@@ -139,6 +139,8 @@ var items = {
 		"type": "MagicItem",
 		"Active": "Ring has the ability to shield from basic unatural effects.",
 		"Passive": "Increases Willpower by 2",
+		"effect": 2,
+		"effected_stat": "WIL",
 		"text": "Looted from a grave"
 	}
 }
