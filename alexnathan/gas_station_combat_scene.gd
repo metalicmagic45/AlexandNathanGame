@@ -103,10 +103,24 @@ func _input(event: InputEvent) -> void:
 				print(damage)
 				if clicked != current_piece:
 					inflict_damage(clicked, damage)
-				update_hp_mp()
-				
+					unhighlight_text(turn_index)
+					turn_index = (turn_index + 1) % turn_order.size()
+					current_piece.highlight(false)
+					if is_instance_valid(line):
+						line.queue_free()
+					line = Area3D.new()
+					is_targeting = false
+					targeting_active = false
+					current_piece = turn_order[turn_index]
+					current_piece.highlight(true)
+					highlight_text(turn_index)
+					turn_count += (1/turn_order.size())
+					update_hp_mp()
 			else:
 				print("Hit something, but not a unit")
+				targeting_active = false
+				is_targeting = false
+				line.queue_free()
 		
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT and is_targeting == false:
 		var hovered = get_viewport().gui_get_hovered_control()
