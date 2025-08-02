@@ -80,6 +80,7 @@ func _input(event: InputEvent) -> void:
 				clicked = clicked.get_parent()
 			if clicked and clicked.is_in_group("units"):
 				print("Clicked unit: ", clicked.name)
+				var damage = Combat.roll_item_damage(targeting_weapon["dmg"])
 			else:
 				print("Hit something, but not a unit")
 		

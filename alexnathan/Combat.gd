@@ -3,30 +3,17 @@ extends Node
 @onready var dice_list = []
 var dice_roll_total = 0
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	#initilizes random number and creates a instantse of the random class
-	var random = RandomNumberGenerator.new()
-	random.randomize()
-	dice_list.append_array(["d6", "d4", "d6", "d8", "d10", "d12"])
-	dice_roll_calculator()
-	
-#Dice functions
-func dice_roll_calculator():
-	for dice in dice_list:
-		print(dice)
-		if dice == "d4":
-			dice_roll_total += randi_range(1, 4)
-		if dice == "d6":
-			dice_roll_total += randi_range(1, 6)
-		if dice == "d8":
-			dice_roll_total += randi_range(1, 8)
-		if dice == "d10":
-			dice_roll_total += randi_range(1, 10)
-		if dice == "d12":
-			dice_roll_total += randi_range(1, 12)
-	dice_output.text = str(dice_roll_total)
-	
-	
+
+func roll_item_damage(item_key_dmg : String) -> int:
+		var dmg_str = item_key_dmg
+		var parts = dmg_str.split("d")
+		var num_dice = int(parts[0])
+		var sides = int(parts[1])
+		var total = 0
+		for i in num_dice:
+			var temp = randi_range(1, sides)
+			total = total + temp
+		return total
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
