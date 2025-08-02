@@ -25,6 +25,7 @@ Globals="*res://Globals.gd"
 SaveState="*res://save_state.gd"
 Npcs="*res://NPCs.gd"
 Journal="*res://journal.gd"
+Combat="*res://Combat.gd"
 
 [display]
 
