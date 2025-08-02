@@ -45,14 +45,11 @@ func _process(delta: float) -> void:
 			var direction = (mouse_pos - origin)
 			var max_range = targeting_weapon["range"]
 			var length = min(direction.length(), max_range)
-
-			var dir_normalized = direction.normalized()
-
 			# Set line base position
 			line.global_transform.origin = base
 
 			# Rotate the line to face cursor
-			line.look_at(mouse_pos, Vector3.UP)
+			line.look_at(mouse_pos)
 		
 
 			# Adjust mesh to point forward from origin
