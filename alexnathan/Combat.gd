@@ -10,7 +10,7 @@ func roll_item_damage(item_key_dmg : String) -> int:
 		var num_dice = int(parts[0])
 		var sides = int(parts[1])
 		var total = 0
-		for i in num_dice:
+		for i in range(num_dice):
 			var temp = randi_range(1, sides)
 			total = total + temp
 		return total

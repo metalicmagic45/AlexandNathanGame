@@ -4,7 +4,10 @@ extends Node3D
 @onready var redpiece = $Red
 @onready var bluepiece = $Blue
 @onready var turnorderbar = $CanvasLayer/Control/TurnOrder
+@onready var hp_bar = $CanvasLayer/Control/Panel/HBoxContainer/Control/MainMenu/Panel/HBoxContainer/VBoxContainer2/HpProgressBar
+@onready var mp_bar = $CanvasLayer/Control/Panel/HBoxContainer/Control/MainMenu/Panel/HBoxContainer/VBoxContainer2/ProgressBar2
 var max_distance = 3
+
 
 var turn_order = []
 var turn_index = 0
@@ -19,6 +22,23 @@ var is_targeting: bool = false
 var targeting_line: Node3D
 var targeting_weapon
 var mouse_pos
+var red_style := StyleBoxFlat.new()
+var blue_style := StyleBoxFlat.new()
+var bar_styles_set := false
+
+func update_hp_mp():
+	hp_bar.max_value = current_piece.HP_MAX
+	mp_bar.max_value = current_piece.MP_MAX
+	hp_bar.value = int(current_piece.HP)
+	mp_bar.value = int(current_piece.MP)
+
+	if not bar_styles_set:
+		red_style.bg_color = Color(1, 0.3, 0.3)
+		blue_style.bg_color = Color(0.3, 0.3, 1)
+		hp_bar.add_theme_stylebox_override("fill", red_style)
+		mp_bar.add_theme_stylebox_override("fill", blue_style)
+		bar_styles_set = true
+
 func _ready() -> void:
 	redpiece.add_to_group("units")
 	bluepiece.add_to_group("units")
@@ -27,7 +47,9 @@ func _ready() -> void:
 	current_piece.highlight(true)
 	populate_turnorder()
 	highlight_text(turn_index)
+	update_hp_mp()
 func _process(delta: float) -> void:
+	remove_piece()
 	if is_targeting:
 		var space_state = get_world_3d().direct_space_state
 		var mouse_2d = get_viewport().get_mouse_position()
@@ -78,6 +100,11 @@ func _input(event: InputEvent) -> void:
 			if clicked and clicked.is_in_group("units"):
 				print("Clicked unit: ", clicked.name)
 				var damage = Combat.roll_item_damage(targeting_weapon["dmg"])
+				print(damage)
+				if clicked != current_piece:
+					inflict_damage(clicked, damage)
+				update_hp_mp()
+				
 			else:
 				print("Hit something, but not a unit")
 		
@@ -114,6 +141,7 @@ func _input(event: InputEvent) -> void:
 				current_piece.highlight(true)
 				highlight_text(turn_index)
 				turn_count += (1/turn_order.size())
+				update_hp_mp()
 	if event.is_action_pressed("uicancel") and is_targeting == true:
 		line.queue_free()
 		is_targeting = false
@@ -205,3 +233,13 @@ func _on_reaction_pressed() -> void:
 
 func _on_guard_pressed() -> void:
 	pass # Replace with function body.
+func inflict_damage(target, damage) -> void:
+	target.HP = target.HP - damage
+func mana_reduction(target, cost) -> void:
+	target.MP = target.MP - cost
+func remove_piece():
+	for i in range(turn_order.size() - 1, -1, -1):
+		var piece = turn_order[i]
+		if (piece.HP <= 0):
+			turn_order.remove_at(i)
+			piece.queue_free()

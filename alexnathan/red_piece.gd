@@ -6,7 +6,10 @@ const GRAVITY = 9.8
 var has_moved : bool = false
 var ring1 : MeshInstance3D
 var name_id = "test2"
+var HP_MAX = 10
 var HP = 10
+var MP_MAX = 10
+var MP = 10
 func _ready() -> void:
 	ring1 = make_ring()
 	add_child(ring1)

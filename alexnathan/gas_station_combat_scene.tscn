@@ -166,7 +166,7 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Control/Panel/HBoxContainer/Control/MainMenu/Panel/HBoxContainer/VBoxContainer2"]
+[node name="HpProgressBar" type="ProgressBar" parent="CanvasLayer/Control/Panel/HBoxContainer/Control/MainMenu/Panel/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 3
 
