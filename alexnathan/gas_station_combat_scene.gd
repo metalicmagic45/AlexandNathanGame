@@ -99,7 +99,6 @@ func _input(event: InputEvent) -> void:
 			while clicked and not clicked.is_in_group("units"):
 				clicked = clicked.get_parent()
 			if clicked and clicked.is_in_group("units"):
-				print("Clicked unit: ", clicked.name)
 				var damage = Combat.roll_item_damage(targeting_weapon["dmg"])
 				print(damage)
 				if clicked != current_piece:
@@ -284,7 +283,8 @@ func remove_piece():
 
 		
 func _on_swap_weapon_pressed() -> void:
-	line.queue_free()
+	if is_instance_valid(line):
+		line.queue_free()
 	is_targeting = false
 	targeting_active = false 
 	weaponpanel.visible = true
