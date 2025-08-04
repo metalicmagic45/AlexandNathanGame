@@ -51,7 +51,6 @@ func _ready() -> void:
 	highlight_text(turn_index)
 	update_hp_mp()
 func _process(delta: float) -> void:
-	remove_piece()
 	if is_targeting:
 		var space_state = get_world_3d().direct_space_state
 		var mouse_2d = get_viewport().get_mouse_position()
@@ -119,12 +118,9 @@ func _input(event: InputEvent) -> void:
 					turn_count += (1/turn_order.size())
 					update_hp_mp()
 			else:
-				print("Hit something, but not a unit")
-				targeting_active = false
-				is_targeting = false
-				line.queue_free()
+				return
 		
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT and is_targeting == false:
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT and not is_targeting and not targeting_active:
 		var hovered = get_viewport().gui_get_hovered_control()
 		if hovered and hovered != $CanvasLayer/Control:
 			return
@@ -141,6 +137,8 @@ func _input(event: InputEvent) -> void:
 		var result = space_state.intersect_ray(query)
 		if result and result.has("position"):
 			var hit_position = result.position
+			print("Attempting transport: is_targeting=", is_targeting, ", targeting_active=", targeting_active)
+
 			temp = transport(current_piece, hit_position)
 			if temp == false:
 				return
@@ -251,20 +249,31 @@ func _on_reaction_pressed() -> void:
 
 func inflict_damage(target, damage) -> void:
 	target.HP = target.HP - damage
+	remove_piece()
+
 func mana_reduction(target, cost) -> void:
 	target.MP = target.MP - cost
 func remove_piece():
 	var temp = -1
+	var removed_bf_current = false
 	for i in range(turn_order.size() - 1, -1, -1):
 		var piece = turn_order[i]
 		if (piece.HP <= 0):
+			if i < turn_index:
+				removed_bf_current = true
 			temp = i
 			turn_order.remove_at(i)
 			piece.queue_free()
 			if i < turnorderbar.get_child_count():
 				turnorderbar.get_child(i).queue_free()
-	if turn_order.is_empty():
-			return
+	if removed_bf_current or turn_index >= turn_order.size():
+		turn_index = max(turn_index - 1, 0)
+		turn_index %= turn_order.size()  # Wrap around just in case
+		current_piece = turn_order[turn_index]
+		unhighlight_text(turn_index)
+		highlight_text(turn_index)
+		update_hp_mp()
+
 	if current_piece == null:
 		current_piece = turn_order[turn_index % turn_order.size()]	
 		var slot = turnorderbar.get_child(turn_index)
