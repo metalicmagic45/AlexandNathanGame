@@ -25,6 +25,8 @@ var mouse_pos
 var red_style := StyleBoxFlat.new()
 var blue_style := StyleBoxFlat.new()
 var bar_styles_set := false
+@onready var weaponlist = $CanvasLayer/Control/Panel/HBoxContainer/Control/MainMenu/GridContainer/SwapWeapon/Panel/WeaponMenu
+@onready var weaponpanel = $CanvasLayer/Control/Panel/HBoxContainer/Control/MainMenu/GridContainer/SwapWeapon/Panel
 
 func update_hp_mp():
 	hp_bar.max_value = current_piece.HP_MAX
@@ -160,6 +162,8 @@ func _input(event: InputEvent) -> void:
 		line.queue_free()
 		is_targeting = false
 		targeting_active = false 
+	if event.is_action_pressed("uicancel") and weaponlist.visible == true:
+		weaponpanel.visible = false
 func transport(piece, hit_position: Vector3, test_margin := -0.01, max_allowed_collisions := 1) -> bool:
 	var origin = piece.global_transform.origin
 	var distance = origin.distance_to(hit_position)
@@ -242,18 +246,49 @@ func _on_weapon_pressed() -> void:
 	
 
 func _on_reaction_pressed() -> void:
-	pass # Replace with function body.
+	pass
+	
 
-
-func _on_guard_pressed() -> void:
-	pass # Replace with function body.
 func inflict_damage(target, damage) -> void:
 	target.HP = target.HP - damage
 func mana_reduction(target, cost) -> void:
 	target.MP = target.MP - cost
 func remove_piece():
+	var temp = -1
 	for i in range(turn_order.size() - 1, -1, -1):
 		var piece = turn_order[i]
 		if (piece.HP <= 0):
+			temp = i
 			turn_order.remove_at(i)
 			piece.queue_free()
+			if i < turnorderbar.get_child_count():
+				turnorderbar.get_child(i).queue_free()
+	if turn_order.is_empty():
+			return
+	if current_piece == null:
+		current_piece = turn_order[turn_index % turn_order.size()]	
+		var slot = turnorderbar.get_child(turn_index)
+		var label = slot.get_child(0)
+		label.add_theme_color_override("font_color", Color(0,1,0))
+		update_hp_mp()
+
+		
+func _on_swap_weapon_pressed() -> void:
+	weaponpanel.visible = true
+	var weapons = current_piece.weapons
+	weaponlist.clear()
+	for item in weapons:
+		weaponlist.add_item(item["name"])
+func set_weapon(weapon):
+	current_piece.current_weapon = weapon
+func get_id_from_name(target_name: String) -> String:
+	for id in ItemDatabase.items.keys():
+		if ItemDatabase.items[id]["name"] == target_name:
+			return id
+	return ""
+func _on_weapon_menu_item_clicked(index: int, at_position: Vector2, mouse_button_index: int) -> void:
+	if mouse_button_index == MOUSE_BUTTON_LEFT:
+		var name = weaponlist.get_item_text(index)
+		var id = get_id_from_name(name)
+		set_weapon(id)
+		

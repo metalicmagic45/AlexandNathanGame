@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 @onready var ring = $MeshInstance3D/Ring
 var current_weapon = ItemDatabase.get_item("HIPower")
+var weapons = [ItemDatabase.items["ColtPython"], ItemDatabase.items["Marlin444S"], ItemDatabase.items["axe"], ItemDatabase.items["m14"]]
 const GRAVITY = 9.8
 var has_moved : bool = false
 var ring1 : MeshInstance3D
