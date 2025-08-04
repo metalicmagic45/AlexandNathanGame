@@ -198,6 +198,7 @@ func weapon_targeting(weapon, range):
 	is_targeting = true
 	targeting_active = true
 	targeting_weapon = weapon
+	print(weapon)
 	
 	# Create line holder node and position it at the current_piece's origin
 	line = Area3D.new()
@@ -283,6 +284,9 @@ func remove_piece():
 
 		
 func _on_swap_weapon_pressed() -> void:
+	line.queue_free()
+	is_targeting = false
+	targeting_active = false 
 	weaponpanel.visible = true
 	var weapons = current_piece.weapons
 	weaponlist.clear()
@@ -290,14 +294,17 @@ func _on_swap_weapon_pressed() -> void:
 		weaponlist.add_item(item["name"])
 func set_weapon(weapon):
 	current_piece.current_weapon = weapon
-func get_id_from_name(target_name: String) -> String:
+func get_id_from_name(target_name: String) -> Dictionary:
 	for id in ItemDatabase.items.keys():
 		if ItemDatabase.items[id]["name"] == target_name:
-			return id
-	return ""
+			return ItemDatabase.items[id]
+	return {}
 func _on_weapon_menu_item_clicked(index: int, at_position: Vector2, mouse_button_index: int) -> void:
 	if mouse_button_index == MOUSE_BUTTON_LEFT:
 		var name = weaponlist.get_item_text(index)
 		var id = get_id_from_name(name)
 		set_weapon(id)
+		weaponlist.release_focus()
+		weaponpanel.visible = false
+
 		
