@@ -112,6 +112,7 @@ func _input(event: InputEvent) -> void:
 					is_targeting = false
 					targeting_active = false
 					current_piece = turn_order[turn_index]
+					piece_react_queue.erase(current_piece)
 					current_piece.highlight(true)
 					highlight_text(turn_index)
 					turn_count += (1/turn_order.size())
@@ -136,9 +137,8 @@ func _input(event: InputEvent) -> void:
 		var result = space_state.intersect_ray(query)
 		if result and result.has("position"):
 			var hit_position = result.position
-			print("Attempting transport: is_targeting=", is_targeting, ", targeting_active=", targeting_active)
-
 			temp = transport(current_piece, hit_position)
+			reaction()
 			if temp == false:
 				return
 			else:
@@ -151,6 +151,7 @@ func _input(event: InputEvent) -> void:
 				is_targeting = false
 				targeting_active = false
 				current_piece = turn_order[turn_index]
+				piece_react_queue.erase(current_piece)
 				current_piece.highlight(true)
 				highlight_text(turn_index)
 				turn_count += (1/turn_order.size())
@@ -242,11 +243,35 @@ func _on_weapon_pressed() -> void:
 		var weapon = current_piece.access_weapon()
 		weapon_targeting(weapon, weapon["range"])
 	
-
+var piece_react_queue = []
 func _on_reaction_pressed() -> void:
-	pass
-	
-
+	weaponpanel.visible = false
+	piece_react_queue.append(current_piece)	
+	unhighlight_text(turn_index)
+	turn_index = (turn_index + 1) % turn_order.size()
+	current_piece.highlight(false)
+	if is_instance_valid(line):
+		line.queue_free()
+	line = Area3D.new()
+	is_targeting = false
+	targeting_active = false
+	current_piece = turn_order[turn_index]
+	piece_react_queue.erase(current_piece)
+	current_piece.highlight(true)
+	highlight_text(turn_index)
+	turn_count += (1/turn_order.size())
+	update_hp_mp()
+func reaction():
+	for pieces in piece_react_queue.duplicate():
+		var location_react = pieces.global_transform.origin
+		var current_piece_location = current_piece.global_transform.origin
+		var distance = location_react.distance_to(current_piece_location)
+		var reactor_targeting_weapon = pieces.current_weapon
+		var damage = Combat.roll_item_damage(reactor_targeting_weapon["dmg"])
+		if (distance <= float(reactor_targeting_weapon["range"])):
+			print("Reaction: ", pieces, " ", reactor_targeting_weapon)
+			inflict_damage(current_piece, damage)
+			piece_react_queue.erase(pieces)
 func inflict_damage(target, damage) -> void:
 	target.HP = target.HP - damage
 	remove_piece()
@@ -270,6 +295,8 @@ func remove_piece():
 		turn_index = max(turn_index - 1, 0)
 		turn_index %= turn_order.size()  # Wrap around just in case
 		current_piece = turn_order[turn_index]
+		piece_react_queue.erase(current_piece)
+
 		unhighlight_text(turn_index)
 		highlight_text(turn_index)
 		update_hp_mp()
