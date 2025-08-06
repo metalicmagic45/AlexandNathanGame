@@ -25,6 +25,7 @@ var mouse_pos
 var red_style := StyleBoxFlat.new()
 var blue_style := StyleBoxFlat.new()
 var bar_styles_set := false
+var has_collision = false
 @onready var weaponlist = $CanvasLayer/Control/Panel/HBoxContainer/Control/MainMenu/GridContainer/SwapWeapon/Panel/WeaponMenu
 @onready var weaponpanel = $CanvasLayer/Control/Panel/HBoxContainer/Control/MainMenu/GridContainer/SwapWeapon/Panel
 
@@ -102,7 +103,8 @@ func _input(event: InputEvent) -> void:
 				var damage = Combat.roll_item_damage(targeting_weapon["dmg"])
 				print(damage)
 				if clicked != current_piece:
-					inflict_damage(clicked, damage)
+					if (collision_detection(current_piece, clicked) == false):
+						inflict_damage(clicked, damage)
 					unhighlight_text(turn_index)
 					turn_index = (turn_index + 1) % turn_order.size()
 					current_piece.highlight(false)
@@ -115,7 +117,9 @@ func _input(event: InputEvent) -> void:
 					piece_react_queue.erase(current_piece)
 					current_piece.highlight(true)
 					highlight_text(turn_index)
-					turn_count += (1/turn_order.size())
+					if turn_index == 0:
+						turn_count += 1
+						print(turn_count)
 					update_hp_mp()
 			else:
 				return
@@ -154,7 +158,9 @@ func _input(event: InputEvent) -> void:
 				piece_react_queue.erase(current_piece)
 				current_piece.highlight(true)
 				highlight_text(turn_index)
-				turn_count += (1/turn_order.size())
+				if turn_index == 0:
+					turn_count += 1
+					print(turn_count)
 				update_hp_mp()
 	if event.is_action_pressed("uicancel") and is_targeting == true:
 		line.queue_free()
@@ -259,7 +265,9 @@ func _on_reaction_pressed() -> void:
 	piece_react_queue.erase(current_piece)
 	current_piece.highlight(true)
 	highlight_text(turn_index)
-	turn_count += (1/turn_order.size())
+	if turn_index == 0:
+		turn_count += 1
+		print(turn_count)
 	update_hp_mp()
 func reaction():
 	for pieces in piece_react_queue.duplicate():
@@ -269,9 +277,10 @@ func reaction():
 		var reactor_targeting_weapon = pieces.current_weapon
 		var damage = Combat.roll_item_damage(reactor_targeting_weapon["dmg"])
 		if (distance <= float(reactor_targeting_weapon["range"])):
-			print("Reaction: ", pieces, " ", reactor_targeting_weapon)
-			inflict_damage(current_piece, damage)
-			piece_react_queue.erase(pieces)
+			if collision_detection(pieces, current_piece) == false:
+				print("Reaction")
+				inflict_damage(current_piece, damage)
+		piece_react_queue.erase(pieces)
 func inflict_damage(target, damage) -> void:
 	target.HP = target.HP - damage
 	remove_piece()
@@ -333,5 +342,18 @@ func _on_weapon_menu_item_clicked(index: int, at_position: Vector2, mouse_button
 		set_weapon(id)
 		weaponlist.release_focus()
 		weaponpanel.visible = false
+func collision_detection(attacker, target) -> bool:
+	var space_state = get_world_3d().direct_space_state
+	var query = PhysicsRayQueryParameters3D.create(attacker.global_transform.origin, target.global_transform.origin)
+	query.exclude = [attacker, target]
+	var results = space_state.intersect_ray(query)  # max 1 result is enough
+	if results:
+		print("Collision")
+		return true
+	else:
+		print("No Collision")
+		return false
+
+
 
 		
