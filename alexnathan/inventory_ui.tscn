@@ -104,5 +104,63 @@ size_flags_vertical = 3
 [node name="Control2" type="Control" parent="VBoxContainer/Control/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.75
+
+[node name="Panel" type="Panel" parent="VBoxContainer/Control/HBoxContainer/Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+
+[node name="Head" type="Control" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Primary" type="Control" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Body" type="Control" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Trinket1" type="Control" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Pants" type="Control" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Trinket2" type="Control" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Feet" type="Control" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Hands" type="Control" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [connection signal="item_clicked" from="VBoxContainer/Control/HBoxContainer/ItemList" to="." method="_on_item_list_item_clicked"]
