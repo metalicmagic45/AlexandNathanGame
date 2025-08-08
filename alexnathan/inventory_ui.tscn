@@ -104,7 +104,7 @@ size_flags_vertical = 3
 [node name="Control2" type="Control" parent="VBoxContainer/Control/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.75
+size_flags_stretch_ratio = 0.5
 
 [node name="Panel" type="Panel" parent="VBoxContainer/Control/HBoxContainer/Control2"]
 layout_mode = 1
@@ -123,44 +123,260 @@ grow_horizontal = 2
 grow_vertical = 2
 columns = 2
 
-[node name="Head" type="Control" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer"]
+[node name="Head" type="Button" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+text = "Head"
 
-[node name="Primary" type="Control" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer/Head"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Body" type="Control" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer/Head/CenterContainer"]
+custom_minimum_size = Vector2(100, 80)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+expand_mode = 3
 
-[node name="Trinket1" type="Control" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="Button" type="Button" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer/Head"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "X"
 
-[node name="Pants" type="Control" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer"]
+[node name="Primary" type="Button" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+text = "Primary"
 
-[node name="Trinket2" type="Control" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer/Primary"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Feet" type="Control" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer/Primary/CenterContainer"]
+custom_minimum_size = Vector2(100, 80)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+expand_mode = 3
 
-[node name="Hands" type="Control" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer"]
+[node name="Button" type="Button" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer/Primary"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "X"
+
+[node name="Torso" type="Button" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+text = "Torso"
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer/Torso"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer/Torso/CenterContainer"]
+custom_minimum_size = Vector2(100, 80)
+layout_mode = 2
+expand_mode = 3
+
+[node name="Button" type="Button" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer/Torso"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "X"
+
+[node name="Trinket" type="Button" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Trinket"
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer/Trinket"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer/Trinket/CenterContainer"]
+custom_minimum_size = Vector2(100, 80)
+layout_mode = 2
+expand_mode = 3
+
+[node name="Button" type="Button" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer/Trinket"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "X"
+
+[node name="Pants" type="Button" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Pants"
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer/Pants"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer/Pants/CenterContainer"]
+custom_minimum_size = Vector2(100, 80)
+layout_mode = 2
+expand_mode = 3
+
+[node name="Button" type="Button" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer/Pants"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "X"
+
+[node name="Trinket3" type="Button" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Trinket"
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer/Trinket3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer/Trinket3/CenterContainer"]
+custom_minimum_size = Vector2(100, 80)
+layout_mode = 2
+expand_mode = 3
+
+[node name="Button" type="Button" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer/Trinket3"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "X"
+
+[node name="Feet" type="Button" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Feet"
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer/Feet"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer/Feet/CenterContainer"]
+custom_minimum_size = Vector2(100, 80)
+layout_mode = 2
+expand_mode = 3
+
+[node name="Button" type="Button" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer/Feet"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "X"
+
+[node name="Hands" type="Button" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Hands"
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer/Hands"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer/Hands/CenterContainer"]
+custom_minimum_size = Vector2(100, 80)
+layout_mode = 2
+expand_mode = 3
+
+[node name="Button" type="Button" parent="VBoxContainer/Control/HBoxContainer/Control2/Panel/GridContainer/Hands"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "X"
 
 [connection signal="item_clicked" from="VBoxContainer/Control/HBoxContainer/ItemList" to="." method="_on_item_list_item_clicked"]
