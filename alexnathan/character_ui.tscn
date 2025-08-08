@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://cfivdraysx186"]
+[gd_scene load_steps=4 format=3 uid="uid://cfivdraysx186"]
 
 [ext_resource type="Script" path="res://character_ui.gd" id="1_uvp0u"]
+[ext_resource type="Texture2D" uid="uid://bk08t1rpqlou7" path="res://Pictures/metal.png" id="2_ym76o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dvnkp"]
 
 [node name="CharacterUI" type="Control"]
 layout_mode = 3
@@ -11,6 +14,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_uvp0u")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ym76o")
+expand_mode = 3
+
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -19,60 +32,166 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Control" type="Control" parent="Panel"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="Panel/Control"]
-layout_mode = 0
-offset_right = 280.0
-offset_bottom = 320.0
-
-[node name="CharacterSprite" type="TextureRect" parent="Panel/Control/CenterContainer"]
-custom_minimum_size = Vector2(240, 280)
+[node name="Control" type="Control" parent="Panel/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="Panel/HBoxContainer/Control/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel/HBoxContainer/Control/VBoxContainer/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="Background" type="Panel" parent="Panel/HBoxContainer/Control/VBoxContainer/VBoxContainer/Panel/CenterContainer"]
+custom_minimum_size = Vector2(300, 275)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dvnkp")
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel/HBoxContainer/Control/VBoxContainer/VBoxContainer/Panel/CenterContainer/Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Portrait" type="TextureRect" parent="Panel/HBoxContainer/Control/VBoxContainer/VBoxContainer/Panel/CenterContainer/Background/CenterContainer"]
+custom_minimum_size = Vector2(240, 250)
+layout_mode = 2
+size_flags_vertical = 3
 expand_mode = 5
-stretch_mode = 5
 
-[node name="NameTag" type="Label" parent="Panel/Control"]
-layout_mode = 0
-offset_top = 320.0
-offset_right = 280.0
-offset_bottom = 360.0
-horizontal_alignment = 1
-
-[node name="CenterStatContainer" type="CenterContainer" parent="Panel/Control"]
-layout_mode = 0
-offset_top = 360.0
-offset_right = 280.0
-offset_bottom = 650.0
-
-[node name="StatBox" type="GridContainer" parent="Panel/Control/CenterStatContainer"]
+[node name="Panel2" type="Panel" parent="Panel/HBoxContainer/Control/VBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/h_separation = 30
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="Label" type="Label" parent="Panel/HBoxContainer/Control/VBoxContainer/VBoxContainer/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel2" type="Panel" parent="Panel/HBoxContainer/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.75
+
+[node name="Hbox" type="HBoxContainer" parent="Panel/HBoxContainer/Control/VBoxContainer/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="Panel/HBoxContainer/Control/VBoxContainer/Panel2/Hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Debuffs" type="ItemList" parent="Panel/HBoxContainer/Control/VBoxContainer/Panel2/Hbox/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Stats" type="CenterContainer" parent="Panel/HBoxContainer/Control/VBoxContainer/Panel2/Hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.75
+
+[node name="GridContainer" type="GridContainer" parent="Panel/HBoxContainer/Control/VBoxContainer/Panel2/Hbox/Stats"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 30
 columns = 2
 
-[node name="CenterSkillContainer" type="CenterContainer" parent="Panel/Control"]
-layout_mode = 0
-offset_left = 280.0
-offset_right = 1150.0
-offset_bottom = 450.0
-
-[node name="SkillContainer" type="GridContainer" parent="Panel/Control/CenterSkillContainer"]
+[node name="Control2" type="Control" parent="Panel/HBoxContainer/Control/VBoxContainer/Panel2/Hbox"]
 layout_mode = 2
-theme_override_constants/h_separation = 20
+size_flags_horizontal = 3
+
+[node name="Buffs" type="ItemList" parent="Panel/HBoxContainer/Control/VBoxContainer/Panel2/Hbox/Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control2" type="Control" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Panel/HBoxContainer/Control2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel/HBoxContainer/Control2/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Skills" type="GridContainer" parent="Panel/HBoxContainer/Control2/VBoxContainer/Panel/CenterContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 20
-columns = 4
+columns = 5
 
-[node name="CenterStatusContainer" type="CenterContainer" parent="Panel/Control"]
-layout_mode = 0
-offset_left = 280.0
-offset_top = 450.0
-offset_right = 1150.0
-offset_bottom = 650.0
-
-[node name="StatusContainer" type="GridContainer" parent="Panel/Control/CenterStatusContainer"]
+[node name="Panel2" type="Panel" parent="Panel/HBoxContainer/Control2/VBoxContainer"]
 layout_mode = 2
-columns = 4
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="Panel/HBoxContainer/Control2/VBoxContainer/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 5

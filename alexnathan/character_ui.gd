@@ -1,9 +1,9 @@
 extends Control
 
-@onready var char_sprite : TextureRect = $Panel/Control/CenterContainer/CharacterSprite
-@onready var char_name : Label = $Panel/Control/NameTag
-@onready var stat_box = $Panel/Control/CenterStatContainer/StatBox
-@onready var skill_container = $Panel/Control/CenterSkillContainer/SkillContainer
+@onready var char_sprite : TextureRect = $Panel/HBoxContainer/Control/VBoxContainer/VBoxContainer/Panel/CenterContainer/Background/CenterContainer/Portrait
+@onready var char_name : Label = $Panel/HBoxContainer/Control/VBoxContainer/VBoxContainer/Panel2/Label
+@onready var stat_box = $Panel/HBoxContainer/Control/VBoxContainer/Panel2/Hbox/Stats/GridContainer
+@onready var skill_container = $Panel/HBoxContainer/Control2/VBoxContainer/Panel/CenterContainer/Skills
 
 #Updates character sheet according to the currently selected character
 var character_name = Playerdata.CurrentCharacter

@@ -101,4 +101,8 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
 
+[node name="Control2" type="Control" parent="VBoxContainer/Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
 [connection signal="item_clicked" from="VBoxContainer/Control/HBoxContainer/ItemList" to="." method="_on_item_list_item_clicked"]
